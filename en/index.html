@@ -1,0 +1,834 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Studio Forma · Portfolio</title><meta name="description" content="Your garment on virtual models. Photos and videos for your store. Ask for a free look."><meta property="og:type" content="website"><meta property="og:title" content="Studio Forma · Portfolio"><meta property="og:description" content="Your garment on virtual models. Photos and videos for your store. Ask for a free look."><meta property="og:image" content="https://calebenn07.github.io/studioforma/og-en.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:url" content="https://calebenn07.github.io/studioforma/en/"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="data:,"></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@400;500&family=DM+Mono:wght@400&display=swap">
+<style>
+/* Layout: dark editorial magazine. Full-bleed bands, big Bodoni type, 9:16 frames as the recurring unit (the format we deliver). */
+:root{
+  --ink:#171310;          /* espresso ground */
+  --ink-2:#221c18;        /* raised band */
+  --bone:#ece6dd;         /* main text */
+  --mute:#bcb1a3;         /* secondary text */
+  --bronze:#a57d45;       /* logo bronze, the single accent */
+  --line:rgba(236,230,221,.14);
+  --display:"DM Serif Display",Georgia,"Times New Roman",serif;
+  --body:"Jost","Futura","Avenir Next","Helvetica Neue",Arial,sans-serif;
+  --mono:"DM Mono",ui-monospace,"SF Mono",Menlo,monospace;
+  --gut:max(16px,env(safe-area-inset-left,0px));
+  --gut-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --ink:#efebe5;--ink-2:#e4ded5;--bone:#1d1814;--mute:#5b5149;--bronze:#86622f;--line:rgba(29,24,20,.16);color-scheme:light}}
+:root[data-theme="light"]{--ink:#efebe5;--ink-2:#e4ded5;--bone:#1d1814;--mute:#5b5149;--bronze:#86622f;--line:rgba(29,24,20,.16);color-scheme:light}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--bone);font-family:var(--body);font-weight:400;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--ink)}
+a{color:inherit}
+img,video{display:block;max-width:100%}
+.wrap{max-width:1320px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gut-r)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;text-wrap:balance;line-height:1.02}
+h2{font-size:clamp(38px,5.6vw,80px);letter-spacing:-.01em;line-height:1.05}
+h2 em,h1 em{font-style:italic;color:var(--bronze)}
+p{margin:0}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:36px;height:auto;color:var(--bronze)}
+.brand span{font-family:var(--display);font-size:20px;letter-spacing:.02em}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a{font-size:13px;letter-spacing:.06em;text-decoration:none;color:var(--mute);transition:color .2s}
+.nav a:hover{color:var(--bone)}
+.topr{display:flex;align-items:center;gap:12px}
+.btn.free{background:var(--bronze);border-color:var(--bronze);color:#fff;font-weight:500}
+.btn.free:hover{background:var(--bone);border-color:var(--bone);color:var(--ink)}
+.top .btn.free{padding:11px 16px;font-size:13px;white-space:nowrap;animation:freepulse 2.6s ease-in-out 1.2s infinite}
+@keyframes freepulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--bronze) 55%,transparent)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--bronze) 0%,transparent)}}
+@media (prefers-reduced-motion:reduce){.top .btn.free{animation:none}}
+.offer{margin-top:30px;padding:20px 22px;border:1px solid var(--bronze);border-radius:16px;max-width:46ch;display:grid;gap:10px;justify-items:start;background:color-mix(in srgb,var(--bronze) 10%,transparent)}
+.offer p{color:var(--bone);font-size:16px}
+.offer .btn.free{padding:14px 22px;font-size:15px}
+.offer[hidden]{display:none}
+.free[hidden]{display:none}
+@media (max-width:420px){.top .btn.free{padding:9px 12px;font-size:12px}.top .brand span{display:none}}
+.brand span{white-space:nowrap}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{font:500 11px/1 var(--mono);letter-spacing:.12em;background:none;border:0;color:var(--mute);padding:8px 11px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--bone);color:var(--ink)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--bronze);outline-offset:3px}
+
+
+/* hero */
+.hero{padding-block:clamp(28px,4vw,56px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(24px,4vw,64px);align-items:center}
+.hero h1{font-size:clamp(44px,5.6vw,92px);letter-spacing:-.01em;line-height:1.02}
+.hero h1 .line{display:block;overflow:hidden}
+.hero h1 .line>span{display:inline-block;animation:rise 1.1s cubic-bezier(.2,.7,.1,1) both}
+.hero h1 .line:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .line:nth-child(3)>span{animation-delay:.24s}
+@keyframes rise{from{transform:translateY(40%)}to{transform:none}}
+.hero .lede{margin-top:28px;max-width:46ch;font-size:clamp(16px,1.4vw,19px);color:var(--mute)}
+.hero .meta{margin-top:36px;display:flex;flex-wrap:wrap;gap:10px 28px}
+.reels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.2vw,16px);align-items:start}
+.reel{position:relative;aspect-ratio:9/16;max-width:100%;overflow:hidden;background:var(--ink-2)}
+.reel video{width:100%;height:100%;object-fit:cover}
+.reels{max-width:min(100%,calc((100vh - 260px) * 1.75));justify-self:end;width:100%}
+.reels .reel:nth-child(2){margin-top:6%}
+.reels .reel:nth-child(3){margin-top:12%}
+.reel figcaption{position:absolute;left:10px;bottom:10px;font:400 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#f3eee7;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.reels .reel:nth-child(2){margin-top:8%}.reels .reel:nth-child(3){margin-top:16%}}
+
+/* marquee */
+.strip{border-block:1px solid var(--line);overflow:hidden;padding-block:18px}
+.strip-track{display:flex;gap:14px;width:max-content;animation:slide 60s linear infinite}
+.strip:hover .strip-track{animation-play-state:paused}
+.strip img{height:clamp(150px,18vw,230px);width:auto;aspect-ratio:9/16;object-fit:cover}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding-block:clamp(64px,10vw,140px)}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,38ch);gap:24px 48px;align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.sec-head p{color:var(--mute)}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+
+/* from garment to campaign */
+.band{background:var(--ink-2)}
+.looktabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.chip{font:400 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:11px 16px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--mute);cursor:pointer;transition:all .25s}
+.chip:hover{color:var(--bone);border-color:var(--bone)}
+.chip[aria-pressed="true"]{background:var(--bone);color:var(--ink);border-color:var(--bone)}
+.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,2vw,28px);position:relative}
+.step{display:flex;flex-direction:column;gap:12px;min-width:0}
+.step .frame{aspect-ratio:9/16;overflow:hidden;background:var(--ink)}
+.step .frame img,.step .frame video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.step .frame.ref{background:#f4f2ee}
+.step .frame.ref img{object-fit:contain;padding:8%}
+.step:hover .frame img{transform:scale(1.04)}
+.step .lbl{display:flex;justify-content:space-between;gap:8px;align-items:baseline;border-top:1px solid var(--line);padding-top:10px}
+.step .lbl b{font-family:var(--display);font-weight:400;font-size:clamp(18px,1.8vw,24px)}
+.flow.swap .frame>*{animation:fadein .7s ease both}
+.flow.swap .step:nth-child(2) .frame>*{animation-delay:.08s}
+.flow.swap .step:nth-child(3) .frame>*{animation-delay:.16s}
+@keyframes fadein{from{opacity:.25;transform:scale(1.03)}to{opacity:1;transform:none}}
+@media (max-width:640px){.flow{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.step .lbl{flex-direction:column}.step .lbl .eyebrow{font-size:9px}}
+
+/* portfolio */
+.filters{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:32px}
+.fgroup{display:flex;flex-direction:column;gap:10px}
+.fgroup .row{display:flex;flex-wrap:wrap;gap:8px}
+.count{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.1em;align-self:end;margin-left:auto}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1.2vw,16px)}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:760px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:620px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{position:relative;margin:0;aspect-ratio:9/16;overflow:hidden;background:var(--ink-2);cursor:zoom-in;border:0;padding:0;color:inherit;text-align:left}
+.tile img,.tile video{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.1,1),filter .5s}
+.tile:hover img,.tile:hover video{transform:scale(1.05)}
+.tile .cap{position:absolute;inset:auto 0 0 0;padding:28px 12px 12px;display:flex;justify-content:space-between;gap:8px;font:400 10px/1.3 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#f3eee7;background:linear-gradient(transparent,rgba(10,8,6,.62))}
+.tile .tag{position:absolute;top:10px;left:10px;font:400 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#f3eee7;border:1px solid rgba(243,238,231,.55);border-radius:999px;padding:6px 9px}
+.tile.in{animation:tilein .6s cubic-bezier(.2,.7,.1,1) both}
+@keyframes tilein{from{transform:translateY(14px)}to{transform:none}}
+
+/* models */
+.models{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(12px,2vw,28px)}
+.model{display:flex;flex-direction:column;gap:14px;min-width:0}
+.model .frame{aspect-ratio:4/5;overflow:hidden}
+.model .frame img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.model:hover .frame img{transform:scale(1.05)}
+.model h3{font-size:clamp(28px,3vw,40px)}
+.model p{color:var(--mute);font-size:15px}
+@media (max-width:760px){.models{grid-template-columns:1fr}.model .frame{aspect-ratio:4/3}}
+
+/* deliverables */
+.deliver{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line)}
+.deliver>div{padding:28px 28px 8px 0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.deliver>div+div{padding-left:28px;border-left:1px solid var(--line)}
+.deliver h3{font-size:clamp(26px,2.6vw,36px)}
+.deliver p{color:var(--mute)}
+.spec{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+@media (max-width:1100px){.deliver{grid-template-columns:repeat(2,minmax(0,1fr))}.deliver>div:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:760px){.deliver{grid-template-columns:1fr}.deliver>div,.deliver>div+div{padding:24px 0;border-left:0;border-bottom:1px solid var(--line)}}
+
+/* process */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px;min-width:0}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--display);font-size:44px;color:var(--bronze);line-height:1}
+.steps b{font-weight:500}
+.steps p{color:var(--mute);font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,2vw,24px);align-items:stretch}
+.plan{display:flex;flex-direction:column;gap:12px;padding:28px;border:1px solid var(--line);min-width:0}
+.plan.featured{border-color:var(--bronze);background:color-mix(in srgb,var(--bronze) 9%,transparent)}
+.plan h3{font-size:clamp(26px,2.4vw,34px)}
+.plan .who{color:var(--mute);font-size:15px}
+.price{display:flex;flex-direction:column;gap:4px;margin-top:10px;font-variant-numeric:tabular-nums}
+.price b{font-family:var(--display);font-weight:400;font-size:clamp(40px,4vw,56px);line-height:1}
+.price.small{margin-top:4px}.price.small b{font-size:26px;color:var(--mute)}
+.per{font:400 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.plan .fit{margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
+.plan .bonus{font:400 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--bronze)}
+.plan .note{font-size:14px;color:var(--mute)}
+#vol{margin-top:0;padding-top:0;border-top:0}
+#mo-br{margin-top:clamp(48px,6vw,80px);padding-top:clamp(32px,4vw,56px);border-top:1px solid var(--line)}
+.vol{margin-top:clamp(48px,6vw,80px);padding-top:clamp(32px,4vw,56px);border-top:1px solid var(--line)}
+.vol[hidden],#mo-br[hidden],#mo-old[hidden],.qrow[hidden]{display:none}
+.volh{font-size:clamp(30px,3.6vw,48px)}
+.badge{display:inline-block;margin-left:8px;padding:4px 8px;border-radius:999px;background:var(--bronze);color:var(--ink);letter-spacing:.12em}
+.menus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,72px);margin-top:clamp(48px,6vw,80px)}
+.mh{font-size:clamp(24px,2.2vw,30px);margin-bottom:12px}
+.menu{margin:0}
+.menu>div{display:grid;grid-template-columns:1fr auto;gap:2px 16px;padding-block:14px;border-top:1px solid var(--line)}
+.menu dt{font-weight:500}
+.menu dd{margin:0;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--bronze);font-weight:500}
+.menu p{grid-column:1/-1;color:var(--mute);font-size:15px}
+.conds{margin:0;padding-left:18px;color:var(--mute);display:flex;flex-direction:column;gap:6px}
+.mail[hidden]{display:none}
+.mail{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:28px}
+.addr{font-family:var(--display);font-size:clamp(20px,2.4vw,30px);user-select:all;overflow-wrap:anywhere;min-width:0}
+@media (max-width:860px){.plans{grid-template-columns:1fr}.menus{grid-template-columns:1fr}}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.rows{display:flex;flex-direction:column}
+.qrow{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:18px;border-top:1px solid var(--line)}
+.qrow>div:first-child{min-width:0}
+.qrow p{color:var(--mute);font-size:14px;margin-top:2px}
+.qrow.check{cursor:pointer}
+.qrow input[type=checkbox]{width:24px;height:24px;accent-color:var(--bronze);flex:none}
+.stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;flex:none}
+.stepper input{width:56px;text-align:center;background:none;border:0;color:var(--bone);font:500 18px/1 var(--body);font-variant-numeric:tabular-nums;-moz-appearance:textfield;padding:10px 0}
+.stepper input::-webkit-inner-spin-button,.stepper input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.pm,.pv,.pc{width:42px;height:42px;border:0;background:none;color:var(--bone);font:400 20px/1 var(--body);cursor:pointer;border-radius:999px}
+.pm:hover,.pv:hover,.pc:hover{background:var(--ink-2)}
+.total{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px);padding:28px;border:1px solid var(--bronze);background:color-mix(in srgb,var(--bronze) 8%,transparent);display:flex;flex-direction:column;gap:14px}
+.total ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.total li{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.total li span:first-child{color:var(--mute)}
+.total li span:last-child{white-space:nowrap}
+.sum{display:flex;flex-direction:column;gap:4px;padding-top:14px;border-top:1px solid var(--line)}
+.sum b{font-family:var(--display);font-weight:400;font-size:clamp(40px,4vw,56px);line-height:1;font-variant-numeric:tabular-nums}
+.tip{font-size:14px;color:var(--bone);border-left:2px solid var(--bronze);padding-left:12px}
+.fine{font-size:13px;color:var(--mute)}
+@media (max-width:860px){.calc{grid-template-columns:1fr}.total{position:static}}
+
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.btn{font:500 14px/1 var(--body);letter-spacing:.04em;text-decoration:none;padding:15px 22px;border-radius:999px;border:1px solid var(--bone);color:var(--bone);transition:background .2s,color .2s}
+.btn:hover,.btn.solid{background:var(--bone);color:var(--ink)}
+.total .send{margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}.total .send p{margin:0 0 14px;font-size:15px}.total .send .btn{display:block;text-align:center}
+.btn.solid:hover{background:var(--bronze);border-color:var(--bronze)}
+/* pages */
+.tabs{border-top:1px solid var(--line)}
+.tabs-row{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:6px}
+.tabs-row::-webkit-scrollbar{display:none}
+.tabs a{flex:none;font-size:14px;letter-spacing:.03em;text-decoration:none;color:var(--mute);padding:9px 14px;border-radius:999px;transition:color .2s,background .2s}
+.tabs a:hover{color:var(--bone)}
+.tabs a[aria-current="page"]{background:var(--bone);color:var(--ink)}
+.page{animation:pagein .5s cubic-bezier(.2,.7,.1,1)}
+@keyframes pagein{from{opacity:.35;transform:translateY(10px)}to{opacity:1;transform:none}}
+main section{padding-block:clamp(48px,7vw,96px)}
+.pager{padding-block:8px clamp(48px,6vw,80px)}
+.pager a{display:flex;flex-direction:column;gap:6px;text-decoration:none;border-top:1px solid var(--line);padding-top:24px;align-items:flex-end;text-align:right}
+.pager b{font-family:var(--display);font-weight:400;font-size:clamp(28px,4vw,48px);transition:color .2s}
+.pager a:hover b{color:var(--bronze)}
+
+/* contact */
+.contact{text-align:left}
+.contact h2{max-width:14ch}
+.contact .lede{margin-top:24px;color:var(--mute);max-width:52ch}
+footer{border-top:1px solid var(--line);padding-block:28px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(10,8,6,.94);display:flex;align-items:center;justify-content:center;padding:max(24px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(24px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lb[hidden]{display:none}
+.lb-media{height:min(88vh,1100px);aspect-ratio:9/16;max-width:100%}
+.lb-media img,.lb-media video{width:100%;height:100%;object-fit:contain}
+.lb button{position:absolute;background:none;border:1px solid rgba(243,238,231,.4);color:#f3eee7;border-radius:999px;width:44px;height:44px;font:400 18px/1 var(--body);cursor:pointer}
+.lb .x{top:max(16px,env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+.lb .prev{left:max(16px,env(safe-area-inset-left,0px));top:50%}
+.lb .next{right:max(16px,env(safe-area-inset-right,0px));top:50%}
+
+/* reveal: moves from a visible resting state */
+.rv{transition:transform 1s cubic-bezier(.2,.7,.1,1)}
+.rv.pre{transform:translateY(28px)}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv.pre{transform:none}
+  html{scroll-behavior:auto}
+}
+@media (min-width:1001px) and (max-width:1240px){.models{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:761px) and (max-width:1000px){.models{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio"><svg viewBox="-8 -8 460 399" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="16"><rect x="0" y="0" width="444" height="383"/><line x1="136" y1="0" x2="136" y2="383"/><line x1="136" y1="232" x2="444" y2="232"/><path d="M303 0 C210 24 140 125 140 232 C140 300 172 352 226 383"/></g></svg><span>Studio Forma</span></a>
+    <div class="topr"><a class="btn free freelink" id="free" hidden href="https://wa.me/5585991081868?text=Ol%C3%A1!%20Quero%20pedir%20meu%20look%20gr%C3%A1tis%20do%20Studio%20Forma." target="_blank" rel="noopener" data-i="free">Peça um look grátis</a>
+    <div class="lang" role="group" aria-label="Idioma / Language">
+      <button id="btn-pt" aria-pressed="true" data-lang="pt">PT</button>
+      <button id="btn-en" aria-pressed="false" data-lang="en">EN</button>
+    </div></div>
+  </div>
+  <nav class="tabs" aria-label="Páginas">
+    <div class="wrap tabs-row" id="tabs">
+      <a href="#inicio" data-i="nav0">Início</a>
+      <a href="#processo" data-i="nav1">Da peça ao vídeo</a>
+      <a href="#portfolio" data-i="nav2">Portfólio</a>
+      <a href="#modelos" data-i="nav3">Modelos</a>
+      <a href="#servicos" data-i="nav7">Serviços</a>
+      <a href="#pacotes" data-i="nav5">Pacotes</a>
+      <a href="#orcamento" data-i="nav6">Orçamento</a>
+      <a href="#contato" data-i="nav4">Contato</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+<div class="page" data-page="inicio">
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow" data-i="kicker">Narrativas visuais com inteligência artificial</p>
+        <h1 style="margin-top:22px">
+          <span class="line"><span data-i="h1a">Sua peça,</span></span>
+          <span class="line"><span data-i="h1b">vestida e</span></span>
+          <span class="line"><span data-i="h1c"><em>em movimento.</em></span></span>
+        </h1>
+        <p class="lede" data-i="lede">Fotos de catálogo e vídeos verticais com modelos virtuais do Studio Forma, feitos a partir da roupa que você já vende. Pronto para loja, Reels e TikTok.</p>
+        <div class="meta">
+          <span class="eyebrow" data-i="m1">Foto com modelo</span>
+          <span class="eyebrow" data-i="m2">Vídeo 9:16</span>
+          <span class="eyebrow" data-i="m3">Lookbook</span>
+        </div>
+        <div class="offer freebox" hidden><span class="eyebrow" data-i="of0">Teste sem custo</span><p data-i="of1">Mande a foto de uma peça da sua loja vestida no manequim e receba um look pronto, vestido por uma das nossas modelos, sem pagar nada e sem compromisso.</p><a class="btn free freelink" target="_blank" rel="noopener" data-i="free">Peça um look grátis</a></div>
+        <div class="cta"><a class="btn solid" href="#portfolio" data-i="ct1">Ver portfólio</a><a class="btn" href="#pacotes" data-i="ct2">Ver pacotes</a></div>
+      </div>
+      <div class="reels">
+        <figure class="reel" style="margin:0"><video src="../media/v-livia.mp4" poster="../media/p-livia.jpg" autoplay muted loop playsinline preload="auto"></video><figcaption>Look 01 · Lívia</figcaption></figure>
+        <figure class="reel" style="margin:0"><video src="../media/v-helena.mp4" poster="../media/p-helena.jpg" autoplay muted loop playsinline preload="auto"></video><figcaption>Look 02 · Helena</figcaption></figure>
+        <figure class="reel" style="margin:0"><video src="../media/v-iara.mp4" poster="../media/p-iara.jpg" autoplay muted loop playsinline preload="auto"></video><figcaption>Look 04 · Iara</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" aria-hidden="true"><div class="strip-track" id="strip"></div></div>
+
+</div>
+<div class="page" data-page="processo">
+  <section class="band" id="processo">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="s1t">Da peça <em>à campanha</em></h2>
+        <p data-i="s1p">Escolha um look. À esquerda, a referência da roupa como ela chegou até nós. Depois, a foto de catálogo e o vídeo vertical que entregamos.</p>
+      </div>
+      <div class="looktabs" id="looktabs"></div>
+      <div class="flow" id="flow"></div>
+    </div>
+  </section>
+
+</div>
+<div class="page" data-page="portfolio">
+  <section id="portfolio">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="s2t">Portfólio</h2>
+        <p data-i="s2p">Um look por aba. Toque em qualquer imagem para ver em tela cheia.</p>
+      </div>
+      <div class="filters">
+        <div class="fgroup"><span class="eyebrow" data-i="fModel">Look</span><div class="row" id="f-model"></div></div>
+        <div class="fgroup"><span class="eyebrow" data-i="fType">Tipo</span><div class="row" id="f-type"></div></div>
+        <span class="count" id="count"></span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+</div>
+<div class="page" data-page="modelos">
+  <section class="band" id="modelos">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="s3t">Modelos <em>do estúdio</em></h2>
+        <p data-i="s3p">Cinco modelos virtuais criados pelo Studio Forma, com rosto, corpo e estilo fixos. A mesma modelo pode vestir toda a sua coleção.</p>
+      </div>
+      <div class="models" id="models"></div>
+    </div>
+  </section>
+
+</div>
+<div class="page" data-page="servicos">
+  <section id="entregas">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="s4t">O que você <em>recebe</em></h2>
+        <p data-i="s4p">Cada peça pode virar um conjunto completo de conteúdo, do catálogo ao vídeo para redes sociais.</p>
+      </div>
+      <div class="deliver rv">
+        <div><span class="spec" data-i="d0s">Pagamento único</span><h3 data-i="d0t">Modelo exclusiva</h3><p data-i="d0p">Uma modelo virtual só da sua marca, com rosto, corpo e expressões fixos, que se repete em todas as coleções.</p></div>
+        <div><span class="spec" data-i="d1s">5 fotos por look</span><h3 data-i="d1t">Lookbook</h3><p data-i="d1p">Frente, costas, perfil e detalhe em fundo neutro, prontas para o e-commerce.</p></div>
+        <div><span class="spec" data-i="d2s">2 fotos por look · vertical e horizontal</span><h3 data-i="d2t">Conceito de coleção</h3><p data-i="d2p">Cenário, luz e direção de arte próprios, para feed, stories e site.</p></div>
+        <div><span class="spec" data-i="d3s">3 vídeos · a partir de 15 s · 9:16</span><h3 data-i="d3t">Vídeos</h3><p data-i="d3p">Os 3 looks que mais vendem, em movimento, prontos para Reels e TikTok. De bônus, um fashion film que une os três.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="band">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="s5t">Como <em>funciona</em></h2>
+        <p data-i="s5p">Você não precisa de estúdio, fotógrafo nem agenda de modelo. Precisa só da peça.</p>
+      </div>
+      <ol class="steps rv">
+        <li><b data-i="p1t">Você envia a peça</b><p data-i="p1p">Fotos claras da peça vestida no manequim: frente, costas e lateral. Sem manequim, pode ser no cabide ou estendida.</p></li>
+        <li><b data-i="p2t">Definimos o visual</b><p data-i="p2p">Escolhemos juntos a modelo, o fundo e o clima da campanha.</p></li>
+        <li><b data-i="p3t">Produzimos as fotos</b><p data-i="p3p">Você aprova as imagens antes de qualquer vídeo.</p></li>
+        <li><b data-i="p4t">Animamos e entregamos</b><p data-i="p4p">Vídeos verticais editados, prontos para publicar.</p></li>
+      </ol>
+    </div>
+  </section>
+</div>
+<div class="page" data-page="pacotes">
+  <section class="band" id="pacotes">
+    <div class="wrap">
+      <div class="vol" id="vol" hidden>
+        <div class="sec-head rv">
+          <h2 data-i="v0t">Pacotes <em>por volume</em></h2>
+          <p data-i="v0p">Para lojas com muitas peças por coleção. Cada look sai com 8 fotos na mesma modelo do estúdio, escolhidas entre 12 poses, e os Reels são montados com clipes de 5 s em vídeo vertical 9:16.</p>
+        </div>
+        <div class="plans">
+          <article class="plan"><h3 data-i="v1n">START</h3><p class="who" data-i="v1w">10 looks · 80 fotos · 1 Reel</p><div class="price"><span class="per" data-i="vpk">Por pacote</span><b data-p="v1">R$ 990</b></div><p class="fit" data-i="v1f">Cerca de {v1pl} por look.</p></article>
+          <article class="plan"><h3 data-i="v2n">COLEÇÃO</h3><p class="who" data-i="v2w">25 looks · 200 fotos · 3 Reels</p><div class="price"><span class="per" data-i="vpk2">Por pacote</span><b data-p="v2">R$ 1.990</b></div><p class="fit" data-i="v2f">Cerca de {v2pl} por look.</p></article>
+          <article class="plan"><h3 data-i="v3n">LANÇAMENTO</h3><p class="who" data-i="v3w">50 looks · 400 fotos · 5 Reels</p><div class="price"><span class="per" data-i="vpk3">Por pacote</span><b data-p="v3">R$ 3.490</b></div><p class="fit" data-i="v3f">Cerca de {v3pl} por look.</p></article>
+        </div>
+      </div>
+      <div id="mo-old">
+      <div class="sec-head rv">
+        <h2 data-i="k0t">Pacotes <em>mensais</em></h2>
+        <p data-i="k0p">Todos incluem 10 looks de lookbook e o conceito de coleção de 5 looks por mês. {curpt}.</p>
+      </div>
+      <div class="plans rv">
+        <article class="plan">
+          <span class="eyebrow" data-i="k1e">Essencial</span>
+          <h3 data-i="k1t">Coleção Essencial</h3>
+          <p class="who" data-i="k1w">Modelo do banco Studio Forma</p>
+          <div class="price"><span class="per" data-i="perm">Por mês</span><b data-p="ess">R$ 2.300</b></div>
+          <p class="fit" data-i="k1f">Para a loja que quer começar sem investir numa modelo própria.</p>
+          <p class="note" data-i="k1n">Com 3 vídeos de 15 s e o fashion film bônus: {essv} por mês.</p>
+        </article>
+        <article class="plan featured">
+          <span class="eyebrow"><span data-i="k2e">Assinatura</span> <span class="badge" data-i="rec">Recomendado</span></span>
+          <h3 data-i="k2t">Assinatura da Marca</h3>
+          <p class="who" data-i="k2w">Com modelo exclusiva</p>
+          <div class="price"><span class="per" data-i="m1st">1º mês</span><b data-p="sig1">R$ 2.700</b></div>
+          <div class="price small"><span class="per" data-i="m2nd">A partir do 2º mês</span><b data-p="sig2">R$ 2.300</b></div>
+          <p class="fit" data-i="k2f">Para a marca que quer um rosto só dela em todas as coleções.</p>
+        </article>
+        <article class="plan">
+          <span class="eyebrow" data-i="k3e">Movimento</span>
+          <h3 data-i="k3t">Marca em Movimento</h3>
+          <p class="who" data-i="k3w">Modelo exclusiva + 3 vídeos de 15 s</p>
+          <p class="bonus" data-i="k3b">Bônus: fashion film com os 3 looks juntos</p>
+          <div class="price"><span class="per" data-i="m1st2">1º mês</span><b data-p="mov1">R$ 3.000</b></div>
+          <div class="price small"><span class="per" data-i="m2nd2">A partir do 2º mês</span><b data-p="mov2">R$ 2.600</b></div>
+          <p class="fit" data-i="k3f">Para a marca que quer presença forte nas redes, com foto e vídeo.</p>
+        </article>
+      </div>
+      </div>
+      <div id="mo-br" hidden>
+        <div class="sec-head rv">
+          <h2 data-i="b0t">Assinatura <em>mensal</em></h2>
+          <p data-i="b0p">Os mesmos pacotes por volume, todo mês, com desconto para quem fica pelo menos 3 meses. {curpt}.</p>
+        </div>
+        <div class="plans rv">
+          <article class="plan"><h3>START</h3><p class="who" data-i="b1w">10 looks · 80 fotos · 1 Reel por mês</p><div class="price"><span class="per" data-i="bpm1">Por mês</span><b data-p="m1">R$ 890</b></div><p class="fit" data-i="b1f">Em vez de {v1} no pacote avulso.</p></article>
+          <article class="plan featured"><h3>COLEÇÃO</h3><p class="who" data-i="b2w">25 looks · 200 fotos · 3 Reels por mês</p><div class="price"><span class="per" data-i="bpm2">Por mês</span><b data-p="m2">R$ 1.790</b></div><p class="fit" data-i="b2f">Em vez de {v2} no pacote avulso.</p></article>
+          <article class="plan"><h3>LANÇAMENTO</h3><p class="who" data-i="b3w">50 looks · 400 fotos · 5 Reels por mês</p><div class="price"><span class="per" data-i="bpm3">Por mês</span><b data-p="m3">R$ 3.140</b></div><p class="fit" data-i="b3f">Em vez de {v3} no pacote avulso.</p></article>
+        </div>
+        <p class="note" style="margin-top:20px;color:var(--mute)" data-i="b4n">Fidelidade mínima de 3 meses. Modelo exclusiva e conceito de coleção entram como adicionais, com os valores dos serviços avulsos.</p>
+      </div>
+      <div class="menus rv">
+        <div>
+          <h3 class="mh" data-i="a0">Serviços avulsos</h3>
+          <dl class="menu">
+            <div><dt data-i="a1t">Modelo virtual exclusiva</dt><dd data-p="model">R$ 400</dd><p data-i="a1p">Rosto, corpo, expressões e testes de consistência. Pagamento único.</p></div>
+            <div><dt data-i="a2t">Lookbook / e-commerce</dt><dd data-p="lb">R$ 120</dd><p data-i="a2p">Por look: 5 fotos em fundo neutro, prontas para o site.</p></div>
+            <div><dt data-i="a3t">Foto conceito · por look</dt><dd data-p="xcc">R$ 220</dd><p data-i="a3p">Direção de arte, cenário e luz próprios. 2 fotos por look, vertical e horizontal.</p></div>
+            <div><dt data-i="a4t">Vídeos</dt><dd data-p="vid">+ R$ 300</dd><p data-i="a4p">3 vídeos de 15 segundos dos looks que mais vendem, mais um fashion film bônus com os três juntos.</p></div>
+          </dl>
+        </div>
+        <div>
+          <h3 class="mh" data-i="x0">Extras</h3>
+          <dl class="menu">
+            <div><dt data-i="x1t">Look adicional · lookbook</dt><dd data-p="xlb">R$ 120</dd><p data-i="x1p">Acima dos 10 looks do pacote.</p></div>
+            <div><dt data-i="x3t">Ajuste extra</dt><dd data-i="x3v">{adj} / imagem</dd><p data-i="x3p">Após a rodada de ajuste incluída.</p></div>
+          </dl>
+          <h3 class="mh" style="margin-top:36px" data-i="cd0">Condições</h3>
+          <ul class="conds">
+            <li data-i="cd1">1 rodada de ajuste incluída por look.</li>
+            <li data-i="cd2">Entrega em 4 dias úteis após o recebimento das fotos das peças.</li>
+            <li data-i="cd3">Você envia fotos nítidas de cada peça vestida no manequim: frente, costas e lateral. Sem manequim, use cabide ou a peça estendida.</li>
+            <li data-i="cd4">Com nota fiscal, acrescenta-se o imposto.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="page" data-page="orcamento">
+  <section id="orcamento">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="q0t">Monte o <em>seu pedido</em></h2>
+        <p data-i="q0p">Diga quantos looks você precisa e veja na hora o pacote, o que vem nele e o valor.</p>
+      </div>
+      <div class="calc">
+        <div class="rows">
+          <div class="qrow">
+            <div><b data-i="q1t">Quantos looks?</b><p data-i="q1p">Cada look sai com 8 fotos na mesma modelo do estúdio. Os Reels vêm junto com o pacote.</p></div>
+            <div class="stepper"><button type="button" class="pm" data-d="-1" aria-label="Menos">−</button><input id="q-lk" type="number" min="1" max="300" value="25" inputmode="numeric" aria-label="Looks"><button type="button" class="pm" data-d="1" aria-label="Mais">+</button></div>
+          </div>
+          <div class="qrow" id="q-moderow">
+            <div><b data-i="q2t">Como prefere contratar?</b><p data-i="q2p">A assinatura tem desconto e fidelidade mínima de 3 meses.</p></div>
+            <div class="row" style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="chip" id="q-once" aria-pressed="true" data-i="q2a">Avulso</button><button type="button" class="chip" id="q-sub" aria-pressed="false" data-i="q2b">Assinatura</button></div>
+          </div>
+          <div class="qrow">
+            <div><b data-i="q3t">Vídeos de 15 s</b><p data-i="q3p">Além dos Reels do pacote. A cada 3 vídeos dos looks que mais vendem, um fashion film bônus com os três juntos · {vid} por bloco.</p></div>
+            <div class="stepper"><button type="button" class="pv" data-d="-3" aria-label="Menos">−</button><input id="q-vd" type="number" min="0" max="60" step="3" value="3" inputmode="numeric" aria-label="Vídeos"><button type="button" class="pv" data-d="3" aria-label="Mais">+</button></div>
+          </div>
+          <div class="qrow">
+            <div><b data-i="q5ct">Fotos conceito</b><p data-i="q5cp">Conceito de coleção com cenário, luz e direção de arte próprios · {xcc} por look. 2 fotos por look.</p></div>
+            <div class="stepper"><button type="button" class="pc" data-d="-1" aria-label="Menos">−</button><input id="q-cc" type="number" min="0" max="60" value="0" inputmode="numeric" aria-label="Looks conceito"><button type="button" class="pc" data-d="1" aria-label="Mais">+</button></div>
+          </div>
+          <label class="qrow check" for="q-md">
+            <div><b data-i="q4t">Modelo virtual exclusiva</b><p data-i="q4p">Rosto só da sua marca · {model}, pagamento único</p></div>
+            <input id="q-md" type="checkbox">
+          </label>
+        </div>
+        <aside class="total" aria-live="polite">
+          <span class="eyebrow" data-i="q5">Seu pedido</span>
+          <ul id="q-lines"></ul>
+          <div class="sum"><span class="per" data-i="q6">Total estimado</span><b id="q-total">R$ 0</b></div>
+          <p class="tip" id="q-tip" hidden></p>
+          <div class="send"><p data-i="q8">Gostou? Mande este orçamento para o nosso WhatsApp. A gente confirma os detalhes com você e fecha o pedido.</p><a class="btn solid" id="q-send" href="#" target="_blank" rel="noopener" data-i="q9">Enviar orçamento no WhatsApp</a></div>
+          <p class="fine" data-i="q7">{curpt}. Com nota fiscal, acrescenta-se o imposto. Entrega em 4 dias úteis após o recebimento das fotos das peças.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="page" data-page="contato">
+  <section class="contact" id="contato">
+    <div class="wrap">
+      <p class="eyebrow" data-i="c0">Contato</p>
+      <h2 style="margin-top:18px" data-i="c1">Comece com <em>um look piloto</em></h2>
+      <p class="lede" data-i="c2">Escolha uma peça da sua loja. Produzimos o look para você ver a qualidade e a fidelidade antes de fechar.</p>
+      <div class="mail">
+        <span class="addr" id="addr">calebenogueirastudioforma@gmail.com</span>
+        <button class="chip" type="button" id="copy" data-i="cp">Copiar e-mail</button>
+      </div>
+      <div class="mail" id="wa" hidden>
+        <a class="btn solid" href="https://wa.me/5585991081868" target="_blank" rel="noopener" data-i="wa">Chamar no WhatsApp</a>
+        <span class="addr">(85) 99108-1868</span>
+      </div>
+      <div class="mail">
+        <a class="btn" href="https://www.instagram.com/stforma_/" target="_blank" rel="noopener">Instagram</a>
+        <span class="addr">@stforma_</span>
+      </div>
+      <p class="eyebrow" style="margin-top:18px">Studio Forma · Fortaleza, CE</p>
+    </div>
+  </section>
+</div>
+<div class="wrap pager"><a id="next" href="#processo"><span class="eyebrow" data-i="nx">Próxima página</span><b id="next-name"></b></a></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="eyebrow">© 2026 Studio Forma · <a href="https://www.instagram.com/stforma_/" target="_blank" rel="noopener">@stforma_</a></span>
+    <span class="eyebrow" data-i="foot">Imagens e vídeos criados com IA a partir de peças reais</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Visualização">
+  <div class="lb-media" id="lb-media"></div>
+  <button class="prev" id="lb-prev" aria-label="Anterior">‹</button>
+  <button class="next" id="lb-next" aria-label="Próxima">›</button>
+  <button class="x" id="lb-x" aria-label="Fechar">×</button>
+</div>
+
+<script>
+const T={
+ pt:{},
+ en:{nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
+  kicker:"Visual storytelling with artificial intelligence",h1a:"Your garment,",h1b:"styled and",h1c:"<em>in motion.</em>",
+  lede:"Catalog photos and vertical videos featuring Studio Forma's virtual models, made from the clothes you already sell. Ready for your store, Reels and TikTok.",
+  m1:"On-model photos",m2:"9:16 video",m3:"Lookbook",
+  s1t:"From garment <em>to campaign</em>",s1p:"Pick a look. On the left, the garment reference as it reached us. Then the catalog photo and the vertical video we deliver.",
+  s2t:"Portfolio",s2p:"One look per tab. Tap any image to view it full screen.",fType:"Type",fModel:"Look",
+  s3t:"Studio <em>models</em>",s3p:"Five virtual models created by Studio Forma, each with a fixed face, body and style. One model can wear your whole collection.",
+  s4t:"What you <em>get</em>",s4p:"Each garment can become a full content set, from catalog to social video.",
+  s5t:"How it <em>works</em>",s5p:"No studio, photographer or model booking needed. Just the garment.",
+  p1t:"You send the garment",p1p:"Clear photos of the piece on a mannequin: front, back and side. No mannequin? A hanger or a flat lay works too.",
+  p2t:"We set the look",p2p:"Together we choose the model, backdrop and campaign mood.",
+  p3t:"We create the photos",p3p:"You approve the images before any video is made.",
+  p4t:"We animate and deliver",p4p:"Edited vertical videos, ready to post.",
+  c0:"Contact",c1:"Start with <em>a pilot look</em>",c2:"Pick one garment from your store. We produce the look so you can see the quality and fidelity before you commit.",
+  foot:"Images and videos created with AI from real garments",nav5:"Packages",
+  d0s:"One-time fee",d0t:"Exclusive model",d0p:"A virtual model for your brand only, with a fixed face, body and expressions, repeated across every collection.",
+  free:"Get a free look",of0:"Try it free",of1:"Send us a photo of one piece from your store on a mannequin and get a finished look, worn by one of our models, at no cost and with no commitment.",d1s:"5 photos per look",d1t:"Lookbook",d1p:"Front, back, profile and detail on a neutral backdrop, ready for e-commerce.",
+  d2s:"2 photos per look · vertical and horizontal",d2t:"Collection concept",d2p:"Its own set, light and art direction, for feed, stories and site.",
+  d3s:"3 videos · 15 s and up · 9:16",d3t:"Videos",d3p:"Your 3 best-selling looks in motion, ready for Reels and TikTok. As a bonus, a fashion film that joins all three.",k3b:"Bonus: fashion film with all 3 looks",
+  k0t:"Monthly <em>packages</em>",k0p:"Every package includes 10 lookbook looks and a 5-look collection concept per month. {curen}.",
+  k1e:"Essential",k1t:"Essential Collection",k1w:"Studio Forma roster model",perm:"Per month",k1f:"For the store that wants to start without investing in its own model.",k1n:"With 3 videos of 15 s and the bonus fashion film: {essv} per month.",
+  k2e:"Signature",rec:"Recommended",k2t:"Brand Signature",k2w:"With an exclusive model",m1st:"1st month",m2nd:"From the 2nd month",m1st2:"1st month",m2nd2:"From the 2nd month",k2f:"For the brand that wants its own face in every collection.",
+  k3e:"Motion",k3t:"Brand in Motion",k3w:"Exclusive model + 3 videos of 15 s",k3f:"For the brand that wants a strong social presence, with photo and video.",
+  a0:"Individual services",a1t:"Exclusive virtual model",a1p:"Face, body, expressions and consistency tests. One-time fee.",a2t:"Lookbook / e-commerce",a2p:"Per look: 5 photos on a neutral backdrop, ready for your site.",a3t:"Concept photo · per look",a3p:"Its own art direction, set and light. 2 photos per look, vertical and horizontal.",a4t:"Videos",a4p:"3 videos of 15 seconds of your best-selling looks, plus a bonus fashion film joining all three.",
+  x0:"Extras",x1t:"Additional look · lookbook",x1p:"Beyond the 10 looks in the package.",x2t:"Additional look · concept",x2p:"Beyond the 5 concept looks.",x3t:"Extra revision",x3v:"{adj} / image",x3p:"After the included revision round.",
+  cd0:"Terms",cd1:"1 revision round included per look.",cd2:"Delivery in 4 business days after we receive the garment photos.",cd3:"You send clear photos of each garment on a mannequin: front, back and side. No mannequin? Use a hanger or a flat lay.",cd4:"Tax is added when an invoice is issued.",
+  cp:"Copy email",b0t:"Monthly <em>subscription</em>",b0p:"The same volume packages every month, discounted for a minimum of 3 months. {curen}.",b1w:"10 looks · 80 photos · 1 Reel a month",b2w:"25 looks · 200 photos · 3 Reels a month",b3w:"50 looks · 400 photos · 5 Reels a month",bpm1:"Per month",bpm2:"Per month",bpm3:"Per month",b1f:"Instead of {v1} as a one-off package.",b2f:"Instead of {v2} as a one-off package.",b3f:"Instead of {v3} as a one-off package.",b4n:"Minimum 3-month commitment. An exclusive model and the collection concept can be added at the individual service prices.",v0t:"Volume <em>packages</em>",v0p:"For stores with many pieces per collection. Each look comes with 8 photos on the same studio model, picked from 12 poses, and Reels are cut from 5 s clips into 9:16 vertical video.",v1w:"10 looks · 80 photos · 1 Reel",v2w:"25 looks · 200 photos · 3 Reels",v3w:"50 looks · 400 photos · 5 Reels",vpk:"Per package",vpk2:"Per package",vpk3:"Per package",rec2:"Recommended",v1f:"About {v1pl} per look.",v2f:"About {v2pl} per look.",v3f:"About {v3pl} per look.",v1n:"START",v2n:"COLLECTION",v3n:"LAUNCH",wa:"Message us on WhatsApp",nav6:"Quote",nav0:"Home",nav7:"Services",nx:"Next page",ct1:"View portfolio",ct2:"View packages",
+  q0t:"Build <em>your order</em>",q0p:"Tell us how many looks you need and see the package, what it includes and the price right away.",
+  q1t:"How many looks?",q1p:"Each look comes with 8 photos on the same studio model. Reels come with the package.",
+  q3t:"15 s videos",q3p:"On top of the package Reels. Every 3 videos of your best-selling looks come with a bonus fashion film joining all three · {vid} per block.",q2t:"How would you like to hire us?",q2p:"The subscription is discounted, with a 3-month minimum.",q2a:"One-off",q2b:"Subscription",
+  
+  q5ct:"Concept photos",q5cp:"Collection concept with its own set, lighting and art direction · {xcc} per look. 2 photos per look.",q8:"Happy with it? Email us this quote and we will confirm the details with you to close the order.",q9:"Email my quote",q4t:"Exclusive virtual model",q4p:"A face for your brand only · {model}, one-time fee",
+  q5:"Your order",q6:"Estimated total",q7:"{curen}. Tax is added when an invoice is issued. Delivery in 4 business days after we receive the garment photos."}
+};
+const L={
+ pt:{all:"Tudo",photo:"Fotos",video:"Vídeos",allM:"Todas",ref:"Referência",photoL:"Foto",videoL:"Vídeo",piece:"A peça",cat:"Catálogo",nine:"9:16",items:n=>n+" itens",
+   poses:{"pose01-frente-mao-cintura":"Frente","pose02-costas":"Costas","pose03-mao-queixo":"Retrato","pose04-caminhando":"Caminhada","pose06-sentada-caixote":"Sentada","pose07-perfil":"Perfil","pose10-giro":"Giro","pose11-detalhe-cima":"Detalhe","pose09-encostada":"Encostada"},
+   final:"Lookbook",giro:"Giro",caminhada:"Caminhada",
+   looks:["Vestido rosa","Top de poá e saia preta","Vestido marrom e dourado","Top marrom e saia jeans","Camisa branca e short jeans","Vestido curto floral de renda"]},
+ en:{all:"All",photo:"Photos",video:"Videos",allM:"All",ref:"Reference",photoL:"Photo",videoL:"Video",piece:"The garment",cat:"Catalog",nine:"9:16",items:n=>n+" items",
+   poses:{"pose01-frente-mao-cintura":"Front","pose02-costas":"Back","pose03-mao-queixo":"Portrait","pose04-caminhando":"Walk","pose06-sentada-caixote":"Seated","pose07-perfil":"Profile","pose10-giro":"Turn","pose11-detalhe-cima":"Detail","pose09-encostada":"Leaning"},
+   final:"Lookbook",giro:"Turn",caminhada:"Walk",
+   looks:["Pink dress","Polka-dot top and black skirt","Brown and gold dress","Brown top and denim skirt","White shirt and denim shorts","Floral lace mini dress"]}
+};
+const MODELS=[
+ {id:"livia",name:"Lívia",img:"../media/l1-pose03-mao-queixo.webp",pt:"Cachos naturais, pele negra, porte alto. Leitura leve e solar, ótima para vestidos e cores vivas.",en:"Natural curls, deep brown skin, tall frame. Light and sunny, ideal for dresses and bright colors."},
+ {id:"helena",name:"Helena",img:"../media/l3-pose03-mao-queixo.webp",pt:"Cabelo longo e liso, olhos verdes. Funciona ao natural no dia a dia e com maquiagem em looks de noite.",en:"Long straight hair, green eyes. Works natural for everyday looks and with makeup for evening wear."},
+ {id:"iara",name:"Iara",img:"../media/l4-pose03-mao-queixo.webp",pt:"Cabelo preto longo, pele dourada, pernas longas. Presença forte para jeans, casual e moda urbana.",en:"Long black hair, golden skin, long legs. Strong presence for denim, casual and street style."},
+ {id:"aiko",name:"Aiko",img:"../media/l5-pose09-encostada.webp",pt:"Traços do Leste Asiático, cabelo preto liso e muito longo, corpo esguio. Leitura limpa e minimalista, com pequenas argolas douradas.",en:"East Asian features, very long straight black hair, slender frame. Clean, minimalist look with small gold hoops."},
+ {id:"alice",name:"Alice",img:"../media/l6-pose03-mao-queixo.webp",pt:"Loira, cabelo mel longo e ondulado, olhos azul-acinzentados, porte alto e atlético. Leitura fresca e romântica, ótima para vestidos florais e tons claros.",en:"Blonde, long wavy honey hair, blue-grey eyes, tall athletic frame. Fresh and romantic, ideal for floral dresses and light tones."}
+];
+const LOOKS=[
+ {n:1,model:"livia",ref:"../media/ref-1.webp",photo:"../media/l1-pose01-frente-mao-cintura.webp",video:"../media/v-livia.mp4",poster:"../media/p-livia.jpg"},
+ {n:2,model:"helena",ref:"../media/ref-2.webp",photo:"../media/l2-pose01-frente-mao-cintura.webp",video:"../media/v-helena.mp4",poster:"../media/p-helena.jpg"},
+ {n:3,model:"helena",ref:"../media/ref-3.webp",photo:"../media/l3-pose01-frente-mao-cintura.webp",video:"../media/v-helena3.mp4",poster:"../media/p-helena3.jpg"},
+ {n:4,model:"iara",ref:"../media/ref-4.webp",photo:"../media/l4-pose01-frente-mao-cintura.webp",video:"../media/v-iara.mp4",poster:"../media/p-iara.jpg"},
+ {n:5,model:"aiko",ref:"../media/ref-5.webp",photo:"../media/l5-pose01-frente-mao-cintura.webp",video:"../media/v-aiko.mp4",poster:"../media/p-aiko.jpg"},
+ {n:6,model:"alice",ref:"../media/ref-6.webp",photo:"../media/l6-pose01-frente-mao-cintura.webp",video:"../media/v-alice.mp4",poster:"../media/p-alice.jpg"}
+];
+const POSES=["pose01-frente-mao-cintura","pose04-caminhando","pose03-mao-queixo","pose02-costas","pose10-giro","pose07-perfil","pose06-sentada-caixote","pose11-detalhe-cima","pose09-encostada"];
+const lookModel={1:"livia",2:"helena",3:"helena",4:"iara",5:"aiko",6:"alice"};
+const ITEMS=[];
+// interleave so the default grid mixes looks and formats
+const vids={livia:1,helena:2,iara:4,aiko:5,alice:6};
+Object.entries(vids).forEach(([m,n])=>ITEMS.push({type:"video",model:m,look:n,src:`../media/v-${m}.mp4`,poster:`../media/p-${m}.jpg`,k:"final"}));
+ITEMS.push({type:"video",model:"helena",look:3,src:"../media/v-helena3.mp4",poster:"../media/p-helena3.jpg",k:"final"});
+POSES.forEach((p,i)=>{
+  [1,2,3,4,5,6].forEach(n=>ITEMS.push({type:"photo",model:lookModel[n],look:n,src:`../media/l${n}-${p}.webp`,k:p}));
+  if(i===1)["livia","helena","iara"].forEach(m=>ITEMS.push({type:"video",model:m,look:vids[m],src:`../media/c-${m}-giro.mp4`,poster:`../media/c-${m}-giro.jpg`,k:"giro"}));
+  if(i===4)["livia","helena","iara"].forEach(m=>ITEMS.push({type:"video",model:m,look:vids[m],src:`../media/c-${m}-caminhada.mp4`,poster:`../media/c-${m}-caminhada.jpg`,k:"caminhada"}));
+});
+
+let lang="pt",fType="all",fModel=1,look=1,visible=[];
+const $=s=>document.querySelector(s);
+const ptCache={};
+document.querySelectorAll("[data-i]").forEach(el=>ptCache[el.dataset.i]=el.innerHTML);
+T.pt=ptCache;
+const mname=id=>MODELS.find(m=>m.id===id).name;
+const label=it=>{const l=L[lang];return it.type==="photo"?l.poses[it.k]:l[it.k]};
+
+function setLang(l){
+  lang=l;document.documentElement.lang=l==="pt"?"pt-BR":"en";
+  document.querySelectorAll("[data-i]").forEach(el=>{const v=T[l][el.dataset.i];if(v!=null)el.innerHTML=v});
+  $("#btn-pt").setAttribute("aria-pressed",l==="pt");$("#btn-en").setAttribute("aria-pressed",l==="en");
+  try{localStorage.setItem("sf-lang",l)}catch(e){}
+  renderTabs();renderFlow(false);renderFilters();renderGrid(false);renderModels();if(typeof fillPrices==="function")fillPrices(document);if(typeof calc==="function"&&Q)calc();if(typeof route==="function"&&$("#next-name").textContent)route();
+}
+
+function chip(text,pressed,on){const b=document.createElement("button");b.className="chip";b.type="button";b.textContent=text;b.setAttribute("aria-pressed",pressed);b.onclick=on;return b}
+
+function renderTabs(){
+  const w=$("#looktabs");w.innerHTML="";
+  LOOKS.forEach(lk=>w.append(chip(`Look 0${lk.n} · ${mname(lk.model)}`,look===lk.n,()=>{look=lk.n;renderTabs();renderFlow(true)})));
+}
+function renderFlow(anim){
+  const lk=LOOKS[look-1],l=L[lang],f=$("#flow");
+  const third=lk.video
+    ?`<video src="${lk.video}" poster="${lk.poster}" autoplay muted loop playsinline></video>`
+    :`<img src="${lk.photo2}" alt="">`;
+  f.innerHTML=`
+   <div class="step"><div class="frame ref"><img src="${lk.ref}" alt="${l.looks[look-1]}"></div><div class="lbl"><b>${l.piece}</b><span class="eyebrow">${l.ref}</span></div></div>
+   <div class="step"><div class="frame"><img src="${lk.photo}" alt=""></div><div class="lbl"><b>${l.cat}</b><span class="eyebrow">${l.photoL} · ${mname(lk.model)}</span></div></div>
+   <div class="step"><div class="frame">${third}</div><div class="lbl"><b>${lk.video?l.videoL:l.photoL}</b><span class="eyebrow">${lk.video?"9:16":l.poses["pose10-giro"]}</span></div></div>`;
+  if(anim){f.classList.remove("swap");void f.offsetWidth;f.classList.add("swap")}
+}
+function renderFilters(){
+  const l=L[lang],t=$("#f-type"),m=$("#f-model");t.innerHTML="";m.innerHTML="";
+  [["all",l.all],["photo",l.photo],["video",l.video]].forEach(([k,v])=>t.append(chip(v,fType===k,()=>{fType=k;renderFilters();renderGrid(true)})));
+  LOOKS.forEach(lk=>m.append(chip(`Look 0${lk.n} · ${mname(lk.model)}`,fModel===lk.n,()=>{fModel=lk.n;renderFilters();renderGrid(true)})));
+}
+let io;
+function renderGrid(anim){
+  const g=$("#grid");g.innerHTML="";
+  visible=ITEMS.filter(it=>(fType==="all"||it.type===fType)&&it.look===fModel);
+  $("#count").textContent=L[lang].items(visible.length);
+  visible.forEach((it,i)=>{
+    const b=document.createElement("button");b.className="tile"+(anim?" in":"");b.type="button";
+    if(anim)b.style.animationDelay=Math.min(i,12)*35+"ms";
+    b.setAttribute("aria-label",`${label(it)} · ${mname(it.model)}`);
+    b.innerHTML=(it.type==="video"
+      ?`<video src="${it.src}" poster="${it.poster}" muted loop playsinline preload="none"></video><span class="tag">${L[lang].videoL}</span>`
+      :`<img src="${it.src}" alt="" loading="lazy">`)
+      +`<span class="cap"><span>${label(it)}</span></span>`;
+    b.onclick=()=>openLb(i);
+    g.append(b);
+  });
+  g.querySelectorAll("video").forEach(v=>io.observe(v));
+}
+function renderModels(){
+  $("#models").innerHTML=MODELS.map(m=>`<article class="model"><div class="frame"><img src="${m.img}" alt="${m.name}" loading="lazy"></div><span class="eyebrow">${lang==="pt"?"Modelo virtual":"Virtual model"}</span><h3>${m.name}</h3><p>${m[lang]}</p></article>`).join("");
+}
+function renderStrip(){
+  const srcs=[];POSES.slice(0,6).forEach(p=>[1,2,3,4].forEach(n=>srcs.push(`../media/l${n}-${p}.webp`)));
+  const html=srcs.map(s=>`<img src="${s}" alt="" loading="lazy">`).join("");
+  $("#strip").innerHTML=html+html;
+}
+
+// lightbox
+let lbi=0;
+function openLb(i){lbi=i;showLb();$("#lb").hidden=false;document.body.style.overflow="hidden";$("#lb-x").focus()}
+function showLb(){const it=visible[lbi];$("#lb-media").innerHTML=it.type==="video"?`<video src="${it.src}" autoplay muted loop playsinline controls></video>`:`<img src="${it.src}" alt="">`}
+function closeLb(){$("#lb").hidden=true;$("#lb-media").innerHTML="";document.body.style.overflow=""}
+$("#lb-x").onclick=closeLb;
+$("#lb-prev").onclick=()=>{lbi=(lbi-1+visible.length)%visible.length;showLb()};
+$("#lb-next").onclick=()=>{lbi=(lbi+1)%visible.length;showLb()};
+$("#lb").addEventListener("click",e=>{if(e.target.id==="lb")closeLb()});
+document.addEventListener("keydown",e=>{if($("#lb").hidden)return;if(e.key==="Escape")closeLb();if(e.key==="ArrowRight")$("#lb-next").click();if(e.key==="ArrowLeft")$("#lb-prev").click()});
+
+// play grid videos only while on screen
+io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload="auto";v.play().catch(()=>{})}else v.pause()}),{threshold:.35});
+
+// gentle reveal; elements stay visible, they only drift into place
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduce){
+  const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.remove("pre");ro.unobserve(e.target)}}),{threshold:.1});
+  document.querySelectorAll(".rv").forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add("pre");ro.observe(el)}});
+}
+
+$("#copy").onclick=async()=>{const b=$("#copy");try{await navigator.clipboard.writeText($("#addr").textContent);b.textContent=lang==="pt"?"Copiado":"Copied"}catch(e){const r=document.createRange();r.selectNodeContents($("#addr"));const sel=getSelection();sel.removeAllRanges();sel.addRange(r)}setTimeout(()=>b.textContent=T[lang].cp,1800)};
+
+// quote calculator: individual-service prices from the partner table
+const Q={lk:$("#q-lk"),vd:$("#q-vd"),cc:$("#q-cc"),md:$("#q-md")};let qsub=false;
+const CUR="usd";
+if(CUR==="brl")document.getElementById("wa").hidden=false;
+{const hf=document.getElementById("free").getAttribute("href"); // free pilot look: WhatsApp in Brazil, email elsewhere
+ const mail="mailto:calebenogueirastudioforma@gmail.com?subject="+encodeURIComponent("Free look request")+"&body="+encodeURIComponent("Hi! I'd like to request my free look from Studio Forma.");
+ document.querySelectorAll(".freelink").forEach(f=>{f.href=CUR==="brl"?hf:mail;if(CUR!=="brl")f.removeAttribute("target")});
+ document.querySelectorAll("#free,.freebox").forEach(x=>x.hidden=false)}
+if(CUR!=="brl")document.getElementById("q-send").removeAttribute("target"); // WhatsApp only on the Brazil site
+document.getElementById("mo-br").hidden=false;document.getElementById("mo-old").hidden=true;
+document.getElementById("vol").hidden=false;
+ // this site always shows one currency; the international copy sets "usd"
+const N={brl:{ess:2300,essv:2600,sig1:2700,sig2:2300,mov1:3000,mov2:2600,model:400,lb:120,cc:1200,xlb:120,xcc:220,vid:300,adj:30,v1:990,v2:1990,v3:3490,v1pl:99,v2pl:80,v3pl:70,m1:890,m2:1790,m3:3140},
+ usd:{ess:990,essv:1390,sig1:1290,sig2:990,mov1:1690,mov2:1390,model:350,lb:50,cc:600,xlb:50,xcc:110,vid:450,adj:15,v1:990,v2:1990,v3:3490,v1pl:99,v2pl:80,v3pl:70,m1:890,m2:1790,m3:3140}}[CUR];
+const MK=1; // seller copy: commission built into every price (build-vendedor.py sets it)
+if(MK!==1){for(const k in N)N[k]=Math.round(N[k]*MK/10)*10;N.v1pl=Math.round(N.v1/10);N.v2pl=Math.round(N.v2/25);N.v3pl=Math.round(N.v3/50)}
+const brl=v=>CUR==="brl"?"R$ "+v.toLocaleString("pt-BR"):"$"+v.toLocaleString("en-US");
+const CURNAME={brl:{pt:"Valores em reais",en:"Prices in Brazilian reais"},usd:{pt:"Valores em dólares americanos",en:"Prices in US dollars"}}[CUR];
+function fillPrices(root){
+  root.querySelectorAll("[data-i]").forEach(el=>{if(el.innerHTML.includes("{"))el.innerHTML=el.innerHTML.replace(/\{(\w+)\}/g,(m,k)=>k==="curpt"?CURNAME.pt:k==="curen"?CURNAME.en:k in N?brl(N[k]):m)});
+  root.querySelectorAll("[data-p]").forEach(el=>{const k=el.dataset.p;if(k in N)el.textContent=(k==="vid"?"+ ":"")+brl(N[k])});
+}
+function qnum(el,max){let v=Math.max(0,Math.min(max,parseInt(el.value,10)||0));return v}
+function calc(){
+  // cheapest mix of volume packages that covers the looks asked for
+  const n=Math.max(1,qnum(Q.lk,300)),pt=lang==="pt",sub=qsub;
+  const P=[{k:"v1",looks:10,ph:80,re:1,name:"START",mo:N.m1},{k:"v2",looks:25,ph:200,re:3,name:pt?"COLEÇÃO":"COLLECTION",mo:N.m2},{k:"v3",looks:50,ph:400,re:5,name:pt?"LANÇAMENTO":"LAUNCH",mo:N.m3}];
+  const PK=P.slice(); // packages only, used for the subscription hint
+  if(!sub&&n<10)P.push({k:"lb",looks:1,ph:5,re:0,name:pt?"Look avulso":"Single look"}); // one-off below 10 looks: single looks priced as the lookbook one-off
+  const price=x=>sub?x.mo:N[x.k];
+  const best=[{c:0,m:[]}];
+  for(let i=1;i<=n;i++){let b=null;for(const x of P){const prev=best[Math.max(0,i-x.looks)],c=prev.c+price(x);if(!b||c<b.c)b={c,m:prev.m.concat(x)}}best[i]=b}
+  const pick=best[n],cnt={};pick.m.forEach(x=>cnt[x.name]=(cnt[x.name]||0)+1);
+  const looks=pick.m.reduce((a,x)=>a+x.looks,0),ph=pick.m.reduce((a,x)=>a+x.ph,0),re=pick.m.reduce((a,x)=>a+x.re,0);
+  const lines=P.filter(x=>cnt[x.name]).map(x=>{const c=cnt[x.name];return[x.k==="lb"?(pt?`${c} look${c>1?"s":""} avulso${c>1?"s":""} (5 fotos${c>1?" cada":""})`:`${c} single look${c>1?"s":""} (5 photos${c>1?" each":""})`):`${c>1?c+"× ":""}${x.name} (${x.looks} looks)`,c*price(x)]});
+  let t=pick.c;
+  lines.push([pt?`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} fotos e ${re} Reel${re>1?"s":""}`:` e ${ph} fotos`}`:`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} photos and ${re} Reel${re>1?"s":""}`:` and ${ph} photos`}`,null]);
+  const vb=Math.ceil(qnum(Q.vd,60)/3);
+  if(vb){lines.push([pt?`${vb*3} vídeos de 15 s + ${vb} fashion film${vb>1?"s":""} bônus${sub?" (pagamento único)":""}`:`${vb*3} videos of 15 s + ${vb} bonus fashion film${vb>1?"s":""}${sub?" (one-time)":""}`,vb*N.vid]);t+=vb*N.vid}
+  const cl=qnum(Q.cc,60);
+  if(cl){const v=cl*N.xcc;lines.push([pt?`Conceito de coleção: ${cl} look${cl>1?"s":""}, ${cl*2} fotos${sub?" (adicional)":""}`:`Collection concept: ${cl} look${cl>1?"s":""}, ${cl*2} photos${sub?" (add-on)":""}`,v]);t+=v}
+  if(Q.md.checked)lines.push([pt?"Modelo exclusiva (pagamento único)":"Exclusive model (one-time)",N.model]);
+  $("#q-lines").innerHTML=lines.map(([a,v])=>`<li><span>${a}</span><span>${v==null?"":brl(v)}</span></li>`).join("");
+  $("#q-total").textContent=brl(t+(Q.md.checked?N.model:0))+(sub?(pt?" no 1º mês":" 1st month"):"");
+  // the client sends the quote they built: WhatsApp in Brazil, email elsewhere
+  const qtxt=(CUR==="brl"?"Olá! Montei este orçamento no site da Studio Forma e quero fechar:\n":"Hi! I built this quote on the Studio Forma site and would like to go ahead:\n")
+    +(sub?(CUR==="brl"?"Modalidade: assinatura mensal\n":"Plan: monthly subscription\n"):(CUR==="brl"?"Modalidade: avulso\n":"Plan: one-off\n"))
+    +lines.map(([a,v])=>"- "+a.replace(/^Total: /,CUR==="brl"?"Inclui: ":"Includes: ")+(v==null?"":": "+brl(v))).join("\n")+"\n"+(CUR==="brl"?"Total estimado: ":"Estimated total: ")+$("#q-total").textContent;
+  $("#q-send").href=CUR==="brl"?$("#free").getAttribute("href").split("?")[0]+"?text="+encodeURIComponent(qtxt)
+    :"mailto:calebenogueirastudioforma@gmail.com?subject="+encodeURIComponent("My Studio Forma quote")+"&body="+encodeURIComponent(qtxt);
+  const tip=$("#q-tip");let msg="";
+  if(looks>n)msg=pt?`Você pediu ${n} looks e o pacote cobre até ${looks}.`:`You asked for ${n} looks and the package covers up to ${looks}.`;
+  if(sub)msg+=(msg?" ":"")+(pt?`Depois, ${brl(pick.c)} por mês. Fidelidade mínima de 3 meses.`:`Then ${brl(pick.c)} a month. 3-month minimum.`);
+  else{const bs=[0];for(let i=1;i<=n;i++)bs[i]=Math.min(...PK.map(x=>bs[Math.max(0,i-x.looks)]+x.mo));
+    msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
+  tip.hidden=!msg;tip.textContent=msg;
+}
+document.querySelectorAll(".pm").forEach(b=>b.onclick=()=>{Q.lk.value=Math.max(1,(parseInt(Q.lk.value,10)||0)+ +b.dataset.d);calc()});
+Q.lk.addEventListener("input",calc);Q.lk.addEventListener("change",()=>{Q.lk.value=Math.max(1,qnum(Q.lk,300));calc()});
+const setMode=v=>{qsub=v;$("#q-once").setAttribute("aria-pressed",!v);$("#q-sub").setAttribute("aria-pressed",v);calc()};
+$("#q-once").onclick=()=>setMode(false);$("#q-sub").onclick=()=>setMode(true);
+document.querySelectorAll(".pv").forEach(b=>b.onclick=()=>{Q.vd.value=Math.max(0,Math.min(60,(Math.ceil((parseInt(Q.vd.value,10)||0)/3)*3)+ +b.dataset.d));calc()});
+Q.vd.addEventListener("input",calc);Q.vd.addEventListener("change",()=>{Q.vd.value=Math.ceil(qnum(Q.vd,60)/3)*3;calc()});
+Q.md.addEventListener("change",calc);
+document.querySelectorAll(".pc").forEach(b=>b.onclick=()=>{Q.cc.value=Math.max(0,Math.min(60,(parseInt(Q.cc.value,10)||0)+ +b.dataset.d));calc()});
+Q.cc.addEventListener("input",calc);
+
+// one section per page, routed on the hash
+const PAGES=["inicio","processo","portfolio","modelos","servicos","pacotes","orcamento","contato"];
+function route(){
+  let id=(location.hash||"#inicio").slice(1);if(!PAGES.includes(id))id="inicio";
+  document.querySelectorAll(".page").forEach(pg=>{const on=pg.dataset.page===id;pg.hidden=!on;if(!on)pg.querySelectorAll("video").forEach(v=>v.pause())});
+  document.querySelectorAll(".page:not([hidden]) .reels video,.page:not([hidden]) .flow video").forEach(v=>v.play().catch(()=>{}));
+  document.querySelectorAll("#tabs a").forEach(a=>{if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  const cur=document.querySelector('#tabs a[aria-current="page"]');if(cur)cur.scrollIntoView({block:"nearest",inline:"center"});
+  const nx=PAGES[(PAGES.indexOf(id)+1)%PAGES.length],na=document.querySelector(`#tabs a[href="#${nx}"]`);
+  $("#next").href="#"+nx;$("#next-name").textContent=na.textContent+" →";
+  window.scrollTo(0,0);
+}
+addEventListener("hashchange",route);
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+renderStrip();
+let start="en";
+try{start=localStorage.getItem("sf-lang")||"en"}catch(e){}
+setLang(start);
+route();
+
+// phones can refuse videos served without byte-range support, so on touch screens each video plays from a local copy
+(()=>{const cache={},play0=HTMLMediaElement.prototype.play,mobile=matchMedia("(pointer:coarse)").matches;
+  const blobify=v=>{if(v._b)return v._b;const u=v.dataset.src||v.getAttribute("src");if(!u||u.startsWith("blob:"))return Promise.resolve();
+    v._b=(cache[u]||(cache[u]=fetch(u).then(r=>{if(!r.ok)throw r.status;return r.blob()}).then(b=>URL.createObjectURL(new Blob([b],{type:"video/mp4"})))))
+      .then(x=>{v.src=x}).catch(()=>{delete cache[u];if(v.dataset.src)v.src=v.dataset.src});return v._b};
+  const prep=v=>{if(v._p)return;v._p=1;
+    if(mobile){const u=v.getAttribute("src");if(u&&!u.startsWith("blob:")){v.dataset.src=u;v.removeAttribute("src")}
+      v.play=function(){return blobify(this).then(()=>play0.call(this))};
+      if(v.autoplay)v.play().catch(()=>{})}
+    else v.addEventListener("error",()=>{if(!v._b)blobify(v).then(()=>play0.call(v)).catch(()=>{})},{once:true})};
+  document.querySelectorAll("video").forEach(prep);
+  new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType!==1)return;if(n.tagName==="VIDEO")prep(n);else n.querySelectorAll("video").forEach(prep)}))).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+</body></html>
