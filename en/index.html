@@ -267,6 +267,26 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 }
 @media (min-width:1001px) and (max-width:1240px){.models{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (min-width:761px) and (max-width:1000px){.models{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* off-screen A4 sheets drawn into the quote PDF (794 x 1123 px = A4 at 96 dpi) */
+.qpdf{position:fixed;left:-10000px;top:0;width:794px}
+.qs{width:794px;height:1123px;padding:60px 60px 44px;display:flex;flex-direction:column;background:#f4f0ea;color:#1d1814;font:400 15px/1.5 "Jost","Helvetica Neue",Arial,sans-serif}
+.qs .tp{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(29,24,20,.16);padding-bottom:18px}
+.qs .bd{display:flex;align-items:center;gap:12px;font:400 22px/1 "DM Serif Display",Georgia,serif}.qs .bd svg{width:34px;height:auto;color:#86622f}
+.qs .mn{font:400 11px/1.4 "DM Mono",ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#5b5149}
+.qs h2{font:400 44px/1.05 "DM Serif Display",Georgia,serif;margin:28px 0 8px;color:#1d1814}.qs h2 em{color:#86622f}
+.qs .in{color:#5b5149;margin:0 0 20px}
+.qs .ph{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}.qs .ph div{aspect-ratio:3/4;background-size:cover;background-position:50% 20%}
+.qs ul.it{list-style:none;margin:0;padding:0;border-top:1px solid rgba(29,24,20,.16)}
+.qs ul.it li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(29,24,20,.16)}
+.qs .tb{border-top:1px solid rgba(29,24,20,.16)}.qs .tr{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(29,24,20,.16)}
+.qs .tr small{display:block;color:#5b5149;font-size:13px}
+.qs .to{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 4px}.qs .to b{font:400 40px/1 "DM Serif Display",Georgia,serif}
+.qs .af{color:#5b5149;font-size:14px;margin:0 0 16px}
+.qs .cd{font-size:13px;color:#5b5149;margin:0;padding:0 0 0 18px}
+.qs .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 10px}.qs .vs div{border:1px solid rgba(29,24,20,.16);padding:16px 18px}.qs .vs .us{border-color:#86622f}
+.qs .vs b{display:block;font:400 34px/1.1 "DM Serif Display",Georgia,serif;margin-top:6px}.qs .vs .us b{color:#86622f}
+.qs .sv{font:400 26px/1.2 "DM Serif Display",Georgia,serif;margin:6px 0 10px}.qs .sv em{color:#86622f}
+.qs .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-top:1px solid rgba(29,24,20,.16);padding-top:16px;font-size:14px}.qs .ft b{display:block;font:400 22px/1.2 "DM Serif Display",Georgia,serif}
 </style>
 
 <header class="top">
@@ -520,7 +540,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <ul id="q-lines"></ul>
           <div class="sum"><span class="per" data-i="q6">Total estimado</span><b id="q-total">R$ 0</b></div>
           <p class="tip" id="q-tip" hidden></p>
-          <div class="send"><p data-i="q8">Gostou? Mande este orçamento para o nosso WhatsApp. A gente confirma os detalhes com você e fecha o pedido.</p><a class="btn solid" id="q-send" href="#" target="_blank" rel="noopener" data-i="q9">Enviar orçamento no WhatsApp</a></div>
+          <div class="send"><p data-i="q8">Gostou? Mande este orçamento para o nosso WhatsApp. A gente confirma os detalhes com você e fecha o pedido.</p><a class="btn solid" id="q-send" href="#" target="_blank" rel="noopener" data-i="q9">Enviar orçamento no WhatsApp</a><button type="button" class="btn" id="q-pdf" data-i="q10" style="display:block;width:100%;margin-top:10px">Baixar orçamento em PDF</button></div>
           <p class="fine" data-i="q7">{curpt}. Com nota fiscal, acrescenta-se o imposto. Entrega em 4 dias úteis após o recebimento das fotos das peças.</p>
         </aside>
       </div>
@@ -601,7 +621,7 @@ const T={
   q1t:"How many looks?",q1p:"Each look comes with 8 photos on the same studio model. Reels come with the package.",
   q3t:"15 s videos",q3p:"On top of the package Reels. Minimum 3 videos, then one at a time · {vid1} per video, or {vid10} per video from 10 on. Every 3 videos come with a bonus fashion film joining the three looks.",q2t:"How would you like to hire us?",q2p:"The subscription is discounted, with a 3-month minimum.",q2a:"One-off",q2b:"Subscription",
   
-  q5ct:"Concept photos",q5cp:"Collection concept with its own set, lighting and art direction · {xcc} per look. 2 photos per look.",q8:"Happy with it? Email us this quote and we will confirm the details with you to close the order.",q9:"Email my quote",q4t:"Exclusive virtual model",q4p:"A face for your brand only · {model}, one-time fee",
+  q5ct:"Concept photos",q5cp:"Collection concept with its own set, lighting and art direction · {xcc} per look. 2 photos per look.",q10:"Download quote as PDF",q8:"Happy with it? Email us this quote and we will confirm the details with you to close the order.",q9:"Email my quote",q4t:"Exclusive virtual model",q4p:"A face for your brand only · {model}, one-time fee",
   q5:"Your order",q6:"Estimated total",q7:"{curen}. Tax is added when an invoice is issued. Delivery in 4 business days after we receive the garment photos."}
 };
 const L={
@@ -784,6 +804,7 @@ function calc(){
   else{const bs=[0];for(let i=1;i<=n;i++)bs[i]=Math.min(...PK.map(x=>bs[Math.max(0,i-x.looks)]+x.mo));
     msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
   tip.hidden=!msg;tip.textContent=msg;
+  window.QD={lines,n,nv,sub,msg,total:$("#q-total").textContent,pt};
   // the client sends the quote they built: WhatsApp in Brazil, email elsewhere
   const qtxt=(CUR==="brl"?"Olá! Montei este orçamento no site da Studio Forma e quero fechar:\n":"Hi! I built this quote on the Studio Forma site and would like to go ahead:\n")
     +(sub?(CUR==="brl"?"Modalidade: assinatura mensal\n":"Plan: monthly subscription\n"):(CUR==="brl"?"Modalidade: avulso\n":"Plan: one-off\n"))
@@ -839,4 +860,54 @@ route();
   new MutationObserver(ms=>ms.forEach(m=>m.addedNodes.forEach(n=>{if(n.nodeType!==1)return;if(n.tagName==="VIDEO")prep(n);else n.querySelectorAll("video").forEach(prep)}))).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
+<script>
+// Quote PDF: page 1 = the quote the visitor built; page 2 (Brazil only) = what a traditional shoot would cost
+(function(){
+const btn=document.getElementById("q-pdf");if(!btn)return;
+const LOGO='<svg viewBox="-8 -8 460 399" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="16"><rect x="0" y="0" width="444" height="383"/><line x1="136" y1="0" x2="136" y2="383"/><line x1="136" y1="232" x2="444" y2="232"/><path d="M303 0 C210 24 140 125 140 232 C140 300 172 352 226 383"/></g></svg>';
+const CD={mo:[1600,3000],es:[700,1100],mu:[400,650],st:[600,1000],ca:[200,350],fo:50,vm:80}; // traditional-shoot references (R$): half day, full day; photographer and videomaker per look
+const load=src=>new Promise((ok,no)=>{const e=document.createElement("script");e.src=src;e.onload=ok;e.onerror=no;document.head.append(e)});
+const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"})[c]);
+btn.onclick=async()=>{
+  const D=window.QD;if(!D)return;const pt=CUR==="brl",lab=btn.textContent;btn.disabled=true;btn.textContent=pt?"Gerando PDF...":"Creating PDF...";
+  const date=new Date().toLocaleDateString(pt?"pt-BR":"en-US",{day:"2-digit",month:"long",year:"numeric"});
+  const top=k=>`<div class="tp"><div class="bd">${LOGO}<span>Studio Forma</span></div><div class="mn" style="text-align:right">${k}<br>${date}</div></div>`;
+  const foot=pt?`<div class="ft"><div><span class="mn">Fale com a gente</span><b>WhatsApp (85) 99108-1868</b></div><div style="text-align:right"><span class="mn">Portfólio</span><br>calebenn07.github.io/studioforma<br>Instagram @stforma_</div></div>`
+    :`<div class="ft"><div><span class="mn">Contact us</span><b>calebenogueirastudioforma@gmail.com</b></div><div style="text-align:right"><span class="mn">Portfolio</span><br>calebenn07.github.io/studioforma/en<br>Instagram @stforma_</div></div>`;
+  const photos=["l1-pose01-frente-mao-cintura","l2-pose01-frente-mao-cintura","l4-pose01-frente-mao-cintura","l5-pose09-encostada"].map(f=>`<div style="background-image:url('media/${f}.webp')"></div>`).join("");
+  const fine=(document.querySelector('[data-i="q7"]')||{}).textContent||"";
+  let h=`<div class="qs">${top(pt?"Orçamento":"Quote")}<h2>${pt?"Seu <em>orçamento</em>":"Your <em>quote</em>"}</h2>
+    <p class="in">${pt?"Fotos de catálogo e vídeos verticais com as modelos virtuais do Studio Forma, feitos a partir das peças que você já vende.":"Catalog photos and vertical videos with Studio Forma's virtual models, made from the garments you already sell."}</p>
+    <div class="ph">${photos}</div>
+    <ul class="it">${D.lines.map(([a,v])=>`<li><span>${esc(a)}</span><span>${v==null?"":brl(v)}</span></li>`).join("")}</ul>
+    <div class="to"><span class="mn">${pt?"Investimento":"Investment"}</span><b>${esc(D.total)}</b></div>
+    <p class="af">${esc(D.msg||"")}</p><ul class="cd">${fine.split(". ").filter(Boolean).map(x=>`<li>${esc(x.replace(/\.$/,""))}.</li>`).join("")}</ul>${foot}</div>`;
+  if(pt){
+    const n=D.n,vb=D.nv,half=n<30,days=half?0:Math.ceil(n/40),dl=half?"meia diária":days>1?`${days} diárias`:"1 diária";
+    const cr=[["Modelo","mo"],["Estúdio","es"],["Make e cabelo","mu"],["Stylist / produção","st"],["Catering e logística","ca"]].map(([a,k])=>[a,dl,half?CD[k][0]:CD[k][1]*days]);
+    cr.push(["Fotógrafo",`${n} look${n>1?"s":""} × ${brl(CD.fo)}`,n*CD.fo]);
+    if(vb)cr.push(["Videomaker",`${vb} look${vb>1?"s":""} filmado${vb>1?"s":""} × ${brl(CD.vm)}`,vb*CD.vm]);
+    const trad=cr.reduce((a,r)=>a+r[2],0),sf=parseInt(D.total.replace(/\D/g,""),10)||0;
+    h+=`<div class="qs">${top("Comparativo")}<h2>Quanto custaria numa <em>produção tradicional</em></h2>
+      <p class="in">Para ${n} look${n>1?"s":""}${vb?` e ${vb} vídeos`:""}, uma sessão de fotos tradicional precisaria de ${dl} de modelo, estúdio, make, stylist e catering, mais o fotógrafo${vb?" e o videomaker":""} cobrando por look${D.sub?", todo mês":""}.</p>
+      <div class="tb"><div class="tr mn"><span>Profissional</span><span>Valor</span></div>${cr.map(([a,b,v])=>`<div class="tr"><span>${a}<small>${b}</small></span><span>${brl(v)}</span></div>`).join("")}</div>
+      <div class="vs"><div><span class="mn">Produção tradicional</span><b>${brl(trad)}</b></div><div class="us"><span class="mn">Studio Forma</span><b>${brl(sf)}</b></div></div>
+      <p class="sv">${trad>sf?`Economia de <em>${brl(trad-sf)}</em> (${Math.round((trad-sf)/trad*100)}%).`:""}</p>
+      <ul class="cd"><li>Valores médios de mercado, estimados. Não incluem tratamento extra das fotos nem edição dos vídeos.</li><li>No Studio Forma não há agenda de estúdio, deslocamento nem custo extra por modelo.</li></ul>${foot}</div>`;
+  }
+  const box=document.createElement("div");box.className="qpdf";box.innerHTML=h;document.body.append(box);
+  try{
+    if(!window.html2canvas)await load("../media/html2canvas.min.js");if(!window.jspdf)await load("../media/jspdf.umd.min.js");
+    await document.fonts.ready;
+    const pdf=new jspdf.jsPDF({unit:"mm",format:"a4"}),pages=box.querySelectorAll(".qs");
+    for(let i=0;i<pages.length;i++){const cv=await html2canvas(pages[i],{scale:2,useCORS:true,backgroundColor:"#f4f0ea",logging:false});if(i)pdf.addPage();pdf.addImage(cv.toDataURL("image/jpeg",.9),"JPEG",0,0,210,297)}
+    const name=pt?"Orçamento Studio Forma.pdf":"Studio Forma quote.pdf";
+    const dlc=window.claude&&window.claude.use?await window.claude.use("downloads").catch(()=>null):null;
+    if(dlc){try{await dlc.save({filename:name,data:pdf.output("blob")})}catch(e){}}else pdf.save(name);
+  }catch(e){console.error(e);alert(pt?"Não deu para gerar o PDF. Tente de novo.":"Could not create the PDF. Please try again.")}
+  finally{box.remove();btn.disabled=false;btn.textContent=lab}
+};
+})();
+</script>
+
 </body></html>
