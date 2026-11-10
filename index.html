@@ -523,7 +523,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
             <div class="row" style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="chip" id="q-once" aria-pressed="true" data-i="q2a">Avulso</button><button type="button" class="chip" id="q-sub" aria-pressed="false" data-i="q2b">Assinatura</button></div>
           </div>
           <div class="qrow">
-            <div><b data-i="q3t">Vídeos de 15 s</b><p data-i="q3p">Além dos Reels do pacote. Mínimo de 3 vídeos, depois de 1 em 1 · {vid1} por vídeo, ou {vid10} por vídeo a partir de 10. A cada 3 vídeos, um fashion film bônus com os três looks juntos.</p></div>
+            <div><b data-i="q3t">Vídeos de 15 s</b><p data-i="q3p">Além dos Reels do pacote. Mínimo de 3 vídeos, depois de 1 em 1 · {vid1} por vídeo, ou {vid10} por vídeo a partir de 10. Com 3 vídeos você já ganha um fashion film bônus de 30 s; depois, mais um a cada 10 vídeos.</p></div>
             <div class="stepper"><button type="button" class="pv" data-d="-1" aria-label="Menos">−</button><input id="q-vd" type="number" min="0" max="60" step="1" value="3" inputmode="numeric" aria-label="Vídeos"><button type="button" class="pv" data-d="1" aria-label="Mais">+</button></div>
           </div>
           <div class="qrow">
@@ -619,7 +619,7 @@ const T={
   cp:"Copy email",b0t:"Monthly <em>subscription</em>",b0p:"The same volume packages every month, discounted for a minimum of 3 months. {curen}.",b1w:"10 looks · 50 photos · 1 Reel a month",b2w:"25 looks · 125 photos · 3 Reels a month",b3w:"50 looks · 250 photos · 5 Reels a month",bpm1:"Per month",bpm2:"Per month",bpm3:"Per month",b1f:"Instead of {v1} as a one-off package.",b2f:"Instead of {v2} as a one-off package.",b3f:"Instead of {v3} as a one-off package.",b4n:"Minimum 3-month commitment. An exclusive model and the collection concept can be added at the individual service prices.",v0t:"Volume <em>packages</em>",v0p:"For stores with many pieces per collection. Each look comes with 5 photos on the same studio model, picked from 12 poses, and Reels are cut from 5 s clips into 9:16 vertical video.",v1w:"10 looks · 50 photos · 1 Reel",v2w:"25 looks · 125 photos · 3 Reels",v3w:"50 looks · 250 photos · 5 Reels",vpk:"Per package",vpk2:"Per package",vpk3:"Per package",rec2:"Recommended",v1f:"About {v1pl} per look.",v2f:"About {v2pl} per look.",v3f:"About {v3pl} per look.",v1n:"START",v2n:"COLLECTION",v3n:"LAUNCH",wa:"Message us on WhatsApp",nav6:"Quote",nav0:"Home",nav7:"Services",nx:"Next page",ct1:"View portfolio",ct2:"View packages",
   q0t:"Build <em>your order</em>",q0p:"Tell us how many looks you need and see the package, what it includes and the price right away.",
   q1t:"How many looks?",q1p:"Each look comes with 5 photos on the same studio model. Reels come with the package.",
-  q3t:"15 s videos",q3p:"On top of the package Reels. Minimum 3 videos, then one at a time · {vid1} per video, or {vid10} per video from 10 on. Every 3 videos come with a bonus fashion film joining the three looks.",q2t:"How would you like to hire us?",q2p:"The subscription is discounted, with a 3-month minimum.",q2a:"One-off",q2b:"Subscription",
+  q3t:"15 s videos",q3p:"On top of the package Reels. Minimum 3 videos, then one at a time · {vid1} per video, or {vid10} per video from 10 on. With 3 videos you get a bonus 30 s fashion film; after that, one more every 10 videos.",q2t:"How would you like to hire us?",q2p:"The subscription is discounted, with a 3-month minimum.",q2a:"One-off",q2b:"Subscription",
   
   q5ct:"Concept photos",q5cp:"Collection concept with its own set, lighting and art direction · {xcc} per look. 2 photos per look.",q10:"Download quote as PDF",q8:"Happy with it? Email us this quote and we will confirm the details with you to close the order.",q9:"Email my quote",q4t:"Exclusive virtual model",q4p:"A face for your brand only · {model}, one-time fee",
   q5:"Your order",q6:"Estimated total",q7:"{curen}. Tax is added when an invoice is issued. Delivery in 4 business days after we receive the garment photos."}
@@ -789,8 +789,8 @@ function calc(){
   const lines=P.filter(x=>cnt[x.name]).map(x=>{const c=cnt[x.name];return[x.k==="lb"?(pt?`${c} look${c>1?"s":""} avulso${c>1?"s":""} (5 fotos${c>1?" cada":""})`:`${c} single look${c>1?"s":""} (5 photos${c>1?" each":""})`):`${c>1?c+"× ":""}${x.name} (${x.looks} looks)`,c*price(x)]});
   let t=pick.c;
   lines.push([pt?`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} fotos e ${re} Reel${re>1?"s":""}`:` e ${ph} fotos`}`:`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} photos and ${re} Reel${re>1?"s":""}`:` and ${ph} photos`}`,null]);
-  // videos: minimum 3, then one at a time; one bonus fashion film per 3 videos
-  const nv=vidQty(qnum(Q.vd,60)),ff=Math.floor(nv/3),vb=nv,vu=nv>=10?N.vid10:N.vid1,vv=nv*vu;
+  // videos: minimum 3, then one at a time; bonus 30 s fashion film: 1 from 3 videos, then 1 per 10 videos
+  const nv=vidQty(qnum(Q.vd,60)),ff=nv>=3?Math.max(1,Math.floor(nv/10)):0,vb=nv,vu=nv>=10?N.vid10:N.vid1,vv=nv*vu;
   if(nv){lines.push([pt?`${nv} vídeos de 15 s + ${ff} fashion film${ff>1?"s":""} bônus${sub?" por mês":""}`:`${nv} videos of 15 s + ${ff} bonus fashion film${ff>1?"s":""}${sub?" a month":""}`,vv]);t+=vv}
   const mo=pick.c+vv; // subscription: package and videos repeat every month
   const cl=qnum(Q.cc,60);
