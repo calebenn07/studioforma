@@ -747,6 +747,7 @@ const N={brl:{ess:2300,essv:2600,sig1:2700,sig2:2300,mov1:3000,mov2:2600,model:4
 const MK=1; // seller copy: commission built into every price (build-vendedor.py sets it)
 if(MK!==1){for(const k in N)N[k]=Math.round(N[k]*MK/10)*10;N.v1pl=Math.round(N.v1/10);N.v2pl=Math.round(N.v2/25);N.v3pl=Math.round(N.v3/50)}
 const brl=v=>CUR==="brl"?"R$ "+v.toLocaleString("pt-BR"):"$"+v.toLocaleString("en-US");
+const brl2=v=>{const o={minimumFractionDigits:2,maximumFractionDigits:2};return CUR==="brl"?"R$ "+v.toLocaleString("pt-BR",o):"$"+v.toLocaleString("en-US",o)};
 const CURNAME={brl:{pt:"Valores em reais",en:"Prices in Brazilian reais"},usd:{pt:"Valores em dólares americanos",en:"Prices in US dollars"}}[CUR];
 function fillPrices(root){
   root.querySelectorAll("[data-i]").forEach(el=>{if(el.innerHTML.includes("{"))el.innerHTML=el.innerHTML.replace(/\{(\w+)\}/g,(m,k)=>k==="curpt"?CURNAME.pt:k==="curen"?CURNAME.en:k in N?brl(N[k]):m)});
@@ -768,24 +769,30 @@ function calc(){
   let t=pick.c;
   lines.push([pt?`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} fotos e ${re} Reel${re>1?"s":""}`:` e ${ph} fotos`}`:`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} photos and ${re} Reel${re>1?"s":""}`:` and ${ph} photos`}`,null]);
   const vb=Math.ceil(qnum(Q.vd,60)/3);
-  if(vb){lines.push([pt?`${vb*3} vídeos de 15 s + ${vb} fashion film${vb>1?"s":""} bônus${sub?" (pagamento único)":""}`:`${vb*3} videos of 15 s + ${vb} bonus fashion film${vb>1?"s":""}${sub?" (one-time)":""}`,vb*N.vid]);t+=vb*N.vid}
+  if(vb){lines.push([pt?`${vb*3} vídeos de 15 s + ${vb} fashion film${vb>1?"s":""} bônus${sub?" por mês":""}`:`${vb*3} videos of 15 s + ${vb} bonus fashion film${vb>1?"s":""}${sub?" a month":""}`,vb*N.vid]);t+=vb*N.vid}
+  const mo=pick.c+vb*N.vid; // subscription: package and videos repeat every month
   const cl=qnum(Q.cc,60);
   if(cl){const v=cl*N.xcc;lines.push([pt?`Conceito de coleção: ${cl} look${cl>1?"s":""}, ${cl*2} fotos${sub?" (adicional)":""}`:`Collection concept: ${cl} look${cl>1?"s":""}, ${cl*2} photos${sub?" (add-on)":""}`,v]);t+=v}
   if(Q.md.checked)lines.push([pt?"Modelo exclusiva (pagamento único)":"Exclusive model (one-time)",N.model]);
   $("#q-lines").innerHTML=lines.map(([a,v])=>`<li><span>${a}</span><span>${v==null?"":brl(v)}</span></li>`).join("");
   $("#q-total").textContent=brl(t+(Q.md.checked?N.model:0))+(sub?(pt?" no 1º mês":" 1st month"):"");
-  // the client sends the quote they built: WhatsApp in Brazil, email elsewhere
-  const qtxt=(CUR==="brl"?"Olá! Montei este orçamento no site da Studio Forma e quero fechar:\n":"Hi! I built this quote on the Studio Forma site and would like to go ahead:\n")
-    +(sub?(CUR==="brl"?"Modalidade: assinatura mensal\n":"Plan: monthly subscription\n"):(CUR==="brl"?"Modalidade: avulso\n":"Plan: one-off\n"))
-    +lines.map(([a,v])=>"- "+a.replace(/^Total: /,CUR==="brl"?"Inclui: ":"Includes: ")+(v==null?"":": "+brl(v))).join("\n")+"\n"+(CUR==="brl"?"Total estimado: ":"Estimated total: ")+$("#q-total").textContent;
-  $("#q-send").href=CUR==="brl"?$("#free").getAttribute("href").split("?")[0]+"?text="+encodeURIComponent(qtxt)
-    :"mailto:calebenogueirastudioforma@gmail.com?subject="+encodeURIComponent("My Studio Forma quote")+"&body="+encodeURIComponent(qtxt);
   const tip=$("#q-tip");let msg="";
   if(looks>n)msg=pt?`Você pediu ${n} looks e o pacote cobre até ${looks}.`:`You asked for ${n} looks and the package covers up to ${looks}.`;
-  if(sub)msg+=(msg?" ":"")+(pt?`Depois, ${brl(pick.c)} por mês. Fidelidade mínima de 3 meses.`:`Then ${brl(pick.c)} a month. 3-month minimum.`);
+  if(sub){const tot3=mo*3+(t-mo)+(Q.md.checked?N.model:0);
+    msg+=(msg?" ":"")+(pt?`Depois, ${brl(mo)} por mês${vb?", já com os vídeos":""}. Fidelidade mínima de 3 meses, total de ${brl(tot3)} nos 3 meses.`:`Then ${brl(mo)} a month${vb?", videos included":""}. 3-month minimum, ${brl(tot3)} over the 3 months.`)}
   else{const bs=[0];for(let i=1;i<=n;i++)bs[i]=Math.min(...PK.map(x=>bs[Math.max(0,i-x.looks)]+x.mo));
     msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
   tip.hidden=!msg;tip.textContent=msg;
+  // the client sends the quote they built: WhatsApp in Brazil, email elsewhere
+  const qtxt=(CUR==="brl"?"Olá! Montei este orçamento no site da Studio Forma e quero fechar:\n":"Hi! I built this quote on the Studio Forma site and would like to go ahead:\n")
+    +(sub?(CUR==="brl"?"Modalidade: assinatura mensal\n":"Plan: monthly subscription\n"):(CUR==="brl"?"Modalidade: avulso\n":"Plan: one-off\n"))
+    +lines.map(([a,v])=>"- "+a.replace(/^Total: /,CUR==="brl"?"Inclui: ":"Includes: ")+(v==null?"":": "+brl(v))).join("\n")+"\n"+(CUR==="brl"?"Total estimado: ":"Estimated total: ")+$("#q-total").textContent+(sub&&msg?"\n"+msg:"")
+    +"\n"+(CUR==="brl"?"Valor unitário:":"Unit prices:")
+    +"\n- "+(CUR==="brl"?"Cada foto do pacote: ":"Each package photo: ")+brl2(pick.c/ph)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):"")
+    +(vb?"\n- "+(CUR==="brl"?"Cada vídeo de 15 s: ":"Each 15 s video: ")+brl2(N.vid/3)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):""):"")
+    +(cl?"\n- "+(CUR==="brl"?"Cada foto conceito: ":"Each concept photo: ")+brl2(N.xcc/2):"");
+  $("#q-send").href=CUR==="brl"?$("#free").getAttribute("href").split("?")[0]+"?text="+encodeURIComponent(qtxt)
+    :"mailto:calebenogueirastudioforma@gmail.com?subject="+encodeURIComponent("My Studio Forma quote")+"&body="+encodeURIComponent(qtxt);
 }
 document.querySelectorAll(".pm").forEach(b=>b.onclick=()=>{Q.lk.value=Math.max(1,(parseInt(Q.lk.value,10)||0)+ +b.dataset.d);calc()});
 Q.lk.addEventListener("input",calc);Q.lk.addEventListener("change",()=>{Q.lk.value=Math.max(1,qnum(Q.lk,300));calc()});
