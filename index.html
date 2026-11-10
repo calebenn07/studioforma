@@ -804,7 +804,7 @@ function calc(){
   else{const bs=[0];for(let i=1;i<=n;i++)bs[i]=Math.min(...PK.map(x=>bs[Math.max(0,i-x.looks)]+x.mo));
     msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
   tip.hidden=!msg;tip.textContent=msg;
-  window.QD={lines,n,nv,sub,msg,total:$("#q-total").textContent,pt};
+  window.QD={lines,n,nv,sub,msg,total:$("#q-total").textContent,pt,tv:sub?mo:t+(Q.md.checked?N.model:0)};
   // the client sends the quote they built: WhatsApp in Brazil, email elsewhere
   const qtxt=(CUR==="brl"?"Olá! Montei este orçamento no site da Studio Forma e quero fechar:\n":"Hi! I built this quote on the Studio Forma site and would like to go ahead:\n")
     +(sub?(CUR==="brl"?"Modalidade: assinatura mensal\n":"Plan: monthly subscription\n"):(CUR==="brl"?"Modalidade: avulso\n":"Plan: one-off\n"))
@@ -887,11 +887,11 @@ btn.onclick=async()=>{
     const cr=[["Modelo","mo"],["Estúdio","es"],["Make e cabelo","mu"],["Stylist / produção","st"],["Catering e logística","ca"]].map(([a,k])=>[a,dl,half?CD[k][0]:CD[k][1]*days]);
     cr.push(["Fotógrafo",`${n} look${n>1?"s":""} × ${brl(CD.fo)}`,n*CD.fo]);
     if(vb)cr.push(["Videomaker",`${vb} look${vb>1?"s":""} filmado${vb>1?"s":""} × ${brl(CD.vm)}`,vb*CD.vm]);
-    const trad=cr.reduce((a,r)=>a+r[2],0),sf=parseInt(D.total.replace(/\D/g,""),10)||0;
+    const trad=cr.reduce((a,r)=>a+r[2],0),sf=D.tv;
     h+=`<div class="qs">${top("Comparativo")}<h2>Quanto custaria numa <em>produção tradicional</em></h2>
       <p class="in">Para ${n} look${n>1?"s":""}${vb?` e ${vb} vídeos`:""}, uma sessão de fotos tradicional precisaria de ${dl} de modelo, estúdio, make, stylist e catering, mais o fotógrafo${vb?" e o videomaker":""} cobrando por look${D.sub?", todo mês":""}.</p>
       <div class="tb"><div class="tr mn"><span>Profissional</span><span>Valor</span></div>${cr.map(([a,b,v])=>`<div class="tr"><span>${a}<small>${b}</small></span><span>${brl(v)}</span></div>`).join("")}</div>
-      <div class="vs"><div><span class="mn">Produção tradicional</span><b>${brl(trad)}</b></div><div class="us"><span class="mn">Studio Forma</span><b>${brl(sf)}</b></div></div>
+      <div class="vs"><div><span class="mn">Produção tradicional</span><b>${brl(trad)}${D.sub?" por mês":""}</b></div><div class="us"><span class="mn">Studio Forma</span><b>${brl(sf)}${D.sub?" por mês":""}</b></div></div>
       <p class="sv">${trad>sf?`Economia de <em>${brl(trad-sf)}</em> (${Math.round((trad-sf)/trad*100)}%).`:""}</p>
       <ul class="cd"><li>Valores médios de mercado, estimados. Não incluem tratamento extra das fotos nem edição dos vídeos.</li><li>No Studio Forma não há agenda de estúdio, deslocamento nem custo extra por modelo.</li></ul>${foot}</div>`;
   }
