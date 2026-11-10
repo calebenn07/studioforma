@@ -273,19 +273,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .qs .tp{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(29,24,20,.16);padding-bottom:18px}
 .qs .bd{display:flex;align-items:center;gap:12px;font:400 22px/1 "DM Serif Display",Georgia,serif}.qs .bd svg{width:34px;height:auto;color:#86622f}
 .qs .mn{font:400 11px/1.4 "DM Mono",ui-monospace,monospace;letter-spacing:.14em;text-transform:uppercase;color:#5b5149}
-.qs h2{font:400 44px/1.05 "DM Serif Display",Georgia,serif;margin:28px 0 8px;color:#1d1814}.qs h2 em{color:#86622f}
+.qs h2{font:400 44px/1.18 "DM Serif Display",Georgia,serif;margin:28px 0 18px;color:#1d1814}.qs h2 em{color:#86622f}
 .qs .in{color:#5b5149;margin:0 0 20px}
 .qs .ph{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}.qs .ph div{aspect-ratio:3/4;background-size:cover;background-position:50% 20%}
 .qs ul.it{list-style:none;margin:0;padding:0;border-top:1px solid rgba(29,24,20,.16)}
 .qs ul.it li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid rgba(29,24,20,.16)}
 .qs .tb{border-top:1px solid rgba(29,24,20,.16)}.qs .tr{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(29,24,20,.16)}
 .qs .tr small{display:block;color:#5b5149;font-size:13px}
-.qs .to{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 4px}.qs .to b{font:400 40px/1 "DM Serif Display",Georgia,serif}
+.qs .to{display:flex;justify-content:space-between;align-items:baseline;margin:20px 0 14px}.qs .to b{font:400 40px/1.2 "DM Serif Display",Georgia,serif}
 .qs .af{color:#5b5149;font-size:14px;margin:0 0 16px}
 .qs .cd{font-size:13px;color:#5b5149;margin:0;padding:0 0 0 18px}
 .qs .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 10px}.qs .vs div{border:1px solid rgba(29,24,20,.16);padding:16px 18px}.qs .vs .us{border-color:#86622f}
-.qs .vs b{display:block;font:400 34px/1.1 "DM Serif Display",Georgia,serif;margin-top:6px}.qs .vs .us b{color:#86622f}
-.qs .sv{font:400 26px/1.2 "DM Serif Display",Georgia,serif;margin:6px 0 10px}.qs .sv em{color:#86622f}
+.qs .vs b{display:block;font:400 34px/1.25 "DM Serif Display",Georgia,serif;margin-top:6px}.qs .vs .us b{color:#86622f}
+.qs .sv{font:400 26px/1.3 "DM Serif Display",Georgia,serif;margin:8px 0 14px}.qs .sv em{color:#86622f}
 .qs .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-top:1px solid rgba(29,24,20,.16);padding-top:16px;font-size:14px}.qs .ft b{display:block;font:400 22px/1.2 "DM Serif Display",Georgia,serif}
 </style>
 
@@ -775,18 +775,21 @@ function fillPrices(root){
   root.querySelectorAll("[data-p]").forEach(el=>{const k=el.dataset.p;if(k in N)el.textContent=(k==="vid"?"+ ":"")+brl(N[k])});
 }
 function qnum(el,max){let v=Math.max(0,Math.min(max,parseInt(el.value,10)||0));return v}
+// volume tiers: 10-24 looks at START's per-look price, 25-49 at COLEÇÃO's, 50+ at LANÇAMENTO's; never cheaper to ask for fewer looks
+function plan(n,sub,T,pt){
+  const tiers=[{k:"v1",m:"m1",looks:10,re:1,name:"START"},{k:"v2",m:"m2",looks:25,re:3,name:pt===false?"COLLECTION":"COLEÇÃO"},{k:"v3",m:"m3",looks:50,re:5,name:pt===false?"LAUNCH":"LANÇAMENTO"}];
+  const pr=x=>sub?T[x.m]:T[x.k];
+  if(!sub&&n<10&&n*T.lb<pr(tiers[0]))return{c:n*T.lb,looks:n,ph:n*5,re:0,lb:true};
+  const m=Math.max(n,10),i=m>=50?2:m>=25?1:0,x=tiers[i];
+  let o={c:Math.round(m*pr(x)/x.looks),looks:m,x};
+  if(i<2&&pr(tiers[i+1])<=o.c)o={c:pr(tiers[i+1]),looks:tiers[i+1].looks,x:tiers[i+1]};
+  const y=o.x;return{c:o.c,looks:o.looks,ph:o.looks*5,re:Math.max(y.re,Math.round(o.looks*y.re/y.looks)),name:y.name,rate:pr(y)/y.looks,full:o.looks===y.looks};
+}
 function calc(){
   // cheapest mix of volume packages that covers the looks asked for
   const n=Math.max(1,qnum(Q.lk,300)),pt=lang==="pt",sub=qsub;
-  const P=[{k:"v1",looks:10,ph:50,re:1,name:"START",mo:N.m1},{k:"v2",looks:25,ph:125,re:3,name:pt?"COLEÇÃO":"COLLECTION",mo:N.m2},{k:"v3",looks:50,ph:250,re:5,name:pt?"LANÇAMENTO":"LAUNCH",mo:N.m3}];
-  const PK=P.slice(); // packages only, used for the subscription hint
-  if(!sub&&n<10)P.push({k:"lb",looks:1,ph:5,re:0,name:pt?"Look avulso":"Single look"}); // one-off below 10 looks: single looks priced as the lookbook one-off
-  const price=x=>sub?x.mo:N[x.k];
-  const best=[{c:0,m:[]}];
-  for(let i=1;i<=n;i++){let b=null;for(const x of P){const prev=best[Math.max(0,i-x.looks)],c=prev.c+price(x);if(!b||c<b.c)b={c,m:prev.m.concat(x)}}best[i]=b}
-  const pick=best[n],cnt={};pick.m.forEach(x=>cnt[x.name]=(cnt[x.name]||0)+1);
-  const looks=pick.m.reduce((a,x)=>a+x.looks,0),ph=pick.m.reduce((a,x)=>a+x.ph,0),re=pick.m.reduce((a,x)=>a+x.re,0);
-  const lines=P.filter(x=>cnt[x.name]).map(x=>{const c=cnt[x.name];return[x.k==="lb"?(pt?`${c} look${c>1?"s":""} avulso${c>1?"s":""} (5 fotos${c>1?" cada":""})`:`${c} single look${c>1?"s":""} (5 photos${c>1?" each":""})`):`${c>1?c+"× ":""}${x.name} (${x.looks} looks)`,c*price(x)]});
+  const pick=plan(n,sub,N,pt),looks=pick.looks,ph=pick.ph,re=pick.re;
+  const lines=[[pick.lb?(pt?`${looks} look${looks>1?"s":""} avulso${looks>1?"s":""} (5 fotos${looks>1?" cada":""})`:`${looks} single look${looks>1?"s":""} (5 photos${looks>1?" each":""})`):`${pick.name} (${looks} looks${pick.full?"":` · ${brl2(pick.rate)} ${pt?"por look":"per look"}`})`,pick.c]];
   let t=pick.c;
   lines.push([pt?`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} fotos e ${re} Reel${re>1?"s":""}`:` e ${ph} fotos`}`:`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} photos and ${re} Reel${re>1?"s":""}`:` and ${ph} photos`}`,null]);
   // videos: minimum 3, then one at a time; bonus 30 s fashion film: 1 from 3 videos, then 1 per 10 videos
@@ -801,7 +804,7 @@ function calc(){
   const tip=$("#q-tip");let msg="";
   if(looks>n)msg=pt?`Você pediu ${n} looks e o pacote cobre até ${looks}.`:`You asked for ${n} looks and the package covers up to ${looks}.`;
   if(sub)msg+=(msg?" ":"")+(pt?`Depois, ${brl(mo)} por mês${vb?", já com os vídeos":""}. Fidelidade mínima de 3 meses.`:`Then ${brl(mo)} a month${vb?", videos included":""}. 3-month minimum.`);
-  else{const bs=[0];for(let i=1;i<=n;i++)bs[i]=Math.min(...PK.map(x=>bs[Math.max(0,i-x.looks)]+x.mo));
+  else{const bs={[n]:plan(n,true,N,pt).c};
     msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
   tip.hidden=!msg;tip.textContent=msg;
   window.QD={lines,n,nv,sub,msg,total:$("#q-total").textContent,pt,tv:sub?mo:t+(Q.md.checked?N.model:0)};
