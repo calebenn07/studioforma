@@ -503,8 +503,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
             <div class="row" style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="chip" id="q-once" aria-pressed="true" data-i="q2a">Avulso</button><button type="button" class="chip" id="q-sub" aria-pressed="false" data-i="q2b">Assinatura</button></div>
           </div>
           <div class="qrow">
-            <div><b data-i="q3t">Vídeos de 15 s</b><p data-i="q3p">Além dos Reels do pacote. A cada 3 vídeos dos looks que mais vendem, um fashion film bônus com os três juntos · {vid} por bloco.</p></div>
-            <div class="stepper"><button type="button" class="pv" data-d="-3" aria-label="Menos">−</button><input id="q-vd" type="number" min="0" max="60" step="3" value="3" inputmode="numeric" aria-label="Vídeos"><button type="button" class="pv" data-d="3" aria-label="Mais">+</button></div>
+            <div><b data-i="q3t">Vídeos de 15 s</b><p data-i="q3p">Além dos Reels do pacote. Mínimo de 3 vídeos, depois de 1 em 1 · {vid1} por vídeo. A cada 3 vídeos, um fashion film bônus com os três looks juntos.</p></div>
+            <div class="stepper"><button type="button" class="pv" data-d="-1" aria-label="Menos">−</button><input id="q-vd" type="number" min="0" max="60" step="1" value="3" inputmode="numeric" aria-label="Vídeos"><button type="button" class="pv" data-d="1" aria-label="Mais">+</button></div>
           </div>
           <div class="qrow">
             <div><b data-i="q5ct">Fotos conceito</b><p data-i="q5cp">Conceito de coleção com cenário, luz e direção de arte próprios · {xcc} por look. 2 fotos por look.</p></div>
@@ -599,7 +599,7 @@ const T={
   cp:"Copy email",b0t:"Monthly <em>subscription</em>",b0p:"The same volume packages every month, discounted for a minimum of 3 months. {curen}.",b1w:"10 looks · 80 photos · 1 Reel a month",b2w:"25 looks · 200 photos · 3 Reels a month",b3w:"50 looks · 400 photos · 5 Reels a month",bpm1:"Per month",bpm2:"Per month",bpm3:"Per month",b1f:"Instead of {v1} as a one-off package.",b2f:"Instead of {v2} as a one-off package.",b3f:"Instead of {v3} as a one-off package.",b4n:"Minimum 3-month commitment. An exclusive model and the collection concept can be added at the individual service prices.",v0t:"Volume <em>packages</em>",v0p:"For stores with many pieces per collection. Each look comes with 8 photos on the same studio model, picked from 12 poses, and Reels are cut from 5 s clips into 9:16 vertical video.",v1w:"10 looks · 80 photos · 1 Reel",v2w:"25 looks · 200 photos · 3 Reels",v3w:"50 looks · 400 photos · 5 Reels",vpk:"Per package",vpk2:"Per package",vpk3:"Per package",rec2:"Recommended",v1f:"About {v1pl} per look.",v2f:"About {v2pl} per look.",v3f:"About {v3pl} per look.",v1n:"START",v2n:"COLLECTION",v3n:"LAUNCH",wa:"Message us on WhatsApp",nav6:"Quote",nav0:"Home",nav7:"Services",nx:"Next page",ct1:"View portfolio",ct2:"View packages",
   q0t:"Build <em>your order</em>",q0p:"Tell us how many looks you need and see the package, what it includes and the price right away.",
   q1t:"How many looks?",q1p:"Each look comes with 8 photos on the same studio model. Reels come with the package.",
-  q3t:"15 s videos",q3p:"On top of the package Reels. Every 3 videos of your best-selling looks come with a bonus fashion film joining all three · {vid} per block.",q2t:"How would you like to hire us?",q2p:"The subscription is discounted, with a 3-month minimum.",q2a:"One-off",q2b:"Subscription",
+  q3t:"15 s videos",q3p:"On top of the package Reels. Minimum 3 videos, then one at a time · {vid1} per video. Every 3 videos come with a bonus fashion film joining the three looks.",q2t:"How would you like to hire us?",q2p:"The subscription is discounted, with a 3-month minimum.",q2a:"One-off",q2b:"Subscription",
   
   q5ct:"Concept photos",q5cp:"Collection concept with its own set, lighting and art direction · {xcc} per look. 2 photos per look.",q8:"Happy with it? Email us this quote and we will confirm the details with you to close the order.",q9:"Email my quote",q4t:"Exclusive virtual model",q4p:"A face for your brand only · {model}, one-time fee",
   q5:"Your order",q6:"Estimated total",q7:"{curen}. Tax is added when an invoice is issued. Delivery in 4 business days after we receive the garment photos."}
@@ -742,11 +742,12 @@ if(CUR!=="brl")document.getElementById("q-send").removeAttribute("target"); // W
 document.getElementById("mo-br").hidden=false;document.getElementById("mo-old").hidden=true;
 document.getElementById("vol").hidden=false;
  // this site always shows one currency; the international copy sets "usd"
-const N={brl:{ess:2300,essv:2600,sig1:2700,sig2:2300,mov1:3000,mov2:2600,model:400,lb:120,cc:1200,xlb:120,xcc:220,vid:300,adj:30,v1:990,v2:1990,v3:3490,v1pl:99,v2pl:80,v3pl:70,m1:890,m2:1790,m3:3140},
- usd:{ess:990,essv:1390,sig1:1290,sig2:990,mov1:1690,mov2:1390,model:350,lb:50,cc:600,xlb:50,xcc:110,vid:450,adj:15,v1:990,v2:1990,v3:3490,v1pl:99,v2pl:80,v3pl:70,m1:890,m2:1790,m3:3140}}[CUR];
+const N={brl:{ess:2300,essv:2600,sig1:2700,sig2:2300,mov1:3000,mov2:2600,model:400,lb:120,cc:1200,xlb:120,xcc:220,vid:300,vid1:100,adj:30,v1:990,v2:1990,v3:3490,v1pl:99,v2pl:80,v3pl:70,m1:890,m2:1790,m3:3140},
+ usd:{ess:990,essv:1390,sig1:1290,sig2:990,mov1:1690,mov2:1390,model:350,lb:50,cc:600,xlb:50,xcc:110,vid:450,vid1:150,adj:15,v1:990,v2:1990,v3:3490,v1pl:99,v2pl:80,v3pl:70,m1:890,m2:1790,m3:3140}}[CUR];
 const MK=1; // seller copy: commission built into every price (build-vendedor.py sets it)
 if(MK!==1){for(const k in N)N[k]=Math.round(N[k]*MK/10)*10;N.v1pl=Math.round(N.v1/10);N.v2pl=Math.round(N.v2/25);N.v3pl=Math.round(N.v3/50)}
 const brl=v=>CUR==="brl"?"R$ "+v.toLocaleString("pt-BR"):"$"+v.toLocaleString("en-US");
+const vidQty=v=>v>0&&v<3?3:v; // 1 or 2 videos round up to the 3-video minimum
 const brl2=v=>{const o={minimumFractionDigits:2,maximumFractionDigits:2};return CUR==="brl"?"R$ "+v.toLocaleString("pt-BR",o):"$"+v.toLocaleString("en-US",o)};
 const CURNAME={brl:{pt:"Valores em reais",en:"Prices in Brazilian reais"},usd:{pt:"Valores em dólares americanos",en:"Prices in US dollars"}}[CUR];
 function fillPrices(root){
@@ -768,9 +769,10 @@ function calc(){
   const lines=P.filter(x=>cnt[x.name]).map(x=>{const c=cnt[x.name];return[x.k==="lb"?(pt?`${c} look${c>1?"s":""} avulso${c>1?"s":""} (5 fotos${c>1?" cada":""})`:`${c} single look${c>1?"s":""} (5 photos${c>1?" each":""})`):`${c>1?c+"× ":""}${x.name} (${x.looks} looks)`,c*price(x)]});
   let t=pick.c;
   lines.push([pt?`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} fotos e ${re} Reel${re>1?"s":""}`:` e ${ph} fotos`}`:`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} photos and ${re} Reel${re>1?"s":""}`:` and ${ph} photos`}`,null]);
-  const vb=Math.ceil(qnum(Q.vd,60)/3);
-  if(vb){lines.push([pt?`${vb*3} vídeos de 15 s + ${vb} fashion film${vb>1?"s":""} bônus${sub?" por mês":""}`:`${vb*3} videos of 15 s + ${vb} bonus fashion film${vb>1?"s":""}${sub?" a month":""}`,vb*N.vid]);t+=vb*N.vid}
-  const mo=pick.c+vb*N.vid; // subscription: package and videos repeat every month
+  // videos: minimum 3, then one at a time; one bonus fashion film per 3 videos
+  const nv=vidQty(qnum(Q.vd,60)),ff=Math.floor(nv/3),vb=nv,vv=nv*N.vid1;
+  if(nv){lines.push([pt?`${nv} vídeos de 15 s + ${ff} fashion film${ff>1?"s":""} bônus${sub?" por mês":""}`:`${nv} videos of 15 s + ${ff} bonus fashion film${ff>1?"s":""}${sub?" a month":""}`,vv]);t+=vv}
+  const mo=pick.c+vv; // subscription: package and videos repeat every month
   const cl=qnum(Q.cc,60);
   if(cl){const v=cl*N.xcc;lines.push([pt?`Conceito de coleção: ${cl} look${cl>1?"s":""}, ${cl*2} fotos${sub?" (adicional)":""}`:`Collection concept: ${cl} look${cl>1?"s":""}, ${cl*2} photos${sub?" (add-on)":""}`,v]);t+=v}
   if(Q.md.checked)lines.push([pt?"Modelo exclusiva (pagamento único)":"Exclusive model (one-time)",N.model]);
@@ -778,8 +780,7 @@ function calc(){
   $("#q-total").textContent=brl(t+(Q.md.checked?N.model:0))+(sub?(pt?" no 1º mês":" 1st month"):"");
   const tip=$("#q-tip");let msg="";
   if(looks>n)msg=pt?`Você pediu ${n} looks e o pacote cobre até ${looks}.`:`You asked for ${n} looks and the package covers up to ${looks}.`;
-  if(sub){const tot3=mo*3+(t-mo)+(Q.md.checked?N.model:0);
-    msg+=(msg?" ":"")+(pt?`Depois, ${brl(mo)} por mês${vb?", já com os vídeos":""}. Fidelidade mínima de 3 meses, total de ${brl(tot3)} nos 3 meses.`:`Then ${brl(mo)} a month${vb?", videos included":""}. 3-month minimum, ${brl(tot3)} over the 3 months.`)}
+  if(sub)msg+=(msg?" ":"")+(pt?`Depois, ${brl(mo)} por mês${vb?", já com os vídeos":""}. Fidelidade mínima de 3 meses.`:`Then ${brl(mo)} a month${vb?", videos included":""}. 3-month minimum.`);
   else{const bs=[0];for(let i=1;i<=n;i++)bs[i]=Math.min(...PK.map(x=>bs[Math.max(0,i-x.looks)]+x.mo));
     msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
   tip.hidden=!msg;tip.textContent=msg;
@@ -789,7 +790,7 @@ function calc(){
     +lines.map(([a,v])=>"- "+a.replace(/^Total: /,CUR==="brl"?"Inclui: ":"Includes: ")+(v==null?"":": "+brl(v))).join("\n")+"\n"+(CUR==="brl"?"Total estimado: ":"Estimated total: ")+$("#q-total").textContent+(sub&&msg?"\n"+msg:"")
     +"\n"+(CUR==="brl"?"Valor unitário:":"Unit prices:")
     +"\n- "+(CUR==="brl"?"Cada foto do pacote: ":"Each package photo: ")+brl2(pick.c/ph)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):"")
-    +(vb?"\n- "+(CUR==="brl"?"Cada vídeo de 15 s: ":"Each 15 s video: ")+brl2(N.vid/3)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):""):"")
+    +(vb?"\n- "+(CUR==="brl"?"Cada vídeo de 15 s: ":"Each 15 s video: ")+brl2(N.vid1)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):""):"")
     +(cl?"\n- "+(CUR==="brl"?"Cada foto conceito: ":"Each concept photo: ")+brl2(N.xcc/2):"");
   $("#q-send").href=CUR==="brl"?$("#free").getAttribute("href").split("?")[0]+"?text="+encodeURIComponent(qtxt)
     :"mailto:calebenogueirastudioforma@gmail.com?subject="+encodeURIComponent("My Studio Forma quote")+"&body="+encodeURIComponent(qtxt);
@@ -798,8 +799,8 @@ document.querySelectorAll(".pm").forEach(b=>b.onclick=()=>{Q.lk.value=Math.max(1
 Q.lk.addEventListener("input",calc);Q.lk.addEventListener("change",()=>{Q.lk.value=Math.max(1,qnum(Q.lk,300));calc()});
 const setMode=v=>{qsub=v;$("#q-once").setAttribute("aria-pressed",!v);$("#q-sub").setAttribute("aria-pressed",v);calc()};
 $("#q-once").onclick=()=>setMode(false);$("#q-sub").onclick=()=>setMode(true);
-document.querySelectorAll(".pv").forEach(b=>b.onclick=()=>{Q.vd.value=Math.max(0,Math.min(60,(Math.ceil((parseInt(Q.vd.value,10)||0)/3)*3)+ +b.dataset.d));calc()});
-Q.vd.addEventListener("input",calc);Q.vd.addEventListener("change",()=>{Q.vd.value=Math.ceil(qnum(Q.vd,60)/3)*3;calc()});
+document.querySelectorAll(".pv").forEach(b=>b.onclick=()=>{const v=qnum(Q.vd,60),d=+b.dataset.d;Q.vd.value=d>0?(v<3?3:Math.min(60,v+1)):(v<=3?0:v-1);calc()});
+Q.vd.addEventListener("input",calc);Q.vd.addEventListener("change",()=>{Q.vd.value=vidQty(qnum(Q.vd,60));calc()});
 Q.md.addEventListener("change",calc);
 document.querySelectorAll(".pc").forEach(b=>b.onclick=()=>{Q.cc.value=Math.max(0,Math.min(60,(parseInt(Q.cc.value,10)||0)+ +b.dataset.d));calc()});
 Q.cc.addEventListener("input",calc);
