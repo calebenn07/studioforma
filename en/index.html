@@ -287,6 +287,30 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .qs .vs b{display:block;font:400 34px/1.25 "DM Serif Display",Georgia,serif;margin-top:6px}.qs .vs .us b{color:#86622f}
 .qs .sv{font:400 26px/1.3 "DM Serif Display",Georgia,serif;margin:8px 0 14px}.qs .sv em{color:#86622f}
 .qs .ft{margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:20px;border-top:1px solid rgba(29,24,20,.16);padding-top:16px;font-size:14px}.qs .ft b{display:block;font:400 22px/1.2 "DM Serif Display",Georgia,serif}
+
+/* campaigns: home banner + magazine-style feed */
+.cbanner{position:relative;display:block;color:#f4f0ea;text-decoration:none;overflow:hidden;background:#151210}
+.cbanner img{display:block;width:100%;height:clamp(300px,46vw,560px);object-fit:cover;object-position:50% 40%;transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.cbanner:hover img{transform:scale(1.02)}
+.cbanner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,12,10,.72) 0%,rgba(15,12,10,.35) 45%,rgba(15,12,10,0) 70%)}
+.cbanner .cb-in{position:absolute;inset:auto 0 0 0;z-index:1;padding-block:clamp(24px,4vw,48px)}
+.cbanner .tag,.camp .tag{display:inline-block;font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;border:1px solid currentColor;padding:7px 10px;border-radius:999px}
+.cbanner h2{font:400 clamp(36px,6vw,72px)/1.05 var(--display);margin:14px 0 8px;color:#f4f0ea}
+.cbanner h2 em{color:#d8b47a}
+.cbanner p{margin:0 0 18px;max-width:46ch;color:rgba(244,240,234,.86)}
+.cbanner .go{font:500 15px var(--body);display:inline-flex;gap:8px;align-items:center;border-bottom:1px solid currentColor;padding-bottom:3px}
+.camp{border-top:1px solid var(--line);padding-top:28px;margin-top:8px}
+.camp-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,40ch);gap:16px 48px;align-items:end;margin-bottom:28px}
+.camp-head .num{font:400 13px var(--mono);letter-spacing:.14em;color:var(--mute)}
+.camp-head h3{font:400 clamp(34px,5vw,60px)/1.05 var(--display);margin:8px 0 0}
+.camp-head h3 em{color:var(--bronze)}
+.camp-head p{color:var(--mute);margin:0}
+.camp .tag{color:var(--bronze)}
+.feed{columns:3 260px;column-gap:12px}
+.feed button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid}
+.feed img{display:block;width:100%;height:auto}
+.camp-note{font-size:14px;color:var(--mute);margin-top:18px}
+@media (max-width:760px){.cbanner img{height:520px;object-position:62% 30%}.cbanner p{font-size:14px}.camp-head{grid-template-columns:1fr}.cbanner::after{background:linear-gradient(0deg,rgba(15,12,10,.8) 0%,rgba(15,12,10,.2) 60%,rgba(15,12,10,0) 100%)}}
 </style>
 
 <header class="top">
@@ -303,6 +327,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <a href="#inicio" data-i="nav0">Início</a>
       <a href="#processo" data-i="nav1">Da peça ao vídeo</a>
       <a href="#portfolio" data-i="nav2">Portfólio</a>
+      <a href="#campanhas" data-i="nav8">Campanhas</a>
       <a href="#modelos" data-i="nav3">Modelos</a>
       <a href="#servicos" data-i="nav7">Serviços</a>
       <a href="#pacotes" data-i="nav5">Pacotes</a>
@@ -314,6 +339,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <main>
 <div class="page" data-page="inicio">
+  <a class="cbanner" href="#campanhas" aria-label="Ver a campanha Between Sets">
+    <img src="../media/bs-filme-04-livia-rede-agua.webp" alt="Lívia sentada na quadra de tênis, bebendo água">
+    <div class="cb-in"><div class="wrap">
+      <span class="tag" data-i="cbt">Campanha conceito · Nº 01</span>
+      <h2>Between <em>Sets</em></h2>
+      <p data-i="cbp">Uma marca de tênis que não existe, fotografada numa quadra que existe. Criada do zero pelo Studio Forma.</p>
+      <span class="go" data-i="cbg">Ver a campanha →</span>
+    </div></div>
+  </a>
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -372,6 +406,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </div>
   </section>
 
+</div>
+<div class="page" data-page="campanhas">
+  <section id="campanhas">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2 data-i="cpt">Campa<em>nhas</em></h2>
+        <p data-i="cpp">Campanhas conceito que o Studio Forma cria do zero: marca, cenário, modelos e direção de arte. Cada uma mostra até onde dá para levar uma coleção com IA.</p>
+      </div>
+      <article class="camp">
+        <div class="camp-head">
+          <div><span class="num">Nº 01</span><h3>Between <em>Sets</em></h3></div>
+          <div><span class="tag" data-i="cpg">Campanha conceito</span><p data-i="cpd" style="margin-top:12px">Moda tênis premium numa quadra ao ar livre, com Aiko, Iara, Alice e Lívia. Fotografado como frame de filme: grão, luz de fim de tarde e cor contida.</p></div>
+        </div>
+        <div class="feed" id="feed-bs"><button type="button" data-ci="0"><img src="../media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy"></button><button type="button" data-ci="1"><img src="../media/bs-imax-05-livia-rede.webp" alt="Lívia na rede" loading="lazy"></button><button type="button" data-ci="2"><img src="../media/bs-imax-01-aiko-forehand.webp" alt="Aiko, forehand" loading="lazy"></button><button type="button" data-ci="3"><img src="../media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy"></button><button type="button" data-ci="4"><img src="../media/bs-filme-04-livia-rede-agua.webp" alt="Lívia bebendo água" loading="lazy"></button><button type="button" data-ci="5"><img src="../media/bs-imax-07-alice-saque.webp" alt="Alice no saque" loading="lazy"></button><button type="button" data-ci="6"><img src="../media/bs-conceito-04-aiko-alice-dupla.webp" alt="Aiko e Alice" loading="lazy"></button><button type="button" data-ci="7"><img src="../media/bs-imax-04-iara-banco.webp" alt="Iara no banco" loading="lazy"></button><button type="button" data-ci="8"><img src="../media/bs-cine-02-iara-amarrando-tenis.webp" alt="Iara amarrando o tênis" loading="lazy"></button><button type="button" data-ci="9"><img src="../media/bs-imax-08-iara-corrida.webp" alt="Iara correndo" loading="lazy"></button><button type="button" data-ci="10"><img src="../media/bs-respiro-03-mao-raquete.webp" alt="Mão na raquete" loading="lazy"></button><button type="button" data-ci="11"><img src="../media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas" loading="lazy"></button><button type="button" data-ci="12"><img src="../media/bs-filme-01-aiko-indo-quadra.webp" alt="Aiko indo para a quadra" loading="lazy"></button><button type="button" data-ci="13"><img src="../media/bs-imax-02-iara-livia-deitadas-rede.webp" alt="Iara e Lívia deitadas" loading="lazy"></button><button type="button" data-ci="14"><img src="../media/bs-cine-03-alice-livia-rede-pb.webp" alt="Alice e Lívia, preto e branco" loading="lazy"></button><button type="button" data-ci="15"><img src="../media/bs-respiro-01-banco-rede.webp" alt="O banco" loading="lazy"></button><button type="button" data-ci="16"><img src="../media/bs-livia-03-meio-corpo.webp" alt="Lívia, lookbook" loading="lazy"></button><button type="button" data-ci="17"><img src="../media/bs-aiko-04-caminhando.webp" alt="Aiko, lookbook" loading="lazy"></button><button type="button" data-ci="18"><img src="../media/bs-filme-02-iara-toalha.webp" alt="Iara com a toalha" loading="lazy"></button><button type="button" data-ci="19"><img src="../media/bs-respiro-06-cesto-bolas.webp" alt="Cesto de bolas" loading="lazy"></button><button type="button" data-ci="20"><img src="../media/bs-cine-01-aiko-quadra-pb.webp" alt="Aiko, preto e branco" loading="lazy"></button></div>
+        <p class="camp-note" data-i="cpn">A marca é fictícia. Quadra, modelos e roupas foram criados com IA pelo Studio Forma.</p>
+      </article>
+    </div>
+  </section>
 </div>
 <div class="page" data-page="modelos">
   <section class="band" id="modelos">
@@ -590,7 +642,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <script>
 const T={
  pt:{},
- en:{nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
+ en:{nav8:"Campaigns",cbt:"Concept campaign · Nº 01",cbp:"A tennis brand that does not exist, shot on a court that does. Created from scratch by Studio Forma.",cbg:"See the campaign →",cpt:"Cam<em>paigns</em>",cpp:"Concept campaigns Studio Forma creates from scratch: brand, set, models and art direction. Each one shows how far a collection can go with AI.",cpg:"Concept campaign",cpd:"Premium tennis wear on an outdoor court, with Aiko, Iara, Alice and Lívia. Shot like a film frame: grain, late-afternoon light and restrained color.",cpn:"The brand is fictional. Court, models and clothes were created with AI by Studio Forma.",nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
   kicker:"Visual storytelling with artificial intelligence",h1a:"Your garment,",h1b:"styled and",h1c:"<em>in motion.</em>",
   lede:"Catalog photos and vertical videos featuring Studio Forma's virtual models, made from the clothes you already sell. Ready for your store, Reels and TikTok.",
   m1:"On-model photos",m2:"9:16 video",m3:"Lookbook",
@@ -831,7 +883,7 @@ document.querySelectorAll(".pc").forEach(b=>b.onclick=()=>{Q.cc.value=Math.max(0
 Q.cc.addEventListener("input",calc);
 
 // one section per page, routed on the hash
-const PAGES=["inicio","processo","portfolio","modelos","servicos","pacotes","orcamento","contato"];
+const PAGES=["inicio","processo","portfolio","campanhas","modelos","servicos","pacotes","orcamento","contato"];
 function route(){
   let id=(location.hash||"#inicio").slice(1);if(!PAGES.includes(id))id="inicio";
   document.querySelectorAll(".page").forEach(pg=>{const on=pg.dataset.page===id;pg.hidden=!on;if(!on)pg.querySelectorAll("video").forEach(v=>v.pause())});
@@ -914,4 +966,9 @@ btn.onclick=async()=>{
 })();
 </script>
 
+<script>
+// campaign feed: tap a photo to open it in the same full-screen viewer as the portfolio
+(function(){const f=document.getElementById("feed-bs");if(!f)return;const items=[...f.querySelectorAll("img")].map(i=>({type:"image",src:i.getAttribute("src")}));
+f.addEventListener("click",e=>{const b=e.target.closest("button[data-ci]");if(!b)return;visible=items;openLb(+b.dataset.ci)})})();
+</script>
 </body></html>
