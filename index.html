@@ -775,22 +775,21 @@ function fillPrices(root){
   root.querySelectorAll("[data-p]").forEach(el=>{const k=el.dataset.p;if(k in N)el.textContent=(k==="vid"?"+ ":"")+brl(N[k])});
 }
 function qnum(el,max){let v=Math.max(0,Math.min(max,parseInt(el.value,10)||0));return v}
-// volume pricing: the package prices are fixed points (10, 25, 50 looks); looks in between add the per-look step between packages, above 50 the LANÇAMENTO per-look price, so the total always rises and never pauses
+// package pricing: cheapest mix of whole packages that covers the looks (e.g. 30 looks = 3× START); single looks only below 10 one-off
 function plan(n,sub,T,pt){
-  const tiers=[{k:"v1",m:"m1",looks:10,re:1,name:"START"},{k:"v2",m:"m2",looks:25,re:3,name:pt===false?"COLLECTION":"COLEÇÃO"},{k:"v3",m:"m3",looks:50,re:5,name:pt===false?"LAUNCH":"LANÇAMENTO"}];
-  const pr=x=>sub?T[x.m]:T[x.k];
-  if(!sub&&n<10&&n*T.lb<pr(tiers[0]))return{c:n*T.lb,looks:n,ph:n*5,re:0,lb:true};
-  const m=Math.max(n,10),r1=(pr(tiers[1])-pr(tiers[0]))/15,r2=(pr(tiers[2])-pr(tiers[1]))/25;
-  const r3=pr(tiers[2])/50; // above 50 looks: LANÇAMENTO per-look price, no extra discount
-  const c=Math.round(pr(tiers[0])+Math.max(0,Math.min(m,25)-10)*r1+Math.max(0,Math.min(m,50)-25)*r2+Math.max(0,m-50)*r3);
-  const y=tiers[m>=50?2:m>=25?1:0];
-  return{c,looks:m,ph:m*5,re:Math.max(y.re,Math.round(m*y.re/y.looks)),name:y.name,rate:c/m,full:m===y.looks};
+  const P=[{k:"v1",m:"m1",looks:10,re:1,name:"START"},{k:"v2",m:"m2",looks:25,re:3,name:pt===false?"COLLECTION":"COLEÇÃO"},{k:"v3",m:"m3",looks:50,re:5,name:pt===false?"LAUNCH":"LANÇAMENTO"}];
+  if(!sub&&n<10)P.push({k:"lb",m:"lb",looks:1,re:0,name:"lb",lb:true});
+  const pr=x=>sub?T[x.m]:T[x.k],best=[{c:0,m:[]}];
+  for(let i=1;i<=n;i++){let b=null;for(const x of P){const prev=best[Math.max(0,i-x.looks)],c=prev.c+pr(x);if(!b||c<b.c)b={c,m:prev.m.concat(x)}}best[i]=b}
+  const pick=best[n],looks=pick.m.reduce((a,x)=>a+x.looks,0),re=pick.m.reduce((a,x)=>a+x.re,0);
+  const parts=P.map(x=>({x,q:pick.m.filter(y=>y===x).length})).filter(o=>o.q).map(({x,q})=>({name:x.name,lb:!!x.lb,q,looks:x.looks,c:q*pr(x)}));
+  return{c:pick.c,looks,ph:looks*5,re,parts,lb:parts.length===1&&parts[0].lb};
 }
 function calc(){
   // cheapest mix of volume packages that covers the looks asked for
   const n=Math.max(1,qnum(Q.lk,300)),pt=lang==="pt",sub=qsub;
   const pick=plan(n,sub,N,pt),looks=pick.looks,ph=pick.ph,re=pick.re;
-  const lines=[[pick.lb?(pt?`${looks} look${looks>1?"s":""} avulso${looks>1?"s":""} (5 fotos${looks>1?" cada":""})`:`${looks} single look${looks>1?"s":""} (5 photos${looks>1?" each":""})`):`${pick.name} (${looks} looks${pick.full?"":` · ${brl2(pick.rate)} ${pt?"por look":"per look"}`})`,pick.c]];
+  const lines=pick.parts.map(o=>[o.lb?(pt?`${o.q} look${o.q>1?"s":""} avulso${o.q>1?"s":""} (5 fotos${o.q>1?" cada":""})`:`${o.q} single look${o.q>1?"s":""} (5 photos${o.q>1?" each":""})`):`${o.q>1?o.q+"× ":""}${o.name} (${o.looks} looks)`,o.c]);
   let t=pick.c;
   lines.push([pt?`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} fotos e ${re} Reel${re>1?"s":""}`:` e ${ph} fotos`}`:`Total: ${looks} look${looks>1?"s":""}${re?`, ${ph} photos and ${re} Reel${re>1?"s":""}`:` and ${ph} photos`}`,null]);
   // videos: minimum 3, then one at a time; bonus 30 s fashion film: 1 from 3 videos, then 1 per 10 videos
