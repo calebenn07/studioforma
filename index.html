@@ -312,6 +312,79 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .feed{columns:3 260px;column-gap:12px}
 .feed button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid}
 .feed img{display:block;width:100%;height:auto}
+/* campaign cards + campaign world (Between Sets) */
+.ccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.ccard{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:var(--ink-2);color:#f4f0ea;text-decoration:none}
+.ccard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.1,1)}
+.ccard:hover img{transform:scale(1.03)}
+.ccard:not(.soon)::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,20,16,.78) 0%,rgba(12,20,16,.15) 50%,rgba(12,20,16,0) 70%)}
+.cc-in{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:22px;display:flex;flex-direction:column;gap:6px}
+.cc-in .num{font:400 12px var(--mono);letter-spacing:.16em;opacity:.85}
+.cc-in h3{font:400 clamp(30px,3.4vw,44px)/1.05 var(--display);margin:2px 0}
+.cc-in h3 em{color:#a9d6b6}
+.cc-sub{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.cc-in .go{margin-top:10px;font:500 15px var(--body);border-bottom:1px solid currentColor;align-self:flex-start;padding-bottom:3px}
+.ccard.soon{border:1px dashed var(--line);background:transparent;color:var(--mute)}
+.bsx{padding-top:0}
+.bcover{position:relative;height:min(88vh,860px);min-height:480px;overflow:hidden;background:#13201a;color:#f4f2ec}
+.bcover img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+.bcover::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,20,16,.5) 0%,rgba(12,20,16,0) 30%,rgba(12,20,16,0) 60%,rgba(12,20,16,.6) 100%)}
+.bmast{position:absolute;z-index:1;top:0;left:0;right:0;text-align:center;padding:22px 16px}
+.bback{position:absolute;left:max(16px,4%);top:22px;color:#f4f2ec;font:500 14px var(--body);text-decoration:none;border-bottom:1px solid rgba(244,242,236,.6)}
+.blogo{font:700 clamp(34px,8.4vw,112px)/1 var(--body);letter-spacing:.08em;margin-top:clamp(36px,4vw,24px);white-space:nowrap}
+.bissue{font:400 clamp(9px,1vw,12px) var(--mono);letter-spacing:.3em;text-transform:uppercase;margin-top:12px}
+.blines{position:absolute;z-index:1;left:max(16px,4%);bottom:28px;margin:0;padding:0;list-style:none;font:400 clamp(22px,3.4vw,44px)/1.1 var(--display)}
+.bindex{position:sticky;top:var(--toph,0px);z-index:5;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:12px max(16px,4%);background:var(--ink);border-bottom:1px solid var(--line)}
+.bindex::-webkit-scrollbar{display:none}
+.bindex a{flex:none;font:400 13px var(--body);color:var(--mute);text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line)}
+.bindex a:hover{color:var(--bone);border-color:var(--bronze)}
+.bsec{padding-block:clamp(56px,8vw,104px);border-bottom:1px solid var(--line);scroll-margin-top:calc(var(--toph,0px) + 64px)}
+.bed{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px 56px;align-items:start;margin-bottom:clamp(28px,4vw,48px)}
+.bkick{font:400 11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--bronze)}
+.bsx h2{font:400 clamp(38px,5.6vw,76px)/1 var(--display);margin:12px 0 0}
+.bsx h2 em{color:var(--bronze)}
+.bsx p{color:var(--mute);max-width:62ch}
+.blede{font:400 clamp(20px,2.1vw,26px)/1.45 var(--display)!important;color:var(--bone)!important}
+.bsx figure{margin:0;overflow:hidden;background:var(--ink-2)}
+.bsx figure img{display:block;width:100%;height:100%;object-fit:cover;cursor:zoom-in;transition:transform 1s cubic-bezier(.2,.7,.1,1)}
+.bsx figure:hover img{transform:scale(1.02)}
+.bwide{aspect-ratio:16/9}
+.bcap{display:flex;gap:12px;font-size:13px;color:var(--mute);margin:12px 0 0}
+.bcap b{font:400 11px var(--mono);letter-spacing:.14em;color:var(--bone);white-space:nowrap;padding-top:2px}
+.bsteps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 32px}
+.bstep{border-top:1px solid var(--bone);padding-top:16px}
+.bn{font:italic 400 40px/1 var(--display);color:var(--bronze)}
+.bstep h4{font:500 13px var(--body);letter-spacing:.16em;text-transform:uppercase;margin:12px 0 8px}
+.bstep p{font-size:15px;margin:0}
+.bstrip{display:grid;grid-template-columns:3fr 4fr 3fr;gap:14px;margin-top:48px;align-items:end}
+.bstrip figure,.blb figure,.brg figure,.bcg figure,.bvg figure{aspect-ratio:4/5}
+.blb{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:14px;margin-top:clamp(40px,6vw,72px)}
+.blb.rev .bh{order:2}
+.bside{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-content:start}
+.bnote{grid-column:1/-1;padding-top:6px}
+.bnote h3{font:400 clamp(28px,3vw,40px)/1.1 var(--display);margin:8px 0 10px}
+.bspec{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px;margin:14px 0 0;border-top:1px solid var(--line);padding-top:12px}
+.bspec dt{font:400 10px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mute);padding-top:4px}
+.bspec dd{margin:0}
+.bcg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;margin-top:28px;align-items:start}
+.bcg .c7{grid-column:span 7}.bcg .c5{grid-column:span 5}.bcg .c4{grid-column:span 4}.bcg .c6{grid-column:span 6}.bcg .end{align-self:end}
+.bquote{font:italic 400 clamp(26px,3.4vw,46px)/1.15 var(--display);color:var(--bronze);text-align:center;max-width:22ch;margin:clamp(48px,7vw,88px) auto 20px}
+.brg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.bvg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.bvw{margin-top:14px}.bvw figure{aspect-ratio:16/9}
+.bsx video{display:block;width:100%;height:100%;object-fit:cover}
+.bpair{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.bpair figure{aspect-ratio:16/9}
+.bend{background:#13201a;color:#eef1ec;padding-block:clamp(56px,8vw,104px)}
+.bend-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end}
+.bend h2{color:#eef1ec}.bend h2 em{color:#a9d6b6}.bend p{color:#c3cdc6}.bend .bkick{color:#a9d6b6}
+.bend figure{aspect-ratio:4/5}
+.blist{list-style:none;padding:0;margin:20px 0 0;border-top:1px solid rgba(238,241,236,.2)}
+.blist li{padding:12px 0;border-bottom:1px solid rgba(238,241,236,.2);color:#dfe5e0}
+.bctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.bend .btn{border-color:#eef1ec;color:#eef1ec}.bend .btn.solid{background:#eef1ec;color:#13201a}
+@media (max-width:860px){.bed,.blb,.bend-in{grid-template-columns:1fr}.blb.rev .bh{order:0}.bsteps{grid-template-columns:1fr 1fr}.bvg{grid-template-columns:1fr 1fr}.brg{grid-template-columns:1fr 1fr}.bcg{grid-template-columns:1fr 1fr}.bcg figure{grid-column:auto!important}.bcg .c7:first-child:nth-last-child(2),.bcg .c6{grid-column:auto}}
+@media (max-width:560px){.bsteps{grid-template-columns:1fr}.bpair{grid-template-columns:1fr}.bstrip{grid-template-columns:1fr 1fr}.bstrip figure:last-child{display:none}.bback{position:static;display:inline-block;margin-bottom:8px}.blogo{margin-top:6px}}
 .camp-note{font-size:14px;color:var(--mute);margin-top:18px}
 @media (max-width:760px){.cbanner img{height:520px;object-position:62% 30%}.cbanner p{font-size:14px}.camp-head{grid-template-columns:1fr}.cbanner::after{background:linear-gradient(0deg,rgba(15,12,10,.8) 0%,rgba(15,12,10,.2) 60%,rgba(15,12,10,0) 100%)}}
 </style>
@@ -417,14 +490,106 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <h2 data-i="cpt">Campa<em>nhas</em></h2>
         <p data-i="cpp">Campanhas conceito que o Studio Forma cria do zero: marca, cenário, modelos e direção de arte. Cada uma mostra até onde dá para levar uma coleção com IA.</p>
       </div>
-      <article class="camp">
-        <div class="camp-head">
-          <div><span class="num">Nº 01</span><h3>Between <em>Sets</em></h3></div>
-          <div><span class="tag" data-i="cpg">Campanha conceito</span><p data-i="cpd" style="margin-top:12px">Moda tênis premium numa quadra ao ar livre, com Aiko, Iara, Alice e Lívia. Fotografado como frame de filme: grão, luz de fim de tarde e cor contida.</p></div>
+      <div class="ccards">
+        <a class="ccard rv" href="#between-sets">
+          <img src="media/bs-imax-06-aiko-alice-sentadas.webp" alt="Between Sets, capa" loading="lazy">
+          <div class="cc-in"><span class="num">Nº 01</span><h3>Between <em>Sets</em></h3><span class="cc-sub" data-i="cpg2">Campanha conceito · Moda tênis</span><span class="go" data-i="cpgo">Entrar na campanha →</span></div>
+        </a>
+        <div class="ccard soon" aria-hidden="true"><div class="cc-in"><span class="num">Nº 02</span><span class="cc-sub" data-i="cpsoon">Próxima campanha em breve</span></div></div>
+      </div>
+      <p class="camp-note" data-i="cpn">A marca é fictícia. Quadra, modelos e roupas foram criados com IA pelo Studio Forma.</p>
+    </div>
+  </section>
+</div>
+<div class="page" data-page="between-sets">
+  <section class="bsx">
+    <div class="bcover">
+      <img src="media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas na quadra">
+      <div class="bmast"><a class="bback" href="#campanhas" data-i="bsback">← Campanhas</a><div class="blogo">BETWEEN SETS</div><div class="bissue" data-i="bsissue">Nº 01 · Campanha conceito · Moda tênis premium</div></div>
+      <ul class="blines"><li data-i="bsl1">O intervalo como conceito</li><li data-i="bsl2">Uma campanha externa inteira</li><li data-i="bsl3">Quatro modelos, uma quadra</li></ul>
+    </div>
+    <nav class="bindex" aria-label="Seções"><a href="#bs-carta" data-i="bsi1">Carta</a><a href="#bs-processo" data-i="bsi2">Processo</a><a href="#bs-lookbook" data-i="bsi3">Lookbook</a><a href="#bs-conceito" data-i="bsi4">Conceito</a><a href="#bs-respiros" data-i="bsi5">Respiros</a><a href="#bs-movimento" data-i="bsi6">Em movimento</a><a href="#bs-aberto" data-i="bsi7">Plano aberto</a></nav>
+    <div class="wrap">
+      <div class="bsec" id="bs-carta">
+        <div class="bed rv">
+          <div><span class="bkick" data-i="bsk1">Carta do estúdio</span><h2 data-i="bsh1">Entre um set <em>e outro</em></h2></div>
+          <div><p class="blede" data-i="bsc1">Toda partida tem um momento que ninguém fotografa: a toalha no pescoço, o banco de madeira, a respiração voltando ao normal. Foi esse intervalo que escolhemos como campanha.</p>
+          <p data-i="bsc2">Between Sets é uma marca fictícia de roupa fitness premium, criada por nós para mostrar uma coisa simples: conseguimos tirar qualquer conceito do papel e transformá-lo numa campanha externa completa, com locação, elenco, luz e linguagem de cinema.</p>
+          <p data-i="bsc3">Nas próximas seções, em vez de vender peças, mostramos como pensamos. O que guiou cada escolha, por que a cor é tão contida, por que ninguém olha para a câmera.</p></div>
         </div>
-        <div class="feed" id="feed-bs"><button type="button" data-ci="0"><img src="media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy"></button><button type="button" data-ci="1"><img src="media/bs-imax-05-livia-rede.webp" alt="Lívia na rede" loading="lazy"></button><button type="button" data-ci="2"><img src="media/bs-imax-01-aiko-forehand.webp" alt="Aiko, forehand" loading="lazy"></button><button type="button" data-ci="3"><img src="media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy"></button><button type="button" data-ci="4"><img src="media/bs-filme-04-livia-rede-agua.webp" alt="Lívia bebendo água" loading="lazy"></button><button type="button" data-ci="5"><img src="media/bs-imax-07-alice-saque.webp" alt="Alice no saque" loading="lazy"></button><button type="button" data-ci="6"><img src="media/bs-conceito-04-aiko-alice-dupla.webp" alt="Aiko e Alice" loading="lazy"></button><button type="button" data-ci="7"><img src="media/bs-imax-04-iara-banco.webp" alt="Iara no banco" loading="lazy"></button><button type="button" data-ci="8"><img src="media/bs-cine-02-iara-amarrando-tenis.webp" alt="Iara amarrando o tênis" loading="lazy"></button><button type="button" data-ci="9"><img src="media/bs-imax-08-iara-corrida.webp" alt="Iara correndo" loading="lazy"></button><button type="button" data-ci="10"><img src="media/bs-respiro-03-mao-raquete.webp" alt="Mão na raquete" loading="lazy"></button><button type="button" data-ci="11"><img src="media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas" loading="lazy"></button><button type="button" data-ci="12"><img src="media/bs-filme-01-aiko-indo-quadra.webp" alt="Aiko indo para a quadra" loading="lazy"></button><button type="button" data-ci="13"><img src="media/bs-imax-02-iara-livia-deitadas-rede.webp" alt="Iara e Lívia deitadas" loading="lazy"></button><button type="button" data-ci="14"><img src="media/bs-cine-03-alice-livia-rede-pb.webp" alt="Alice e Lívia, preto e branco" loading="lazy"></button><button type="button" data-ci="15"><img src="media/bs-respiro-01-banco-rede.webp" alt="O banco" loading="lazy"></button><button type="button" data-ci="16"><img src="media/bs-livia-03-meio-corpo.webp" alt="Lívia, lookbook" loading="lazy"></button><button type="button" data-ci="17"><img src="media/bs-aiko-04-caminhando.webp" alt="Aiko, lookbook" loading="lazy"></button><button type="button" data-ci="18"><img src="media/bs-filme-02-iara-toalha.webp" alt="Iara com a toalha" loading="lazy"></button><button type="button" data-ci="19"><img src="media/bs-respiro-06-cesto-bolas.webp" alt="Cesto de bolas" loading="lazy"></button><button type="button" data-ci="20"><img src="media/bs-cine-01-aiko-quadra-pb.webp" alt="Aiko, preto e branco" loading="lazy"></button></div>
-        <p class="camp-note" data-i="cpn">A marca é fictícia. Quadra, modelos e roupas foram criados com IA pelo Studio Forma.</p>
-      </article>
+        <figure class="bwide rv"><img src="media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy" data-z></figure><p class="bcap"><b>Fig. 01</b><span data-i="bsf1">Fim de jogo. O quadro que resume a campanha: ninguém posando, todo mundo presente.</span></p>
+      </div>
+      <div class="bsec" id="bs-processo">
+        <div class="bed rv"><div><span class="bkick" data-i="bsk2">Como fizemos</span><h2 data-i="bsh2">Do conceito <em>ao frame</em></h2></div>
+        <p data-i="bsc4">Uma campanha não começa na foto. Começa numa ideia que precisa sobreviver a cada etapa. Estas foram as seis decisões que mantiveram Between Sets coerente do primeiro esboço ao último quadro.</p></div>
+        <div class="bsteps rv"><div class="bstep"><span class="bn">01</span><h4 data-i="bss0t">A ideia</h4><p data-i="bss0p">Fugir do clichê do esforço máximo. A marca vive no intervalo, no corpo que descansa e se prepara. Daí o nome.</p></div><div class="bstep"><span class="bn">02</span><h4 data-i="bss1t">A locação</h4><p data-i="bss1p">Uma quadra real, com cerca verde, árvores e banco de reserva. Ela vira o cenário fixo de toda a campanha, do lookbook ao filme.</p></div><div class="bstep"><span class="bn">03</span><h4 data-i="bss2t">O elenco</h4><p data-i="bss2p">Quatro modelos com identidade própria e consistente em todas as fotos: Aiko, Iara, Alice e Lívia. Cada uma com um look.</p></div><div class="bstep"><span class="bn">04</span><h4 data-i="bss3t">A cor</h4><p data-i="bss3p">Paleta tirada de uma única referência: azul de quadra empoeirado, vinho, verde-musgo e off-white. Saturação baixa, sombras frias, nada de sol dourado.</p></div><div class="bstep"><span class="bn">05</span><h4 data-i="bss4t">A câmera</h4><p data-i="bss4p">Cada imagem é tratada como um frame de filme rodado em película de grande formato. Grão visível, desfoque de movimento e lente anamórfica.</p></div><div class="bstep"><span class="bn">06</span><h4 data-i="bss5t">O ritmo</h4><p data-i="bss5p">Lookbook para mostrar a roupa, conceito para contar a história e respiros de detalhe para dar pausa, como numa revista.</p></div></div>
+        <div class="bstrip rv"><figure class=""><img src="media/bs-respiro-04-bola-linha.webp" alt="Bola na linha" loading="lazy" data-z></figure><figure class=""><img src="media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy" data-z></figure><figure class=""><img src="media/bs-respiro-02-pes-no-banco.webp" alt="Pés no banco" loading="lazy" data-z></figure></div>
+        <p class="bcap"><b>Fig. 02–04</b><span data-i="bsf2">Respiro, conceito e respiro. O detalhe dá pausa para a imagem principal respirar.</span></p>
+      </div>
+      <div class="bsec" id="bs-lookbook">
+        <div class="bed rv"><div><span class="bkick">Lookbook</span><h2 data-i="bsh3">Quatro looks, <em>quatro modelos</em></h2></div>
+        <p data-i="bsc5">No lookbook a roupa é a protagonista, então a câmera desacelera: luz aberta, poses simples e a mesma quadra ao fundo. O grão continua, para a foto nunca perder a pele humana.</p></div>
+        <div class="blb rv">
+  <figure class="bh"><img src="media/bs-aiko-04-caminhando.webp" alt="Aiko" loading="lazy" data-z></figure>
+  <div class="bside"><figure class=""><img src="media/bs-aiko-01-frente.webp" alt="Aiko" loading="lazy" data-z></figure><figure class=""><img src="media/bs-aiko-02-costas.webp" alt="Aiko" loading="lazy" data-z></figure>
+    <div class="bnote"><span class="bkick">Look 01 · Aiko</span><h3 data-i="bslat">Jaqueta e plissado</h3><p data-i="bslap">Jaqueta off-white com vivo verde e saia plissada verde-musgo. Luz aberta e poses simples, para a roupa ser lida inteira.</p>
+    <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslaa">Jaqueta off-white com vivo verde, saia plissada verde-musgo</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bslab">Tênis branco de couro, meia canelada com duas listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
+</div><div class="blb rev rv">
+  <figure class="bh"><img src="media/bs-iara-04-caminhando.webp" alt="Iara" loading="lazy" data-z></figure>
+  <div class="bside"><figure class=""><img src="media/bs-iara-03-meio-corpo.webp" alt="Iara" loading="lazy" data-z></figure><figure class=""><img src="media/bs-iara-02-costas.webp" alt="Iara" loading="lazy" data-z></figure>
+    <div class="bnote"><span class="bkick">Look 02 · Iara</span><h3 data-i="bslbt">Listras de clube</h3><p data-i="bslbp">Uma polo listrada que lembra os clubes antigos, com saia lisa para equilibrar. As listras verdes conversam com a cerca e com as meias, e a peça se lê de longe.</p>
+    <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslba">Polo de tricô off-white com listras verde-garrafa, saia branca de prega lateral</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bslbb">Tênis branco de couro, meia canelada com listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
+</div><div class="blb rv">
+  <figure class="bh"><img src="media/bs-alice-04-caminhando.webp" alt="Alice" loading="lazy" data-z></figure>
+  <div class="bside"><figure class=""><img src="media/bs-alice-01-frente.webp" alt="Alice" loading="lazy" data-z></figure><figure class=""><img src="media/bs-alice-02-costas.webp" alt="Alice" loading="lazy" data-z></figure>
+    <div class="bnote"><span class="bkick">Look 03 · Alice</span><h3 data-i="bslct">Tricô azul</h3><p data-i="bslcp">O único azul forte da campanha está na roupa, não no céu. O suéter de tricô traz o tom da quadra para o corpo, e a gola branca deixa o look com cara de clube.</p>
+    <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslca">Suéter de tricô azul com gola branca, saia plissada branca</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bslcb">Tênis branco de couro, meia canelada com listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
+</div><div class="blb rev rv">
+  <figure class="bh"><img src="media/bs-livia-03-meio-corpo.webp" alt="Lívia" loading="lazy" data-z></figure>
+  <div class="bside"><figure class=""><img src="media/bs-livia-01-frente.webp" alt="Lívia" loading="lazy" data-z></figure><figure class=""><img src="media/bs-livia-02-costas.webp" alt="Lívia" loading="lazy" data-z></figure>
+    <div class="bnote"><span class="bkick">Look 04 · Lívia</span><h3 data-i="bsldt">Vestido de quadra</h3><p data-i="bsldp">Uma peça só, do ombro ao joelho. O vestido branco com zíper e vivo verde é o look mais limpo da campanha, e por isso pede o enquadramento mais simples.</p>
+    <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslda">Vestido branco sem manga com zíper frontal e vivo verde</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bsldb">Tênis branco de couro, meia canelada com listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
+</div>
+      </div>
+      <div class="bsec" id="bs-conceito">
+        <div class="bed rv"><div><span class="bkick" data-i="bsk4">Oito cenas de filme</span><h2 data-i="bsh4">O jogo que <em>ninguém vê</em></h2></div>
+        <p data-i="bsc6">No conceito a roupa sai do centro e entra a história. Cada imagem foi pensada como um quadro arrancado de um longa-metragem: alguém se mexendo, ninguém posando, a câmera chegando um segundo atrasada.</p></div>
+        <div class="bcg rv"><figure class="c7"><img src="media/bs-imax-01-aiko-forehand.webp" alt="Aiko, forehand" loading="lazy" data-z></figure><figure class="c5 end"><img src="media/bs-imax-07-alice-saque.webp" alt="Alice sacando" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 05–06</b><span data-i="bsf3">Movimento real, desfoque real. O borrão é parte da roupa em ação.</span></p>
+        <div class="bcg rv"><figure class="c4"><img src="media/bs-imax-04-iara-banco.webp" alt="Iara no banco" loading="lazy" data-z></figure><figure class="c4"><img src="media/bs-imax-05-livia-rede.webp" alt="Lívia na rede" loading="lazy" data-z></figure><figure class="c4"><img src="media/bs-imax-08-iara-corrida.webp" alt="Iara correndo" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 07–09</b><span data-i="bsf4">Banco, rede e corrida. Duas pausas e um sprint, na mesma luz de tarde nublada.</span></p>
+        <blockquote class="bquote rv" data-i="bsq">“Se alguém olha para a câmera, a cena acabou.”</blockquote>
+        <div class="bcg rv"><figure class="c6"><img src="media/bs-imax-02-iara-livia-deitadas-rede.webp" alt="Iara e Lívia deitadas" loading="lazy" data-z></figure><figure class="c6"><img src="media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 10–11</b><span data-i="bsf5">As duplas. O figurino de cada uma continua legível mesmo quando a cena é sobre a amizade.</span></p>
+        <div class="bcg rv"><figure class="c5 end"><img src="media/bs-conceito-04-aiko-alice-dupla.webp" alt="Aiko e Alice" loading="lazy" data-z></figure><figure class="c7"><img src="media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 12–13</b><span data-i="bsf6">Aiko e Alice. A imagem da capa, aqui no contexto da série.</span></p>
+      </div>
+      <div class="bsec" id="bs-respiros">
+        <div class="bed rv"><div><span class="bkick" data-i="bsk5">O detalhe como pausa</span><h2 data-i="bsh5">Seis <em>respiros</em></h2></div>
+        <p data-i="bsc7">Uma campanha só de modelo cansa o olho. Os respiros são imagens sem rosto: a bola na linha, o cesto, o banco vazio. Eles dão ritmo, viram transição no filme e reforçam a locação sem repetir ninguém.</p></div>
+        <div class="brg rv"><figure class=""><img src="media/bs-respiro-01-banco-rede.webp" alt="Banco e rede" loading="lazy" data-z></figure><figure class=""><img src="media/bs-respiro-03-mao-raquete.webp" alt="Mão na raquete" loading="lazy" data-z></figure><figure class=""><img src="media/bs-respiro-06-cesto-bolas.webp" alt="Cesto de bolas" loading="lazy" data-z></figure><figure class=""><img src="media/bs-respiro-05-rede.webp" alt="Rede" loading="lazy" data-z></figure><figure class=""><img src="media/bs-respiro-04-bola-linha.webp" alt="Bola na linha" loading="lazy" data-z></figure><figure class=""><img src="media/bs-respiro-02-pes-no-banco.webp" alt="Pés no banco" loading="lazy" data-z></figure></div>
+        <p class="bcap"><b>Fig. 14–19</b><span data-i="bsf7">Banco, mão, cesto, rede, bola e pés.</span></p>
+      </div>
+      <div class="bsec" id="bs-movimento">
+        <div class="bed rv"><div><span class="bkick" data-i="bsk6">A campanha se mexe</span><h2 data-i="bsh6">Do frame <em>ao filme</em></h2></div>
+        <div><p data-i="bsc8">Cada foto aprovada vira o primeiro quadro de um vídeo curto. O movimento é contido de propósito: um passo, um giro de cabeça, o vento na saia. A estética de película continua igual.</p>
+        <p data-i="bsc9">Desse material sai o filme principal da campanha e um vídeo por modelo, prontos para Reels, site e lançamento.</p></div></div>
+        <div class="bvg rv"><figure class=""><video src="media/bs-v-aiko-lb-caminhando.mp4" poster="media/bs-v-aiko-lb-caminhando.webp" autoplay muted loop playsinline preload="metadata"></video></figure><figure class=""><video src="media/bs-v-iara-imax8.mp4" poster="media/bs-v-iara-imax8.webp" autoplay muted loop playsinline preload="metadata"></video></figure><figure class=""><video src="media/bs-v-alice-imax7.mp4" poster="media/bs-v-alice-imax7.webp" autoplay muted loop playsinline preload="metadata"></video></figure><figure class=""><video src="media/bs-v-livia-lb-meio.mp4" poster="media/bs-v-livia-lb-meio.webp" autoplay muted loop playsinline preload="metadata"></video></figure></div>
+        <div class="bvw rv"><figure class=""><video src="media/bs-v-h-filme3.mp4" poster="media/bs-v-h-filme3.webp" autoplay muted loop playsinline preload="metadata"></video></figure></div>
+        <p class="bcap"><b>Fig. 20–24</b><span data-i="bsf8">Trechos de cinco segundos de cada modelo e do filme da campanha.</span></p>
+      </div>
+      <div class="bsec" id="bs-aberto">
+        <div class="bed rv"><div><span class="bkick" data-i="bsk7">Formato cinema</span><h2 data-i="bsh7">Plano <em>aberto</em></h2></div>
+        <p data-i="bsc10">As mesmas cenas, agora no formato de cinema. É o enquadramento para banner de site, capa de vídeo e mídia externa, com espaço para a locação contar a sua parte.</p></div>
+        <figure class="bwide rv"><img src="media/bs-cine-01-aiko-quadra-pb.webp" alt="Aiko na quadra" loading="lazy" data-z></figure>
+        <div class="bpair rv"><figure class=""><img src="media/bs-filme-01-aiko-indo-quadra.webp" alt="Aiko indo para a quadra" loading="lazy" data-z></figure><figure class=""><img src="media/bs-cine-02-iara-amarrando-tenis.webp" alt="Iara amarrando o tênis" loading="lazy" data-z></figure><figure class=""><img src="media/bs-filme-02-iara-toalha.webp" alt="Iara com a toalha" loading="lazy" data-z></figure><figure class=""><img src="media/bs-cine-03-alice-livia-rede-pb.webp" alt="Alice e Lívia na rede" loading="lazy" data-z></figure><figure class=""><img src="media/bs-filme-04-livia-rede-agua.webp" alt="Lívia bebendo água" loading="lazy" data-z></figure></div>
+        <p class="bcap"><b>Fig. 25–30</b><span data-i="bsf9">Chegada, preparo, pausa, conversa e fim. Uma tarde inteira em seis quadros.</span></p>
+      </div>
+    </div>
+    <div class="bend">
+      <div class="wrap bend-in">
+        <div><span class="bkick" data-i="bsk8">Seu conceito, sua campanha</span><h2 data-i="bsh8">A marca é fictícia. <em>O método, não.</em></h2>
+        <p data-i="bsc11">Between Sets foi criada do zero para mostrar o que entregamos para marcas de verdade. Trocamos a quadra por praia, estúdio, rua ou montanha, e o tênis por qualquer coleção. O processo é o mesmo.</p>
+        <ul class="blist"><li data-i="bsu1">Conceito, locação e direção de arte</li><li data-i="bsu2">Elenco consistente em todas as imagens</li><li data-i="bsu3">Lookbook para e-commerce</li><li data-i="bsu4">Fotos conceito e cenas em formato cinema</li><li data-i="bsu5">Vídeos curtos e filme de campanha</li></ul>
+        <div class="bctas"><a class="btn solid" href="#servicos" data-i="bscta1">Ver serviços</a><a class="btn" href="#campanhas" data-i="bscta2">Todas as campanhas</a></div></div>
+        <figure class=""><img src="media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy" data-z></figure>
+      </div>
     </div>
   </section>
 </div>
@@ -645,7 +810,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <script>
 const T={
  pt:{},
- en:{nav8:"Campaigns",cbt:"Concept campaign · Nº 01",cbp:"A tennis brand that does not exist, shot on a court that does. Created from scratch by Studio Forma.",cbg:"See the campaign →",cpt:"Cam<em>paigns</em>",cpp:"Concept campaigns Studio Forma creates from scratch: brand, set, models and art direction. Each one shows how far a collection can go with AI.",cpg:"Concept campaign",cpd:"Premium tennis wear on an outdoor court, with Aiko, Iara, Alice and Lívia. Shot like a film frame: grain, late-afternoon light and restrained color.",cpn:"The brand is fictional. Court, models and clothes were created with AI by Studio Forma.",nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
+ en:{cpg2:"Concept campaign · Tennis fashion",cpgo:"Enter the campaign →",cpsoon:"Next campaign coming soon",bsback:"← Campaigns",bsissue:"Nº 01 · Concept campaign · Premium tennis fashion",bsl1:"The break as a concept",bsl2:"A full outdoor campaign",bsl3:"Four models, one court",bsi1:"Letter",bsi2:"Process",bsi3:"Lookbook",bsi4:"Concept",bsi5:"Details",bsi6:"In motion",bsi7:"Wide shot",bsk1:"Studio letter",bsh1:"Between one set <em>and the next</em>",bsc1:"Every match has a moment nobody photographs: the towel around the neck, the wooden bench, the breath settling down. That break is what we chose as the campaign.",bsc2:"Between Sets is a fictional premium activewear brand, created by us to show one simple thing: we can take any concept off the page and turn it into a complete outdoor campaign, with location, cast, light and the language of cinema.",bsc3:"In the sections below, instead of selling garments, we show how we think. What guided each choice, why the color is so restrained, why nobody looks at the camera.",bsf1:"Game over. The frame that sums up the campaign: nobody posing, everyone present.",bsk2:"How we made it",bsh2:"From concept <em>to frame</em>",bsc4:"A campaign does not start with the photo. It starts with an idea that has to survive every step. These six decisions kept Between Sets consistent from the first sketch to the last frame.",bss0t:"The idea",bss0p:"Avoid the cliché of maximum effort. The brand lives in the break, in the body that rests and gets ready. Hence the name.",bss1t:"The location",bss1p:"A real court, with a green fence, trees and a players’ bench. It is the fixed set of the whole campaign, from lookbook to film.",bss2t:"The cast",bss2p:"Four models with their own identity, consistent in every photo: Aiko, Iara, Alice and Lívia. One look each.",bss3t:"The color",bss3p:"A palette taken from a single reference: dusty court blue, wine, moss green and off-white. Low saturation, cool shadows, no golden sun.",bss4t:"The camera",bss4p:"Every image is treated as a film frame shot on large-format stock. Visible grain, motion blur and an anamorphic lens.",bss5t:"The rhythm",bss5p:"Lookbook to show the clothes, concept to tell the story and detail shots to pause, like in a magazine.",bsf2:"Detail, concept and detail. The detail gives the main image room to breathe.",bsh3:"Four looks, <em>four models</em>",bsc5:"In the lookbook the garment is the lead, so the camera slows down: open light, simple poses and the same court behind. The grain stays, so the photo never loses human skin.",bsdp:"Pieces",bsdc:"Shoes",bsdl:"Shots",bsdl2:"Front, back, half body and walking",bslat:"Jacket and pleats",bslap:"Off-white jacket with green piping and a moss-green pleated skirt. Open light and simple poses, so the outfit reads in full.",bslaa:"Off-white jacket with green piping, moss-green pleated skirt",bslab:"White leather sneakers, ribbed socks with two green stripes",bslbt:"Club stripes",bslbp:"A striped polo that recalls old tennis clubs, with a plain skirt for balance. The green stripes echo the fence and the socks, and the piece reads from afar.",bslba:"Off-white knit polo with bottle-green stripes, white skirt with side pleat",bslbb:"White leather sneakers, ribbed socks with green stripes",bslct:"Blue knit",bslcp:"The only strong blue in the campaign is in the clothes, not the sky. The knit sweater brings the court color to the body, and the white collar gives it a club feel.",bslca:"Blue knit sweater with white collar, white pleated skirt",bslcb:"White leather sneakers, ribbed socks with green stripes",bsldt:"Court dress",bsldp:"One piece, shoulder to knee. The white dress with zipper and green piping is the cleanest look in the campaign, so it gets the simplest framing.",bslda:"Sleeveless white dress with front zipper and green piping",bsldb:"White leather sneakers, ribbed socks with green stripes",bsk4:"Eight film scenes",bsh4:"The game <em>nobody sees</em>",bsc6:"In the concept shots the garment leaves the center and the story comes in. Each image was thought of as a frame torn from a feature film: someone moving, nobody posing, the camera arriving a second late.",bsf3:"Real movement, real blur. The blur is part of the clothes in action.",bsf4:"Bench, net and sprint. Two pauses and a run, in the same overcast afternoon light.",bsq:"“If someone looks at the camera, the scene is over.”",bsf5:"The pairs. Each outfit stays readable even when the scene is about friendship.",bsf6:"Aiko and Alice. The cover image, here in the context of the series.",bsk5:"Detail as a pause",bsh5:"Six <em>details</em>",bsc7:"A campaign of only models tires the eye. The detail shots have no faces: the ball on the line, the basket, the empty bench. They give rhythm, become transitions in the film and reinforce the location without repeating anyone.",bsf7:"Bench, hand, basket, net, ball and feet.",bsk6:"The campaign moves",bsh6:"From frame <em>to film</em>",bsc8:"Every approved photo becomes the first frame of a short video. The movement is restrained on purpose: a step, a turn of the head, the wind in the skirt. The film look stays the same.",bsc9:"This material becomes the main campaign film and one video per model, ready for Reels, website and launch.",bsf8:"Five-second clips of each model and of the campaign film.",bsk7:"Cinema format",bsh7:"Wide <em>shot</em>",bsc10:"The same scenes, now in cinema format. The framing for website banners, video covers and out-of-home media, with room for the location to tell its part.",bsf9:"Arrival, prep, pause, conversation and the end. A whole afternoon in six frames.",bsk8:"Your concept, your campaign",bsh8:"The brand is fictional. <em>The method is real.</em>",bsc11:"Between Sets was created from scratch to show what we deliver for real brands. We swap the court for a beach, studio, street or mountain, and tennis for any collection. The process is the same.",bsu1:"Concept, location and art direction",bsu2:"Consistent cast across every image",bsu3:"Lookbook for e-commerce",bsu4:"Concept photos and cinema-format scenes",bsu5:"Short videos and a campaign film",bscta1:"See services",bscta2:"All campaigns",nav8:"Campaigns",cbt:"Concept campaign · Nº 01",cbp:"A tennis brand that does not exist, shot on a court that does. Created from scratch by Studio Forma.",cbg:"See the campaign →",cpt:"Cam<em>paigns</em>",cpp:"Concept campaigns Studio Forma creates from scratch: brand, set, models and art direction. Each one shows how far a collection can go with AI.",cpg:"Concept campaign",cpd:"Premium tennis wear on an outdoor court, with Aiko, Iara, Alice and Lívia. Shot like a film frame: grain, late-afternoon light and restrained color.",cpn:"The brand is fictional. Court, models and clothes were created with AI by Studio Forma.",nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
   kicker:"Visual storytelling with artificial intelligence",h1a:"Your garment,",h1b:"styled and",h1c:"<em>in motion.</em>",
   lede:"Catalog photos and vertical videos featuring Studio Forma's virtual models, made from the clothes you already sell. Ready for your store, Reels and TikTok.",
   m1:"On-model photos",m2:"9:16 video",m3:"Lookbook",
@@ -886,16 +1051,20 @@ document.querySelectorAll(".pc").forEach(b=>b.onclick=()=>{Q.cc.value=Math.max(0
 Q.cc.addEventListener("input",calc);
 
 // one section per page, routed on the hash
-const PAGES=["inicio","processo","portfolio","campanhas","modelos","servicos","pacotes","orcamento","contato"];
+const PAGES=["inicio","processo","portfolio","campanhas","between-sets","modelos","servicos","pacotes","orcamento","contato"];
 function route(){
-  let id=(location.hash||"#inicio").slice(1);if(!PAGES.includes(id))id="inicio";
+  const h=(location.hash||"#inicio").slice(1);
+  if(h.startsWith("bs-")){const t=document.getElementById(h);if(t&&!document.querySelector('[data-page="between-sets"]').hidden){t.scrollIntoView({behavior:"smooth"});return}}
+  let id=h.startsWith("bs-")?"between-sets":h;if(!PAGES.includes(id))id="inicio";
+  const nav=id==="between-sets"?"campanhas":id;
   document.querySelectorAll(".page").forEach(pg=>{const on=pg.dataset.page===id;pg.hidden=!on;if(!on)pg.querySelectorAll("video").forEach(v=>v.pause())});
-  document.querySelectorAll(".page:not([hidden]) .reels video,.page:not([hidden]) .flow video").forEach(v=>v.play().catch(()=>{}));
-  document.querySelectorAll("#tabs a").forEach(a=>{if(a.getAttribute("href")==="#"+id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  document.querySelectorAll(".page:not([hidden]) .reels video,.page:not([hidden]) .flow video,.page:not([hidden]) .bsx video").forEach(v=>v.play().catch(()=>{}));
+  document.querySelectorAll("#tabs a").forEach(a=>{if(a.getAttribute("href")==="#"+nav)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
   const cur=document.querySelector('#tabs a[aria-current="page"]');if(cur)cur.scrollIntoView({block:"nearest",inline:"center"});
-  const nx=PAGES[(PAGES.indexOf(id)+1)%PAGES.length],na=document.querySelector(`#tabs a[href="#${nx}"]`);
+  const NP=PAGES.filter(x=>x!=="between-sets"),nx=NP[(NP.indexOf(nav)+1)%NP.length],na=document.querySelector(`#tabs a[href="#${nx}"]`);
   $("#next").href="#"+nx;$("#next-name").textContent=na.textContent+" →";
   window.scrollTo(0,0);
+  if(h.startsWith("bs-"))setTimeout(()=>{const t=document.getElementById(h);t&&t.scrollIntoView()},60);
 }
 addEventListener("hashchange",route);
 document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
@@ -971,7 +1140,7 @@ btn.onclick=async()=>{
 
 <script>
 // campaign feed: tap a photo to open it in the same full-screen viewer as the portfolio
-(function(){const f=document.getElementById("feed-bs");if(!f)return;const items=[...f.querySelectorAll("img")].map(i=>({type:"image",src:i.getAttribute("src")}));
-f.addEventListener("click",e=>{const b=e.target.closest("button[data-ci]");if(!b)return;visible=items;openLb(+b.dataset.ci)})})();
+(function(){const t=document.querySelector(".top"),sz=()=>{if(t)document.documentElement.style.setProperty("--toph",t.offsetHeight+"px")};sz();addEventListener("resize",sz);const r=document.querySelector(".bsx");if(!r)return;const imgs=[...r.querySelectorAll("img[data-z]")],items=imgs.map(i=>({type:"image",src:i.getAttribute("src")}));
+r.addEventListener("click",e=>{const i=imgs.indexOf(e.target);if(i<0)return;visible=items;openLb(i)})})();
 </script>
 </body></html>
