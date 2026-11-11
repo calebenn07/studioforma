@@ -184,7 +184,7 @@ section{padding-block:clamp(64px,10vw,140px)}
 #mo-br{margin-top:clamp(48px,6vw,80px);padding-top:clamp(32px,4vw,56px);border-top:1px solid var(--line)}
 .vol{margin-top:clamp(48px,6vw,80px);padding-top:clamp(32px,4vw,56px);border-top:1px solid var(--line)}
 .vol[hidden],#mo-br[hidden],#mo-old[hidden],.qrow[hidden]{display:none}
-.volh{font-size:clamp(30px,3.6vw,48px)}
+
 .badge{display:inline-block;margin-left:8px;padding:4px 8px;border-radius:999px;background:var(--bronze);color:var(--ink);letter-spacing:.12em}
 .menus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(28px,5vw,72px);margin-top:clamp(48px,6vw,80px)}
 .mh{font-size:clamp(24px,2.2vw,30px);margin-bottom:12px}
@@ -297,21 +297,11 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .cbanner:hover img{transform:scale(1.02)}
 .cbanner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,12,10,.72) 0%,rgba(15,12,10,.35) 45%,rgba(15,12,10,0) 70%)}
 .cbanner .cb-in{position:absolute;inset:auto 0 0 0;z-index:1;padding-block:clamp(24px,4vw,48px)}
-.cbanner .tag,.camp .tag{display:inline-block;font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;border:1px solid currentColor;padding:7px 10px;border-radius:999px}
+.cbanner .tag{display:inline-block;font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;border:1px solid currentColor;padding:7px 10px;border-radius:999px}
 .cbanner h2{font:400 clamp(36px,6vw,72px)/1.05 var(--display);margin:14px 0 8px;color:#f4f0ea}
 .cbanner h2 em{color:#a9d6b6}
 .cbanner p{margin:0 0 18px;max-width:46ch;color:rgba(244,240,234,.86)}
 .cbanner .go{font:500 15px var(--body);display:inline-flex;gap:8px;align-items:center;border-bottom:1px solid currentColor;padding-bottom:3px}
-.camp{border-top:1px solid var(--line);padding-top:28px;margin-top:8px}
-.camp-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,40ch);gap:16px 48px;align-items:end;margin-bottom:28px}
-.camp-head .num{font:400 13px var(--mono);letter-spacing:.14em;color:var(--mute)}
-.camp-head h3{font:400 clamp(34px,5vw,60px)/1.05 var(--display);margin:8px 0 0}
-.camp-head h3 em{color:var(--bronze)}
-.camp-head p{color:var(--mute);margin:0}
-.camp .tag{color:var(--bronze)}
-.feed{columns:3 260px;column-gap:12px}
-.feed button{display:block;width:100%;margin:0 0 12px;padding:0;border:0;background:none;cursor:zoom-in;break-inside:avoid}
-.feed img{display:block;width:100%;height:auto}
 /* campaign cards + campaign world (Between Sets) */
 .ccards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
 .ccard{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;background:var(--ink-2);color:#f4f0ea;text-decoration:none}
@@ -386,7 +376,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 @media (max-width:860px){.bed,.blb,.bend-in{grid-template-columns:1fr}.blb.rev .bh{order:0}.bsteps{grid-template-columns:1fr 1fr}.bvg{grid-template-columns:1fr 1fr}.brg{grid-template-columns:1fr 1fr}.bcg{grid-template-columns:1fr 1fr}.bcg figure{grid-column:auto!important}.bcg .c7:first-child:nth-last-child(2),.bcg .c6{grid-column:auto}}
 @media (max-width:560px){.bsteps{grid-template-columns:1fr}.bpair{grid-template-columns:1fr}.bstrip{grid-template-columns:1fr 1fr}.bstrip figure:last-child{display:none}.bback{position:static;display:inline-block;margin-bottom:8px}.blogo{margin-top:6px}}
 .camp-note{font-size:14px;color:var(--mute);margin-top:18px}
-@media (max-width:760px){.cbanner img{height:520px;object-position:62% 30%}.cbanner p{font-size:14px}.camp-head{grid-template-columns:1fr}.cbanner::after{background:linear-gradient(0deg,rgba(15,12,10,.8) 0%,rgba(15,12,10,.2) 60%,rgba(15,12,10,0) 100%)}}
+@media (max-width:760px){.cbanner img{height:520px;object-position:62% 30%}.cbanner p{font-size:14px}.cbanner::after{background:linear-gradient(0deg,rgba(15,12,10,.8) 0%,rgba(15,12,10,.2) 60%,rgba(15,12,10,0) 100%)}}
 </style>
 
 <header class="top">
@@ -499,7 +489,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <div class="page" data-page="between-sets">
   <section class="bsx">
     <div class="bcover">
-      <img src="../media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas na quadra">
+      <img src="../media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas na quadra" loading="lazy" decoding="async">
       <div class="bmast"><a class="bback" href="#campanhas" data-i="bsback">← Campanhas</a><div class="blogo">BETWEEN SETS</div><div class="bissue" data-i="bsissue">Nº 01 · Campanha conceito · Moda tênis premium</div></div>
       <ul class="blines"><li data-i="bsl1">O intervalo como conceito</li><li data-i="bsl2">Uma campanha externa inteira</li><li data-i="bsl3">Quatro modelos, uma quadra</li></ul>
     </div>
@@ -512,36 +502,36 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <p data-i="bsc2">Between Sets é uma marca fictícia de roupa fitness premium, criada por nós para mostrar uma coisa simples: conseguimos tirar qualquer conceito do papel e transformá-lo numa campanha externa completa, com locação, elenco, luz e linguagem de cinema.</p>
           <p data-i="bsc3">Nas próximas seções, em vez de vender peças, mostramos como pensamos. O que guiou cada escolha, por que a cor é tão contida, por que ninguém olha para a câmera.</p></div>
         </div>
-        <figure class="bwide rv"><img src="../media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy" data-z></figure><p class="bcap"><b>Fig. 01</b><span data-i="bsf1">Fim de jogo. O quadro que resume a campanha: ninguém posando, todo mundo presente.</span></p>
+        <figure class="bwide rv"><img src="../media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy" decoding="async" data-z></figure><p class="bcap"><b>Fig. 01</b><span data-i="bsf1">Fim de jogo. O quadro que resume a campanha: ninguém posando, todo mundo presente.</span></p>
       </div>
       <div class="bsec" id="bs-processo">
         <div class="bed rv"><div><span class="bkick" data-i="bsk2">Como fizemos</span><h2 data-i="bsh2">Do conceito <em>ao frame</em></h2></div>
         <p data-i="bsc4">Uma campanha não começa na foto. Começa numa ideia que precisa sobreviver a cada etapa. Estas foram as seis decisões que mantiveram Between Sets coerente do primeiro esboço ao último quadro.</p></div>
         <div class="bsteps rv"><div class="bstep"><span class="bn">01</span><h4 data-i="bss0t">A ideia</h4><p data-i="bss0p">Fugir do clichê do esforço máximo. A marca vive no intervalo, no corpo que descansa e se prepara. Daí o nome.</p></div><div class="bstep"><span class="bn">02</span><h4 data-i="bss1t">A locação</h4><p data-i="bss1p">Uma quadra real, com cerca verde, árvores e banco de reserva. Ela vira o cenário fixo de toda a campanha, do lookbook ao filme.</p></div><div class="bstep"><span class="bn">03</span><h4 data-i="bss2t">O elenco</h4><p data-i="bss2p">Quatro modelos com identidade própria e consistente em todas as fotos: Aiko, Iara, Alice e Lívia. Cada uma com um look.</p></div><div class="bstep"><span class="bn">04</span><h4 data-i="bss3t">A cor</h4><p data-i="bss3p">Paleta tirada de uma única referência: azul de quadra empoeirado, vinho, verde-musgo e off-white. Saturação baixa, sombras frias, nada de sol dourado.</p></div><div class="bstep"><span class="bn">05</span><h4 data-i="bss4t">A câmera</h4><p data-i="bss4p">Cada imagem é tratada como um frame de filme rodado em película de grande formato. Grão visível, desfoque de movimento e lente anamórfica.</p></div><div class="bstep"><span class="bn">06</span><h4 data-i="bss5t">O ritmo</h4><p data-i="bss5p">Lookbook para mostrar a roupa, conceito para contar a história e respiros de detalhe para dar pausa, como numa revista.</p></div></div>
-        <div class="bstrip rv"><figure class=""><img src="../media/bs-respiro-04-bola-linha.webp" alt="Bola na linha" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-respiro-02-pes-no-banco.webp" alt="Pés no banco" loading="lazy" data-z></figure></div>
+        <div class="bstrip rv"><figure class=""><img src="../media/bs-respiro-04-bola-linha.webp" alt="Bola na linha" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-respiro-02-pes-no-banco.webp" alt="Pés no banco" loading="lazy" decoding="async" data-z></figure></div>
         <p class="bcap"><b>Fig. 02–04</b><span data-i="bsf2">Respiro, conceito e respiro. O detalhe dá pausa para a imagem principal respirar.</span></p>
       </div>
       <div class="bsec" id="bs-lookbook">
         <div class="bed rv"><div><span class="bkick">Lookbook</span><h2 data-i="bsh3">Quatro looks, <em>quatro modelos</em></h2></div>
         <p data-i="bsc5">No lookbook a roupa é a protagonista, então a câmera desacelera: luz aberta, poses simples e a mesma quadra ao fundo. O grão continua, para a foto nunca perder a pele humana.</p></div>
         <div class="blb rv">
-  <figure class="bh"><img src="../media/bs-aiko-04-caminhando.webp" alt="Aiko" loading="lazy" data-z></figure>
-  <div class="bside"><figure class=""><img src="../media/bs-aiko-01-frente.webp" alt="Aiko" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-aiko-02-costas.webp" alt="Aiko" loading="lazy" data-z></figure>
+  <figure class="bh"><img src="../media/bs-aiko-04-caminhando.webp" alt="Aiko" loading="lazy" decoding="async" data-z></figure>
+  <div class="bside"><figure class=""><img src="../media/bs-aiko-01-frente.webp" alt="Aiko" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-aiko-02-costas.webp" alt="Aiko" loading="lazy" decoding="async" data-z></figure>
     <div class="bnote"><span class="bkick">Look 01 · Aiko</span><h3 data-i="bslat">Jaqueta e plissado</h3><p data-i="bslap">Jaqueta off-white com vivo verde e saia plissada verde-musgo. Luz aberta e poses simples, para a roupa ser lida inteira.</p>
     <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslaa">Jaqueta off-white com vivo verde, saia plissada verde-musgo</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bslab">Tênis branco de couro, meia canelada com duas listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
 </div><div class="blb rev rv">
-  <figure class="bh"><img src="../media/bs-iara-04-caminhando.webp" alt="Iara" loading="lazy" data-z></figure>
-  <div class="bside"><figure class=""><img src="../media/bs-iara-03-meio-corpo.webp" alt="Iara" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-iara-02-costas.webp" alt="Iara" loading="lazy" data-z></figure>
+  <figure class="bh"><img src="../media/bs-iara-04-caminhando.webp" alt="Iara" loading="lazy" decoding="async" data-z></figure>
+  <div class="bside"><figure class=""><img src="../media/bs-iara-03-meio-corpo.webp" alt="Iara" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-iara-02-costas.webp" alt="Iara" loading="lazy" decoding="async" data-z></figure>
     <div class="bnote"><span class="bkick">Look 02 · Iara</span><h3 data-i="bslbt">Listras de clube</h3><p data-i="bslbp">Uma polo listrada que lembra os clubes antigos, com saia lisa para equilibrar. As listras verdes conversam com a cerca e com as meias, e a peça se lê de longe.</p>
     <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslba">Polo de tricô off-white com listras verde-garrafa, saia branca de prega lateral</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bslbb">Tênis branco de couro, meia canelada com listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
 </div><div class="blb rv">
-  <figure class="bh"><img src="../media/bs-alice-04-caminhando.webp" alt="Alice" loading="lazy" data-z></figure>
-  <div class="bside"><figure class=""><img src="../media/bs-alice-01-frente.webp" alt="Alice" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-alice-02-costas.webp" alt="Alice" loading="lazy" data-z></figure>
+  <figure class="bh"><img src="../media/bs-alice-04-caminhando.webp" alt="Alice" loading="lazy" decoding="async" data-z></figure>
+  <div class="bside"><figure class=""><img src="../media/bs-alice-01-frente.webp" alt="Alice" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-alice-02-costas.webp" alt="Alice" loading="lazy" decoding="async" data-z></figure>
     <div class="bnote"><span class="bkick">Look 03 · Alice</span><h3 data-i="bslct">Tricô azul</h3><p data-i="bslcp">O único azul forte da campanha está na roupa, não no céu. O suéter de tricô traz o tom da quadra para o corpo, e a gola branca deixa o look com cara de clube.</p>
     <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslca">Suéter de tricô azul com gola branca, saia plissada branca</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bslcb">Tênis branco de couro, meia canelada com listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
 </div><div class="blb rev rv">
-  <figure class="bh"><img src="../media/bs-livia-03-meio-corpo.webp" alt="Lívia" loading="lazy" data-z></figure>
-  <div class="bside"><figure class=""><img src="../media/bs-livia-01-frente.webp" alt="Lívia" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-livia-02-costas.webp" alt="Lívia" loading="lazy" data-z></figure>
+  <figure class="bh"><img src="../media/bs-livia-03-meio-corpo.webp" alt="Lívia" loading="lazy" decoding="async" data-z></figure>
+  <div class="bside"><figure class=""><img src="../media/bs-livia-01-frente.webp" alt="Lívia" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-livia-02-costas.webp" alt="Lívia" loading="lazy" decoding="async" data-z></figure>
     <div class="bnote"><span class="bkick">Look 04 · Lívia</span><h3 data-i="bsldt">Vestido de quadra</h3><p data-i="bsldp">Uma peça só, do ombro ao joelho. O vestido branco com zíper e vivo verde é o look mais limpo da campanha, e por isso pede o enquadramento mais simples.</p>
     <dl class="bspec"><dt data-i="bsdp">Peças</dt><dd data-i="bslda">Vestido branco sem manga com zíper frontal e vivo verde</dd><dt data-i="bsdc">Calçado</dt><dd data-i="bsldb">Tênis branco de couro, meia canelada com listras verdes</dd><dt data-i="bsdl">Planos</dt><dd data-i="bsdl2">Frente, costas, meio corpo e caminhando</dd></dl></div></div>
 </div>
@@ -549,31 +539,31 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
       <div class="bsec" id="bs-conceito">
         <div class="bed rv"><div><span class="bkick" data-i="bsk4">Oito cenas de filme</span><h2 data-i="bsh4">O jogo que <em>ninguém vê</em></h2></div>
         <p data-i="bsc6">No conceito a roupa sai do centro e entra a história. Cada imagem foi pensada como um quadro arrancado de um longa-metragem: alguém se mexendo, ninguém posando, a câmera chegando um segundo atrasada.</p></div>
-        <div class="bcg rv"><figure class="c7"><img src="../media/bs-imax-01-aiko-forehand.webp" alt="Aiko, forehand" loading="lazy" data-z></figure><figure class="c5 end"><img src="../media/bs-imax-07-alice-saque.webp" alt="Alice sacando" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 05–06</b><span data-i="bsf3">Movimento real, desfoque real. O borrão é parte da roupa em ação.</span></p>
-        <div class="bcg rv"><figure class="c4"><img src="../media/bs-imax-04-iara-banco.webp" alt="Iara no banco" loading="lazy" data-z></figure><figure class="c4"><img src="../media/bs-imax-05-livia-rede.webp" alt="Lívia na rede" loading="lazy" data-z></figure><figure class="c4"><img src="../media/bs-imax-08-iara-corrida.webp" alt="Iara correndo" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 07–09</b><span data-i="bsf4">Banco, rede e corrida. Duas pausas e um sprint, na mesma luz de tarde nublada.</span></p>
+        <div class="bcg rv"><figure class="c7"><img src="../media/bs-imax-01-aiko-forehand.webp" alt="Aiko, forehand" loading="lazy" decoding="async" data-z></figure><figure class="c5 end"><img src="../media/bs-imax-07-alice-saque.webp" alt="Alice sacando" loading="lazy" decoding="async" data-z></figure></div><p class="bcap"><b>Fig. 05–06</b><span data-i="bsf3">Movimento real, desfoque real. O borrão é parte da roupa em ação.</span></p>
+        <div class="bcg rv"><figure class="c4"><img src="../media/bs-imax-04-iara-banco.webp" alt="Iara no banco" loading="lazy" decoding="async" data-z></figure><figure class="c4"><img src="../media/bs-imax-05-livia-rede.webp" alt="Lívia na rede" loading="lazy" decoding="async" data-z></figure><figure class="c4"><img src="../media/bs-imax-08-iara-corrida.webp" alt="Iara correndo" loading="lazy" decoding="async" data-z></figure></div><p class="bcap"><b>Fig. 07–09</b><span data-i="bsf4">Banco, rede e corrida. Duas pausas e um sprint, na mesma luz de tarde nublada.</span></p>
         <blockquote class="bquote rv" data-i="bsq">“Se alguém olha para a câmera, a cena acabou.”</blockquote>
-        <div class="bcg rv"><figure class="c6"><img src="../media/bs-imax-02-iara-livia-deitadas-rede.webp" alt="Iara e Lívia deitadas" loading="lazy" data-z></figure><figure class="c6"><img src="../media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 10–11</b><span data-i="bsf5">As duplas. O figurino de cada uma continua legível mesmo quando a cena é sobre a amizade.</span></p>
-        <div class="bcg rv"><figure class="c5 end"><img src="../media/bs-conceito-04-aiko-alice-dupla.webp" alt="Aiko e Alice" loading="lazy" data-z></figure><figure class="c7"><img src="../media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas" loading="lazy" data-z></figure></div><p class="bcap"><b>Fig. 12–13</b><span data-i="bsf6">Aiko e Alice. A imagem da capa, aqui no contexto da série.</span></p>
+        <div class="bcg rv"><figure class="c6"><img src="../media/bs-imax-02-iara-livia-deitadas-rede.webp" alt="Iara e Lívia deitadas" loading="lazy" decoding="async" data-z></figure><figure class="c6"><img src="../media/bs-imax-03-alice-livia-banco-atitude.webp" alt="Alice e Lívia no banco" loading="lazy" decoding="async" data-z></figure></div><p class="bcap"><b>Fig. 10–11</b><span data-i="bsf5">As duplas. O figurino de cada uma continua legível mesmo quando a cena é sobre a amizade.</span></p>
+        <div class="bcg rv"><figure class="c5 end"><img src="../media/bs-conceito-04-aiko-alice-dupla.webp" alt="Aiko e Alice" loading="lazy" decoding="async" data-z></figure><figure class="c7"><img src="../media/bs-imax-06-aiko-alice-sentadas.webp" alt="Aiko e Alice sentadas" loading="lazy" decoding="async" data-z></figure></div><p class="bcap"><b>Fig. 12–13</b><span data-i="bsf6">Aiko e Alice. A imagem da capa, aqui no contexto da série.</span></p>
       </div>
       <div class="bsec" id="bs-respiros">
         <div class="bed rv"><div><span class="bkick" data-i="bsk5">O detalhe como pausa</span><h2 data-i="bsh5">Seis <em>respiros</em></h2></div>
         <p data-i="bsc7">Uma campanha só de modelo cansa o olho. Os respiros são imagens sem rosto: a bola na linha, o cesto, o banco vazio. Eles dão ritmo, viram transição no filme e reforçam a locação sem repetir ninguém.</p></div>
-        <div class="brg rv"><figure class=""><img src="../media/bs-respiro-01-banco-rede.webp" alt="Banco e rede" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-respiro-03-mao-raquete.webp" alt="Mão na raquete" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-respiro-06-cesto-bolas.webp" alt="Cesto de bolas" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-respiro-05-rede.webp" alt="Rede" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-respiro-04-bola-linha.webp" alt="Bola na linha" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-respiro-02-pes-no-banco.webp" alt="Pés no banco" loading="lazy" data-z></figure></div>
+        <div class="brg rv"><figure class=""><img src="../media/bs-respiro-01-banco-rede.webp" alt="Banco e rede" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-respiro-03-mao-raquete.webp" alt="Mão na raquete" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-respiro-06-cesto-bolas.webp" alt="Cesto de bolas" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-respiro-05-rede.webp" alt="Rede" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-respiro-04-bola-linha.webp" alt="Bola na linha" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-respiro-02-pes-no-banco.webp" alt="Pés no banco" loading="lazy" decoding="async" data-z></figure></div>
         <p class="bcap"><b>Fig. 14–19</b><span data-i="bsf7">Banco, mão, cesto, rede, bola e pés.</span></p>
       </div>
       <div class="bsec" id="bs-movimento">
         <div class="bed rv"><div><span class="bkick" data-i="bsk6">A campanha se mexe</span><h2 data-i="bsh6">Do frame <em>ao filme</em></h2></div>
         <div><p data-i="bsc8">Cada foto aprovada vira o primeiro quadro de um vídeo curto. O movimento é contido de propósito: um passo, um giro de cabeça, o vento na saia. A estética de película continua igual.</p>
         <p data-i="bsc9">Desse material sai o filme principal da campanha e um vídeo por modelo, prontos para Reels, site e lançamento.</p></div></div>
-        <div class="bvg rv"><figure class=""><video src="../media/bs-v-aiko-lb-caminhando.mp4" poster="../media/bs-v-aiko-lb-caminhando.webp" autoplay muted loop playsinline preload="metadata"></video></figure><figure class=""><video src="../media/bs-v-iara-imax8.mp4" poster="../media/bs-v-iara-imax8.webp" autoplay muted loop playsinline preload="metadata"></video></figure><figure class=""><video src="../media/bs-v-alice-imax7.mp4" poster="../media/bs-v-alice-imax7.webp" autoplay muted loop playsinline preload="metadata"></video></figure><figure class=""><video src="../media/bs-v-livia-lb-meio.mp4" poster="../media/bs-v-livia-lb-meio.webp" autoplay muted loop playsinline preload="metadata"></video></figure></div>
-        <div class="bvw rv"><figure class=""><video src="../media/bs-v-h-filme3.mp4" poster="../media/bs-v-h-filme3.webp" autoplay muted loop playsinline preload="metadata"></video></figure></div>
+        <div class="bvg rv"><figure class=""><video src="../media/bs-v-aiko-lb-caminhando.mp4" poster="../media/bs-v-aiko-lb-caminhando.webp" muted loop playsinline preload="none"></video></figure><figure class=""><video src="../media/bs-v-iara-imax8.mp4" poster="../media/bs-v-iara-imax8.webp" muted loop playsinline preload="none"></video></figure><figure class=""><video src="../media/bs-v-alice-imax7.mp4" poster="../media/bs-v-alice-imax7.webp" muted loop playsinline preload="none"></video></figure><figure class=""><video src="../media/bs-v-livia-lb-meio.mp4" poster="../media/bs-v-livia-lb-meio.webp" muted loop playsinline preload="none"></video></figure></div>
+        <div class="bvw rv"><figure class=""><video src="../media/bs-v-h-filme3.mp4" poster="../media/bs-v-h-filme3.webp" muted loop playsinline preload="none"></video></figure></div>
         <p class="bcap"><b>Fig. 20–24</b><span data-i="bsf8">Trechos de cinco segundos de cada modelo e do filme da campanha.</span></p>
       </div>
       <div class="bsec" id="bs-aberto">
         <div class="bed rv"><div><span class="bkick" data-i="bsk7">Formato cinema</span><h2 data-i="bsh7">Plano <em>aberto</em></h2></div>
         <p data-i="bsc10">As mesmas cenas, agora no formato de cinema. É o enquadramento para banner de site, capa de vídeo e mídia externa, com espaço para a locação contar a sua parte.</p></div>
-        <figure class="bwide rv"><img src="../media/bs-cine-01-aiko-quadra-pb.webp" alt="Aiko na quadra" loading="lazy" data-z></figure>
-        <div class="bpair rv"><figure class=""><img src="../media/bs-filme-01-aiko-indo-quadra.webp" alt="Aiko indo para a quadra" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-cine-02-iara-amarrando-tenis.webp" alt="Iara amarrando o tênis" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-filme-02-iara-toalha.webp" alt="Iara com a toalha" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-cine-03-alice-livia-rede-pb.webp" alt="Alice e Lívia na rede" loading="lazy" data-z></figure><figure class=""><img src="../media/bs-filme-04-livia-rede-agua.webp" alt="Lívia bebendo água" loading="lazy" data-z></figure></div>
+        <figure class="bwide rv"><img src="../media/bs-cine-01-aiko-quadra-pb.webp" alt="Aiko na quadra" loading="lazy" decoding="async" data-z></figure>
+        <div class="bpair rv"><figure class=""><img src="../media/bs-filme-01-aiko-indo-quadra.webp" alt="Aiko indo para a quadra" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-cine-02-iara-amarrando-tenis.webp" alt="Iara amarrando o tênis" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-filme-02-iara-toalha.webp" alt="Iara com a toalha" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-cine-03-alice-livia-rede-pb.webp" alt="Alice e Lívia na rede" loading="lazy" decoding="async" data-z></figure><figure class=""><img src="../media/bs-filme-04-livia-rede-agua.webp" alt="Lívia bebendo água" loading="lazy" decoding="async" data-z></figure></div>
         <p class="bcap"><b>Fig. 25–30</b><span data-i="bsf9">Chegada, preparo, pausa, conversa e fim. Uma tarde inteira em seis quadros.</span></p>
       </div>
     </div>
@@ -583,7 +573,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <p data-i="bsc11">Between Sets foi criada do zero para mostrar o que entregamos para marcas de verdade. Trocamos a quadra por praia, estúdio, rua ou montanha, e o tênis por qualquer coleção. O processo é o mesmo.</p>
         <ul class="blist"><li data-i="bsu1">Conceito, locação e direção de arte</li><li data-i="bsu2">Elenco consistente em todas as imagens</li><li data-i="bsu3">Lookbook para e-commerce</li><li data-i="bsu4">Fotos conceito e cenas em formato cinema</li><li data-i="bsu5">Vídeos curtos e filme de campanha</li></ul>
         <div class="bctas"><a class="btn solid" href="#servicos" data-i="bscta1">Ver serviços</a><a class="btn" href="#campanhas" data-i="bscta2">Todas as campanhas</a></div></div>
-        <figure class=""><img src="../media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy" data-z></figure>
+        <figure class=""><img src="../media/bs-cine-04-as-quatro.webp" alt="As quatro na quadra" loading="lazy" decoding="async" data-z></figure>
       </div>
     </div>
   </section>
@@ -749,13 +739,14 @@ function renderTabs(){
 function renderFlow(anim){
   const lk=LOOKS[look-1],l=L[lang],f=$("#flow");
   const third=lk.video
-    ?`<video src="${lk.video}" poster="${lk.poster}" autoplay muted loop playsinline></video>`
-    :`<img src="${lk.photo2}" alt="">`;
+    ?`<video src="${lk.video}" poster="${lk.poster}" muted loop playsinline preload="none"></video>`
+    :`<img src="${lk.photo2}" alt="" loading="lazy" decoding="async">`;
   f.innerHTML=`
-   <div class="step"><div class="frame ref"><img src="${lk.ref}" alt="${l.looks[look-1]}"></div><div class="lbl"><b>${l.piece}</b><span class="eyebrow">${l.ref}</span></div></div>
-   <div class="step"><div class="frame"><img src="${lk.photo}" alt=""></div><div class="lbl"><b>${l.cat}</b><span class="eyebrow">${l.photoL} · ${mname(lk.model)}</span></div></div>
+   <div class="step"><div class="frame ref"><img src="${lk.ref}" alt="${l.looks[look-1]}" loading="lazy" decoding="async"></div><div class="lbl"><b>${l.piece}</b><span class="eyebrow">${l.ref}</span></div></div>
+   <div class="step"><div class="frame"><img src="${lk.photo}" alt="" loading="lazy" decoding="async"></div><div class="lbl"><b>${l.cat}</b><span class="eyebrow">${l.photoL} · ${mname(lk.model)}</span></div></div>
    <div class="step"><div class="frame">${third}</div><div class="lbl"><b>${lk.video?l.videoL:l.photoL}</b><span class="eyebrow">${lk.video?"9:16":l.poses["pose10-giro"]}</span></div></div>`;
   if(anim){f.classList.remove("swap");void f.offsetWidth;f.classList.add("swap")}
+  if(io)f.querySelectorAll("video").forEach(v=>io.observe(v));
 }
 function renderFilters(){
   const l=L[lang],t=$("#f-type"),m=$("#f-model");t.innerHTML="";m.innerHTML="";
@@ -802,6 +793,7 @@ document.addEventListener("keydown",e=>{if($("#lb").hidden)return;if(e.key==="Es
 
 // play grid videos only while on screen
 io=new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){v.preload="auto";v.play().catch(()=>{})}else v.pause()}),{threshold:.35});
+document.querySelectorAll(".bsx video,#flow video").forEach(v=>io.observe(v));
 
 // gentle reveal; elements stay visible, they only drift into place
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -819,8 +811,7 @@ function route(){
   let id=h.startsWith("bs-")?"between-sets":h;if(!PAGES.includes(id))id="inicio";
   const nav=id==="between-sets"?"campanhas":id;
   document.querySelectorAll(".page").forEach(pg=>{const on=pg.dataset.page===id;pg.hidden=!on;if(!on)pg.querySelectorAll("video").forEach(v=>v.pause())});
-  document.querySelectorAll(".page:not([hidden]) .reels video,.page:not([hidden]) .flow video,.page:not([hidden]) .bsx video").forEach(v=>v.play().catch(()=>{}));
-  document.querySelectorAll("#tabs a").forEach(a=>{if(a.getAttribute("href")==="#"+nav)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+    document.querySelectorAll("#tabs a").forEach(a=>{if(a.getAttribute("href")==="#"+nav)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
   const cur=document.querySelector('#tabs a[aria-current="page"]');if(cur)cur.scrollIntoView({block:"nearest",inline:"center"});
   const NP=PAGES.filter(x=>x!=="between-sets"),nx=NP[(NP.indexOf(nav)+1)%NP.length],na=document.querySelector(`#tabs a[href="#${nx}"]`);
   $("#next").href="#"+nx;$("#next-name").textContent=na.textContent+" →";
