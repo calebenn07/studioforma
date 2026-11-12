@@ -692,7 +692,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
           <dl class="menu">
             <div><dt data-i="a1t">Modelo virtual exclusiva</dt><dd data-p="model">R$ 400</dd><p data-i="a1p">Rosto, corpo, expressões e testes de consistência. Pagamento único.</p></div>
             <div><dt data-i="a2t">Lookbook / e-commerce</dt><dd data-p="lb">R$ 120</dd><p data-i="a2p">Por look: 5 fotos em fundo neutro, prontas para o site.</p></div>
-            <div><dt data-i="a3t">Foto conceito · por look</dt><dd data-p="xcc">R$ 150</dd><p data-i="a3p">Direção de arte, cenário e luz próprios. 2 fotos por look, vertical e horizontal.</p></div>
+            <div><dt data-i="a3t">Foto conceito · por look</dt><dd data-p="xcc">R$ 80</dd><p data-i="a3p">Direção de arte, cenário e luz próprios. 2 fotos por look, vertical e horizontal.</p></div>
             <div><dt data-i="a4t">Vídeos</dt><dd data-p="vid">+ R$ 300</dd><p data-i="a4p">3 vídeos de 15 segundos dos looks que mais vendem, mais um fashion film bônus com os três juntos.</p></div>
           </dl>
         </div>
@@ -974,7 +974,7 @@ if(CUR!=="brl")document.getElementById("q-send").removeAttribute("target"); // W
 document.getElementById("mo-br").hidden=false;document.getElementById("mo-old").hidden=true;
 document.getElementById("vol").hidden=false;
  // this site always shows one currency; the international copy sets "usd"
-const N={brl:{ess:2300,essv:2600,sig1:2700,sig2:2300,mov1:3000,mov2:2600,model:400,lb:120,cc:1200,xlb:120,xcc:150,vid:300,vid1:100,vid10:80,adj:30,v1:990,v2:1990,v3:3750,v1pl:99,v2pl:80,v3pl:75,m1:890,m2:1790,m3:3500},
+const N={brl:{ess:2300,essv:2600,sig1:2700,sig2:2300,mov1:3000,mov2:2600,model:400,lb:120,cc:1200,xlb:120,xcc:80,vid:300,vid1:100,vid10:80,adj:30,v1:990,v2:1990,v3:3750,v1pl:99,v2pl:80,v3pl:75,m1:890,m2:1790,m3:3500},
  usd:{ess:990,essv:1390,sig1:1290,sig2:990,mov1:1690,mov2:1390,model:350,lb:50,cc:600,xlb:50,xcc:110,vid:450,vid1:150,vid10:120,adj:15,v1:990,v2:1990,v3:3750,v1pl:99,v2pl:80,v3pl:75,m1:890,m2:1790,m3:3500}}[CUR];
 const MK=1; // seller copy: commission built into every price (build-vendedor.py sets it)
 if(MK!==1){for(const k in N)N[k]=Math.round(N[k]*MK/10)*10;N.v1pl=Math.round(N.v1/10);N.v2pl=Math.round(N.v2/25);N.v3pl=Math.round(N.v3/50)}
