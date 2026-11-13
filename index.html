@@ -1011,15 +1011,15 @@ function calc(){
   let nv=vidQty(qnum(Q.vd,60));if(nv<10&&nv*N.vid1>=10*N.vid10)nv=10; // never cheaper to ask for more videos
   const ff=nv>=3?Math.max(1,Math.floor(nv/10)):0,vb=nv,vu=nv>=10?N.vid10:N.vid1,vv=nv*vu;
   if(nv){lines.push([pt?`${nv} vídeos de 15 s + ${ff} fashion film${ff>1?"s":""} bônus${sub?" por mês":""}`:`${nv} videos of 15 s + ${ff} bonus fashion film${ff>1?"s":""}${sub?" a month":""}`,vv]);t+=vv}
-  const mo=pick.c+vv; // subscription: package and videos repeat every month
-  const cl=qnum(Q.cc,60);
-  if(cl){const v=cl*N.xcc;lines.push([pt?`Conceito de coleção: ${cl} look${cl>1?"s":""}, ${cl*2} fotos${sub?" (adicional)":""}`:`Collection concept: ${cl} look${cl>1?"s":""}, ${cl*2} photos${sub?" (add-on)":""}`,v]);t+=v}
+  const cl=qnum(Q.cc,60),ccv=cl*N.xcc;
+  if(cl){lines.push([pt?`Conceito de coleção: ${cl} look${cl>1?"s":""}, ${cl*2} fotos${sub?" por mês":""}`:`Collection concept: ${cl} look${cl>1?"s":""}, ${cl*2} photos${sub?" a month":""}`,ccv]);t+=ccv}
+  const mo=pick.c+vv+ccv; // subscription: package, videos and concept photos repeat every month
   if(Q.md.checked)lines.push([pt?"Modelo exclusiva (pagamento único)":"Exclusive model (one-time)",N.model]);
   $("#q-lines").innerHTML=lines.map(([a,v])=>`<li><span>${a}</span><span>${v==null?"":brl(v)}</span></li>`).join("");
   $("#q-total").textContent=brl(t+(Q.md.checked?N.model:0))+(sub?(pt?" no 1º mês":" 1st month"):"");
   const tip=$("#q-tip");let msg="";
   if(looks>n)msg=pt?`Você pediu ${n} looks e o pacote cobre até ${looks}.`:`You asked for ${n} looks and the package covers up to ${looks}.`;
-  if(sub)msg+=(msg?" ":"")+(pt?`Depois, ${brl(mo)} por mês${vb?", já com os vídeos":""}. Fidelidade mínima de 3 meses.`:`Then ${brl(mo)} a month${vb?", videos included":""}. 3-month minimum.`);
+  if(sub)msg+=(msg?" ":"")+(pt?`Depois, ${brl(mo)} por mês${vb||cl?", já com "+(vb&&cl?"vídeos e conceito":vb?"os vídeos":"o conceito"):""}. Fidelidade mínima de 3 meses.`:`Then ${brl(mo)} a month${vb||cl?", "+(vb&&cl?"videos and concept":vb?"videos":"concept")+" included":""}. 3-month minimum.`);
   else{const bs={[n]:plan(n,true,N,pt).c};
     msg+=(msg?" ":"")+(n<10?(pt?`A assinatura começa em 10 looks, por ${brl(bs[n])} por mês.`:`Subscriptions start at 10 looks, for ${brl(bs[n])} a month.`):(pt?`Na assinatura, sai por ${brl(bs[n])} por mês.`:`On subscription, it costs ${brl(bs[n])} a month.`))}
   tip.hidden=!msg;tip.textContent=msg;
