@@ -199,6 +199,23 @@ section{padding-block:clamp(64px,10vw,140px)}
 .addr{font-family:var(--display);font-size:clamp(20px,2.4vw,30px);user-select:all;overflow-wrap:anywhere;min-width:0}
 @media (max-width:860px){.plans{grid-template-columns:1fr}.menus{grid-template-columns:1fr}}
 
+/* lead gate: name + email before packages and quote */
+.gatebox{display:none}
+html.locked .gatebox{display:block}
+html.locked #pacotes,html.locked #orcamento{display:none}
+.gate{max-width:560px;margin-inline:auto;padding:clamp(28px,4vw,44px);border:1px solid var(--bronze);background:color-mix(in srgb,var(--bronze) 6%,transparent)}
+.gate h2{font-family:var(--display);font-weight:400;font-size:clamp(30px,4vw,42px);line-height:1.12;margin:10px 0 12px}.gate h2 em{color:var(--bronze)}
+.gate>p{color:var(--mute);margin:0 0 22px}
+.gate label{display:block;font:400 11px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:16px 0 6px}
+.gate input{width:100%;box-sizing:border-box;font:400 17px/1.3 var(--body);color:var(--bone);background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.gate input:focus{outline:2px solid var(--bronze);outline-offset:1px;border-color:var(--bronze)}
+.gate .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.gate button.btn{display:block;width:100%;margin-top:24px;cursor:pointer;font-size:15px}
+.gate button.btn[disabled]{opacity:.6;cursor:wait}
+.gate .gerr{color:#a3342b;font-size:14px;margin:12px 0 0}
+.gate .gfine{font-size:13px;color:var(--mute);margin:16px 0 0}
+.gate .gfree{font-size:15px;margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line)}.gate .gfree a{color:var(--bronze);font-weight:500}
+
 /* calculator */
 .calc{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
 .rows{display:flex;flex-direction:column}
@@ -628,6 +645,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   </section>
 </div>
 <div class="page" data-page="pacotes">
+<section class="gatebox"><div class="wrap"><form class="gate" novalidate>
+    <span class="eyebrow" data-i="g0">Pacotes e valores</span>
+    <h2 data-i="g1">Antes, conta <em>quem é você</em></h2>
+    <p data-i="g2">Deixe seu nome e e-mail para ver os pacotes, os valores e montar o seu orçamento. Leva 10 segundos.</p>
+    <label data-i="g3">Seu nome</label><input name="nome" autocomplete="name" required maxlength="80">
+    <label data-i="g4">Seu e-mail</label><input name="email" type="email" autocomplete="email" inputmode="email" required maxlength="120">
+    <label data-i="g5">Instagram da loja (opcional)</label><input name="instagram" placeholder="@sualoja" autocapitalize="off" maxlength="60">
+    <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="gerr" hidden data-i="g8">Confira seu nome e e-mail.</p>
+    <button type="submit" class="btn solid" data-i="g6">Ver pacotes e valores</button>
+    <p class="gfine" data-i="g7">Usamos seus dados só para falar com você sobre o orçamento. Nada de spam.</p>
+    <p class="gfree"><span data-i="g9">Prefere testar antes?</span> <a class="freelink" href="#" target="_blank" rel="noopener" data-i="g10">Peça um look grátis, sem cadastro →</a></p>
+  </form></div></section>
   <section class="band" id="pacotes">
     <div class="wrap">
       <div class="vol" id="vol" hidden>
@@ -716,6 +746,19 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 </div>
 <div class="page" data-page="orcamento">
+<section class="gatebox"><div class="wrap"><form class="gate" novalidate>
+    <span class="eyebrow" data-i="g0">Pacotes e valores</span>
+    <h2 data-i="g1">Antes, conta <em>quem é você</em></h2>
+    <p data-i="g2">Deixe seu nome e e-mail para ver os pacotes, os valores e montar o seu orçamento. Leva 10 segundos.</p>
+    <label data-i="g3">Seu nome</label><input name="nome" autocomplete="name" required maxlength="80">
+    <label data-i="g4">Seu e-mail</label><input name="email" type="email" autocomplete="email" inputmode="email" required maxlength="120">
+    <label data-i="g5">Instagram da loja (opcional)</label><input name="instagram" placeholder="@sualoja" autocapitalize="off" maxlength="60">
+    <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p class="gerr" hidden data-i="g8">Confira seu nome e e-mail.</p>
+    <button type="submit" class="btn solid" data-i="g6">Ver pacotes e valores</button>
+    <p class="gfine" data-i="g7">Usamos seus dados só para falar com você sobre o orçamento. Nada de spam.</p>
+    <p class="gfree"><span data-i="g9">Prefere testar antes?</span> <a class="freelink" href="#" target="_blank" rel="noopener" data-i="g10">Peça um look grátis, sem cadastro →</a></p>
+  </form></div></section>
   <section id="orcamento">
     <div class="wrap">
       <div class="sec-head rv">
@@ -800,7 +843,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 <script>
 const T={
  pt:{},
- en:{cpg2:"Concept campaign · Tennis fashion",cpgo:"Enter the campaign →",cpsoon:"Next campaign coming soon",bsback:"← Campaigns",bsissue:"Nº 01 · Concept campaign · Premium tennis fashion",bsl1:"The break as a concept",bsl2:"A full outdoor campaign",bsl3:"Four models, one court",bsi1:"Letter",bsi2:"Process",bsi3:"Lookbook",bsi4:"Concept",bsi5:"Details",bsi6:"In motion",bsi7:"Wide shot",bsk1:"Studio letter",bsh1:"Between one set <em>and the next</em>",bsc1:"Every match has a moment nobody photographs: the towel around the neck, the wooden bench, the breath settling down. That break is what we chose as the campaign.",bsc2:"Between Sets is a fictional premium activewear brand, created by us to show one simple thing: we can take any concept off the page and turn it into a complete outdoor campaign, with location, cast, light and the language of cinema.",bsc3:"In the sections below, instead of selling garments, we show how we think. What guided each choice, why the color is so restrained, why nobody looks at the camera.",bsf1:"Game over. The frame that sums up the campaign: nobody posing, everyone present.",bsk2:"How we made it",bsh2:"From concept <em>to frame</em>",bsc4:"A campaign does not start with the photo. It starts with an idea that has to survive every step. These six decisions kept Between Sets consistent from the first sketch to the last frame.",bss0t:"The idea",bss0p:"Avoid the cliché of maximum effort. The brand lives in the break, in the body that rests and gets ready. Hence the name.",bss1t:"The location",bss1p:"A real court, with a green fence, trees and a players’ bench. It is the fixed set of the whole campaign, from lookbook to film.",bss2t:"The cast",bss2p:"Four models with their own identity, consistent in every photo: Aiko, Iara, Alice and Lívia. One look each.",bss3t:"The color",bss3p:"A palette taken from a single reference: dusty court blue, wine, moss green and off-white. Low saturation, cool shadows, no golden sun.",bss4t:"The camera",bss4p:"Every image is treated as a film frame shot on large-format stock. Visible grain, motion blur and an anamorphic lens.",bss5t:"The rhythm",bss5p:"Lookbook to show the clothes, concept to tell the story and detail shots to pause, like in a magazine.",bsf2:"Detail, concept and detail. The detail gives the main image room to breathe.",bsh3:"Four looks, <em>four models</em>",bsc5:"In the lookbook the garment is the lead, so the camera slows down: open light, simple poses and the same court behind. The grain stays, so the photo never loses human skin.",bsdp:"Pieces",bsdc:"Shoes",bsdl:"Shots",bsdl2:"Front, back, half body and walking",bslat:"Jacket and pleats",bslap:"Off-white jacket with green piping and a moss-green pleated skirt. Open light and simple poses, so the outfit reads in full.",bslaa:"Off-white jacket with green piping, moss-green pleated skirt",bslab:"White leather sneakers, ribbed socks with two green stripes",bslbt:"Club stripes",bslbp:"A striped polo that recalls old tennis clubs, with a plain skirt for balance. The green stripes echo the fence and the socks, and the piece reads from afar.",bslba:"Off-white knit polo with bottle-green stripes, white skirt with side pleat",bslbb:"White leather sneakers, ribbed socks with green stripes",bslct:"Blue knit",bslcp:"The only strong blue in the campaign is in the clothes, not the sky. The knit sweater brings the court color to the body, and the white collar gives it a club feel.",bslca:"Blue knit sweater with white collar, white pleated skirt",bslcb:"White leather sneakers, ribbed socks with green stripes",bsldt:"Court dress",bsldp:"One piece, shoulder to knee. The white dress with zipper and green piping is the cleanest look in the campaign, so it gets the simplest framing.",bslda:"Sleeveless white dress with front zipper and green piping",bsldb:"White leather sneakers, ribbed socks with green stripes",bsk4:"Eight film scenes",bsh4:"The game <em>nobody sees</em>",bsc6:"In the concept shots the garment leaves the center and the story comes in. Each image was thought of as a frame torn from a feature film: someone moving, nobody posing, the camera arriving a second late.",bsf3:"Real movement, real blur. The blur is part of the clothes in action.",bsf4:"Bench, net and sprint. Two pauses and a run, in the same overcast afternoon light.",bsq:"“If someone looks at the camera, the scene is over.”",bsf5:"The pairs. Each outfit stays readable even when the scene is about friendship.",bsf6:"Aiko and Alice. The cover image, here in the context of the series.",bsk5:"Detail as a pause",bsh5:"Six <em>details</em>",bsc7:"A campaign of only models tires the eye. The detail shots have no faces: the ball on the line, the basket, the empty bench. They give rhythm, become transitions in the film and reinforce the location without repeating anyone.",bsf7:"Bench, hand, basket, net, ball and feet.",bsk6:"The campaign moves",bsh6:"From frame <em>to film</em>",bsc8:"Every approved photo becomes the first frame of a short video. The movement is restrained on purpose: a step, a turn of the head, the wind in the skirt. The film look stays the same.",bsc9:"This material becomes the main campaign film and one video per model, ready for Reels, website and launch.",bsf8:"Five-second clips of each model and of the campaign film.",bsk7:"Cinema format",bsh7:"Wide <em>shot</em>",bsc10:"The same scenes, now in cinema format. The framing for website banners, video covers and out-of-home media, with room for the location to tell its part.",bsf9:"Arrival, prep, pause, conversation and the end. A whole afternoon in six frames.",bsk8:"Your concept, your campaign",bsh8:"The brand is fictional. <em>The method is real.</em>",bsc11:"Between Sets was created from scratch to show what we deliver for real brands. We swap the court for a beach, studio, street or mountain, and tennis for any collection. The process is the same.",bsu1:"Concept, location and art direction",bsu2:"Consistent cast across every image",bsu3:"Lookbook for e-commerce",bsu4:"Concept photos and cinema-format scenes",bsu5:"Short videos and a campaign film",bscta1:"See services",bscta2:"All campaigns",nav8:"Campaigns",cbt:"Concept campaign · Nº 01",cbp:"A tennis brand that does not exist, shot on a court that does. Created from scratch by Studio Forma.",cbg:"See the campaign →",cpt:"Cam<em>paigns</em>",cpp:"Concept campaigns Studio Forma creates from scratch: brand, set, models and art direction. Each one shows how far a collection can go with AI.",cpg:"Concept campaign",cpd:"Premium tennis wear on an outdoor court, with Aiko, Iara, Alice and Lívia. Shot like a film frame: grain, late-afternoon light and restrained color.",cpn:"The brand is fictional. Court, models and clothes were created with AI by Studio Forma.",nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
+ en:{g0:"Packages and prices",g1:"First, tell us <em>who you are</em>",g2:"Leave your name and email to see the packages, the prices and build your quote. It takes 10 seconds.",g3:"Your name",g4:"Your email",g5:"Store Instagram (optional)",g6:"See packages and prices",g7:"We only use your details to talk to you about your quote. No spam.",g8:"Please check your name and email.",g9:"Rather try it first?",g10:"Ask for a free look, no sign-up →",cpg2:"Concept campaign · Tennis fashion",cpgo:"Enter the campaign →",cpsoon:"Next campaign coming soon",bsback:"← Campaigns",bsissue:"Nº 01 · Concept campaign · Premium tennis fashion",bsl1:"The break as a concept",bsl2:"A full outdoor campaign",bsl3:"Four models, one court",bsi1:"Letter",bsi2:"Process",bsi3:"Lookbook",bsi4:"Concept",bsi5:"Details",bsi6:"In motion",bsi7:"Wide shot",bsk1:"Studio letter",bsh1:"Between one set <em>and the next</em>",bsc1:"Every match has a moment nobody photographs: the towel around the neck, the wooden bench, the breath settling down. That break is what we chose as the campaign.",bsc2:"Between Sets is a fictional premium activewear brand, created by us to show one simple thing: we can take any concept off the page and turn it into a complete outdoor campaign, with location, cast, light and the language of cinema.",bsc3:"In the sections below, instead of selling garments, we show how we think. What guided each choice, why the color is so restrained, why nobody looks at the camera.",bsf1:"Game over. The frame that sums up the campaign: nobody posing, everyone present.",bsk2:"How we made it",bsh2:"From concept <em>to frame</em>",bsc4:"A campaign does not start with the photo. It starts with an idea that has to survive every step. These six decisions kept Between Sets consistent from the first sketch to the last frame.",bss0t:"The idea",bss0p:"Avoid the cliché of maximum effort. The brand lives in the break, in the body that rests and gets ready. Hence the name.",bss1t:"The location",bss1p:"A real court, with a green fence, trees and a players’ bench. It is the fixed set of the whole campaign, from lookbook to film.",bss2t:"The cast",bss2p:"Four models with their own identity, consistent in every photo: Aiko, Iara, Alice and Lívia. One look each.",bss3t:"The color",bss3p:"A palette taken from a single reference: dusty court blue, wine, moss green and off-white. Low saturation, cool shadows, no golden sun.",bss4t:"The camera",bss4p:"Every image is treated as a film frame shot on large-format stock. Visible grain, motion blur and an anamorphic lens.",bss5t:"The rhythm",bss5p:"Lookbook to show the clothes, concept to tell the story and detail shots to pause, like in a magazine.",bsf2:"Detail, concept and detail. The detail gives the main image room to breathe.",bsh3:"Four looks, <em>four models</em>",bsc5:"In the lookbook the garment is the lead, so the camera slows down: open light, simple poses and the same court behind. The grain stays, so the photo never loses human skin.",bsdp:"Pieces",bsdc:"Shoes",bsdl:"Shots",bsdl2:"Front, back, half body and walking",bslat:"Jacket and pleats",bslap:"Off-white jacket with green piping and a moss-green pleated skirt. Open light and simple poses, so the outfit reads in full.",bslaa:"Off-white jacket with green piping, moss-green pleated skirt",bslab:"White leather sneakers, ribbed socks with two green stripes",bslbt:"Club stripes",bslbp:"A striped polo that recalls old tennis clubs, with a plain skirt for balance. The green stripes echo the fence and the socks, and the piece reads from afar.",bslba:"Off-white knit polo with bottle-green stripes, white skirt with side pleat",bslbb:"White leather sneakers, ribbed socks with green stripes",bslct:"Blue knit",bslcp:"The only strong blue in the campaign is in the clothes, not the sky. The knit sweater brings the court color to the body, and the white collar gives it a club feel.",bslca:"Blue knit sweater with white collar, white pleated skirt",bslcb:"White leather sneakers, ribbed socks with green stripes",bsldt:"Court dress",bsldp:"One piece, shoulder to knee. The white dress with zipper and green piping is the cleanest look in the campaign, so it gets the simplest framing.",bslda:"Sleeveless white dress with front zipper and green piping",bsldb:"White leather sneakers, ribbed socks with green stripes",bsk4:"Eight film scenes",bsh4:"The game <em>nobody sees</em>",bsc6:"In the concept shots the garment leaves the center and the story comes in. Each image was thought of as a frame torn from a feature film: someone moving, nobody posing, the camera arriving a second late.",bsf3:"Real movement, real blur. The blur is part of the clothes in action.",bsf4:"Bench, net and sprint. Two pauses and a run, in the same overcast afternoon light.",bsq:"“If someone looks at the camera, the scene is over.”",bsf5:"The pairs. Each outfit stays readable even when the scene is about friendship.",bsf6:"Aiko and Alice. The cover image, here in the context of the series.",bsk5:"Detail as a pause",bsh5:"Six <em>details</em>",bsc7:"A campaign of only models tires the eye. The detail shots have no faces: the ball on the line, the basket, the empty bench. They give rhythm, become transitions in the film and reinforce the location without repeating anyone.",bsf7:"Bench, hand, basket, net, ball and feet.",bsk6:"The campaign moves",bsh6:"From frame <em>to film</em>",bsc8:"Every approved photo becomes the first frame of a short video. The movement is restrained on purpose: a step, a turn of the head, the wind in the skirt. The film look stays the same.",bsc9:"This material becomes the main campaign film and one video per model, ready for Reels, website and launch.",bsf8:"Five-second clips of each model and of the campaign film.",bsk7:"Cinema format",bsh7:"Wide <em>shot</em>",bsc10:"The same scenes, now in cinema format. The framing for website banners, video covers and out-of-home media, with room for the location to tell its part.",bsf9:"Arrival, prep, pause, conversation and the end. A whole afternoon in six frames.",bsk8:"Your concept, your campaign",bsh8:"The brand is fictional. <em>The method is real.</em>",bsc11:"Between Sets was created from scratch to show what we deliver for real brands. We swap the court for a beach, studio, street or mountain, and tennis for any collection. The process is the same.",bsu1:"Concept, location and art direction",bsu2:"Consistent cast across every image",bsu3:"Lookbook for e-commerce",bsu4:"Concept photos and cinema-format scenes",bsu5:"Short videos and a campaign film",bscta1:"See services",bscta2:"All campaigns",nav8:"Campaigns",cbt:"Concept campaign · Nº 01",cbp:"A tennis brand that does not exist, shot on a court that does. Created from scratch by Studio Forma.",cbg:"See the campaign →",cpt:"Cam<em>paigns</em>",cpp:"Concept campaigns Studio Forma creates from scratch: brand, set, models and art direction. Each one shows how far a collection can go with AI.",cpg:"Concept campaign",cpd:"Premium tennis wear on an outdoor court, with Aiko, Iara, Alice and Lívia. Shot like a film frame: grain, late-afternoon light and restrained color.",cpn:"The brand is fictional. Court, models and clothes were created with AI by Studio Forma.",nav1:"Garment to video",nav2:"Portfolio",nav3:"Models",nav4:"Contact",
   kicker:"Visual storytelling with artificial intelligence",h1a:"Your garment,",h1b:"styled and",h1c:"<em>in motion.</em>",
   lede:"Catalog photos and vertical videos featuring Studio Forma's virtual models, made from the clothes you already sell. Ready for your store, Reels and TikTok.",
   m1:"On-model photos",m2:"9:16 video",m3:"Lookbook",
@@ -1031,7 +1074,8 @@ function calc(){
     +"\n"+(CUR==="brl"?"Valor unitário:":"Unit prices:")
     +"\n- "+(CUR==="brl"?"Cada foto do pacote: ":"Each package photo: ")+brl2(pick.c/ph)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):"")
     +(vb?"\n- "+(CUR==="brl"?"Cada vídeo de 15 s: ":"Each 15 s video: ")+brl2(vu)+(sub?(CUR==="brl"?" (no mês)":" (monthly)"):""):"")
-    +(cl?"\n- "+(CUR==="brl"?"Cada foto conceito: ":"Each concept photo: ")+brl2(N.xcc/2):"");
+    +(cl?"\n- "+(CUR==="brl"?"Cada foto conceito: ":"Each concept photo: ")+brl2(N.xcc/2):"")
+    +(window.SF_LEAD?"\n\n"+(CUR==="brl"?"Nome: ":"Name: ")+SF_LEAD.n+"\nE-mail: "+SF_LEAD.e+(SF_LEAD.ig?"\nInstagram: "+SF_LEAD.ig:""):"");
   $("#q-send").href=CUR==="brl"?$("#free").getAttribute("href").split("?")[0]+"?text="+encodeURIComponent(qtxt)
     :"mailto:calebenogueirastudioforma@gmail.com?subject="+encodeURIComponent("My Studio Forma quote")+"&body="+encodeURIComponent(qtxt);
 }
@@ -1083,6 +1127,32 @@ route();
 })();
 </script>
 <script>
+// lead gate: packages and quote unlock after name + email; the lead goes to Calebe's inbox via FormSubmit
+(function(){
+const KEY="sf-lead",DOC=document.documentElement;
+let lead=null;try{lead=JSON.parse(localStorage.getItem(KEY)||"null")}catch(e){}
+window.SF_LEAD=lead&&lead.e?lead:null;
+const lock=()=>DOC.classList.toggle("locked",!window.SF_LEAD);lock();
+const okMail=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+document.querySelectorAll("form.gate").forEach(f=>f.addEventListener("submit",ev=>{
+  ev.preventDefault();
+  const n=f.nome.value.trim(),e=f.email.value.trim(),ig0=f.instagram.value.trim(),err=f.querySelector(".gerr");
+  if(n.length<2||!okMail(e)){err.hidden=false;return}
+  err.hidden=true;
+  const ig=ig0?(ig0.startsWith("@")?ig0:"@"+ig0.replace(/^https?:\/\/(www\.)?instagram\.com\//i,"").replace(/\/.*$/,"")):"";
+  window.SF_LEAD={n,e,ig};try{localStorage.setItem(KEY,JSON.stringify(window.SF_LEAD))}catch(x){}
+  if(!f.elements._honey.value){
+    const br=CUR==="brl";
+    fetch("https://formsubmit.co/ajax/calebenogueirastudioforma@gmail.com",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},
+      body:JSON.stringify({Nome:n,"E-mail":e,Instagram:ig||"-",Site:br?"Brasil":"Internacional",Pagina:location.hash||"#",
+        _subject:(br?"Novo cadastro no site: ":"Novo cadastro no site EN: ")+n,_template:"table",_captcha:"false",_replyto:e})}).catch(()=>{});
+    window.goatcounter&&goatcounter.count&&goatcounter.count({path:"cadastro-orcamento",title:"Cadastro no orçamento",event:true});
+  }
+  lock();if(typeof calc==="function")calc();window.scrollTo(0,0);
+}));
+})();
+</script>
+<script>
 // Quote PDF: page 1 = the quote the visitor built; page 2 (Brazil only) = what a traditional shoot would cost
 (function(){
 const btn=document.getElementById("q-pdf");if(!btn)return;
@@ -1093,7 +1163,7 @@ const esc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"})
 btn.onclick=async()=>{
   const D=window.QD;if(!D)return;const pt=CUR==="brl",lab=btn.textContent;btn.disabled=true;btn.textContent=pt?"Gerando PDF...":"Creating PDF...";
   const date=new Date().toLocaleDateString(pt?"pt-BR":"en-US",{day:"2-digit",month:"long",year:"numeric"});
-  const top=k=>`<div class="tp"><div class="bd">${LOGO}<span>Studio Forma</span></div><div class="mn" style="text-align:right">${k}<br>${date}</div></div>`;
+  const top=k=>`<div class="tp"><div class="bd">${LOGO}<span>Studio Forma</span></div><div class="mn" style="text-align:right">${k}<br>${date}${window.SF_LEAD?`<br>${pt?"Para":"For"}: ${esc(SF_LEAD.n)}${SF_LEAD.ig?" · "+esc(SF_LEAD.ig):""}`:""}</div></div>`;
   const foot=pt?`<div class="ft"><div><span class="mn">Fale com a gente</span><b>WhatsApp (85) 99108-1868</b></div><div style="text-align:right"><span class="mn">Portfólio</span><br>calebenn07.github.io/studioforma<br>Instagram @stforma_</div></div>`
     :`<div class="ft"><div><span class="mn">Contact us</span><b>calebenogueirastudioforma@gmail.com</b></div><div style="text-align:right"><span class="mn">Portfolio</span><br>calebenn07.github.io/studioforma/en<br>Instagram @stforma_</div></div>`;
   const photos=["l1-pose01-frente-mao-cintura","l2-pose01-frente-mao-cintura","l4-pose01-frente-mao-cintura","l5-pose09-encostada"].map(f=>`<div style="background-image:url('media/${f}.webp')"></div>`).join("");
